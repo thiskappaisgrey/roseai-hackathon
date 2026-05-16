@@ -1,0 +1,156 @@
+{
+  "hotel": {
+    "name": "ROSEWOOD",
+    "property": "SAND HILL",
+    "address": "2825 Sand Hill Road &middot; Menlo Park, California 94025",
+    "phone": "+16503614800",
+    "hero_bg_image": "https://picasso.rosewoodhotelgroup.com/transform/3b246b58-9893-408d-aa96-9edc63d2339d/RWSHR_3-0_Brand-com_Assets_Facilities_Pool_DayShot",
+    "footer_tagline": "Recognition without surveillance.<br>The difference between luxury amenities and luxury intelligence."
+  },
+
+  "guest": {
+    "name": "Michael",
+    "full_name": "Michael Gahan",
+    "hero_tagline": "Ninety playlists. One discipline. Zero half-measures.<br>We built your stay the same way."
+  },
+
+  "note": {
+    "heading_emphasis": "we see you.",
+    "paragraphs": [
+      { "text": "Not everyone gives INZO his own playlist. Not everyone tracks sweetHz and Ookean months before anyone else catches on. And not everyone names a playlist \"Country<em>-ish</em>\" &mdash; with the exact wink that says <em>I'm curious, not committed.</em>" },
+      { "text": "You organize your world through sound &mdash; 90 playlists, each one deliberate. \"B&aelig;sic Vibes\" isn't basic at all. \"Pirate EDM\" has its own flag. \"Space Vibes\" has its own orbit. And when the day is done, \"Bedtime Stories\" tells us you have a wind-down ritual you don't skip." },
+      { "text": "That same intentionality shows up on the mat. MMA isn't a hobby &mdash; it's a practice that demands the same strategic thinking you bring to a 4-hour playlist deep-dive. You balance the intensity of rolling bass lines and sparring rounds with the stillness of an ambient soundscape and a history podcast about fallen civilizations." },
+      { "text": "We've tried to match that range. Your mornings have fuel and movement. Your room has recovery gear, not just a minibar. Your evenings have vinyl DJs and mountain air. And your nights have the kind of deep sub-bass cocoon that makes a fireplace suite feel like the inside of a dub track." }
+    ],
+    "closing": "This isn't a standard stay.<br>It's curated &mdash; the way you'd do it.",
+    "signature": "&mdash; Your Rosewood Sand Hill Team"
+  },
+
+  "soundtrack": {
+    "section_label": "Your Arrival Soundtrack",
+    "description": "We fed your sonic fingerprint into a composer &mdash; the dub warmth of <strong>Dubby Dub Dub</strong>, the atmospheric drift of <strong>Space Vibes</strong>, the rolling energy of <strong>Mid Temp D&amp;B</strong>. What came back is 60 seconds of ambient bass that sounds like arriving somewhere that already knows you.",
+    "audio_url": "https://ojlymzrznqyuzlcp.public.blob.vercel-storage.com/generated-music/toolu01VyABt1qU2DdRk/1778969120874.mp3",
+    "track_title": "Sand Hill Arrival",
+    "track_artist": "Composed for Michael Gahan",
+    "track_meta": "Ambient Melodic Bass &middot; 85 BPM &middot; AI-Composed",
+    "playlist_tags": [
+      { "label": "\ud83d\udc68\u200d\ud83d\ude80 Space Vibes" },
+      { "label": "\ud83c\udfb5 Dubby Dub Dub" },
+      { "label": "\ud83e\udd41 Mid Temp D&amp;B" },
+      { "label": "\ud83c\udff4\u200d\u2620\ufe0f Pirate EDM" }
+    ],
+    "artist_tags": [
+      { "name": "sweetHz" },
+      { "name": "Zephyrical" },
+      { "name": "Earthbound" },
+      { "name": "Ookean" },
+      { "name": "Levity" },
+      { "name": "Tape B" }
+    ]
+  },
+
+  "experiences": {
+    "section_label": "For the Curator-Athlete",
+    "description": "You move between intensity and stillness with intention. So does this lineup.",
+    "items": [
+      {
+        "image_url": "https://picasso.rosewoodhotelgroup.com/transform/c31785e4-275f-4db9-95b2-7a58113d05d8/RWSHR_MADERABAR_FACILITIES_COCKTAIL",
+        "tag": "\ud83c\udfa7 Friday Nights",
+        "title": "DJ Nights @ Madera Bar",
+        "description": "DJs spinning vinyl on the terrace &mdash; not a Spotify algorithm, actual records. For someone who follows 66 artists and only 25 follow back, you'll appreciate the curation. Think \"B&aelig;sic Vibes\" with a cocktail and mountain air."
+      },
+      {
+        "image_url": "https://picasso.rosewoodhotelgroup.com/transform/5260c24f-94a2-4e55-9bc4-b36ceff3b84c/RWSHR_3-0_Brand-com_Assets_EXPERIENCES_FALCONRY_102225",
+        "tag": "\ud83e\udd85 Adventure",
+        "title": "Falconry Experience",
+        "description": "A centuries-old discipline built on patience, precision, and the bond between human and raptor. Someone who listens to \"Fall of the Aztecs\" and practices a martial art will understand what this is really about &mdash; mastery passed down through time."
+      },
+      {
+        "image_url": "https://picasso.rosewoodhotelgroup.com/transform/d8749943-75a8-4327-aa0a-e2bbc11b54b0/RWSHR_3-0_Brand-com_Assets_EXPERIENCES_CYCLING_BAYAREA2",
+        "tag": "\ud83d\udeb4 Active",
+        "title": "Cycling Concierge",
+        "description": "Electric bikes through the Santa Cruz Mountain foothills. Our concierge can map routes from recovery-pace to race-pace &mdash; because \"Mid Temp\" doesn't just describe your drum &amp; bass, it describes your off-day cardio."
+      },
+      {
+        "image_url": "https://picasso.rosewoodhotelgroup.com/transform/8caaefcb-1d0e-450e-bab1-d77b80e7a2d3/RWSHR_3-0_Brand-com_Assets_FOOD-bEVERAGE_FALL_AFTERNOONTEA",
+        "tag": "\ud83d\udcd6 Culture",
+        "title": "Afternoon Tea at The Library",
+        "description": "Flamingo Estate's seasonal teas and house-made pastries in a quiet, narrative-framed space. Your \"Good Reads\" and \"Bedtime Stories\" playlists tell us you already have a ritual like this &mdash; this is the Rosewood version."
+      }
+    ]
+  },
+
+  "dining": {
+    "items": [
+      {
+        "image_url": "https://picasso.rosewoodhotelgroup.com/transform/1a9ad6fa-f895-4efd-addd-ace8d7d99bc1/RWSHR_MADERARESTAURANT_SPACE",
+        "title": "Madera Restaurant",
+        "description": "Terrace table reserved, mountain-view side. Farm-to-table Northern California cuisine with the same attention to sourcing you bring to finding artists nobody's heard of yet. Start with the seasonal tasting menu &mdash; it rewards the kind of patience that builds 90 playlists."
+      },
+      {
+        "image_url": "https://picasso.rosewoodhotelgroup.com/transform/3cd54a3e-7258-49d3-8481-0e4465a76fdb/RWSHR_FoodandBeverage_BiciCoffee?io=transform:crop,height:900,width:1600,path:square&focuspoint=1,0.62",
+        "title": "Bici Coffee",
+        "description": "Pre-training fuel. Thoughtfully sourced beans, hyper-seasonal pastries, and the kind of craft that would earn its own playlist if coffee had a BPM. We know you're up early."
+      },
+      {
+        "image_url": "https://picasso.rosewoodhotelgroup.com/transform/be80df39-babb-4698-b3e4-91750959e9b9/RWSHR_3-0_Brand-com_Assets_FACILITIES_MADERABAR",
+        "title": "Madera Bar &mdash; Your Cocktail",
+        "description": "Our bartender is preparing a bespoke seasonal cocktail &mdash; chosen with the same intentionality you bring to naming a playlist \"B&aelig;sic Vibes\" with a deliberate &aelig;. Ask for \"The Curator.\""
+      }
+    ]
+  },
+
+  "wellness": {
+    "section_label": "Recovery &amp; Wellness",
+    "section_heading": "Train. Recover. <em>Restore.</em>",
+    "description": "We framed this as recovery work, not pampering &mdash; because language matters when you've built a discipline around the mat.",
+    "items": [
+      {
+        "icon": "\ud83e\udd4a",
+        "title": "Movement Studio",
+        "description": "Mat space, bodyweight training, and stretching zones at Asaya Spa. Your practice doesn't pause for travel &mdash; and neither does your access to proper training space."
+      },
+      {
+        "icon": "\ud83d\udc86",
+        "title": "Deep Tissue Recovery",
+        "description": "Sports-focused massage at Asaya Spa, pre-scheduled. Not a spa day &mdash; recovery work. The same way \"Bedtime Stories\" isn't entertainment, it's a ritual."
+      },
+      {
+        "icon": "\ud83c\udfca",
+        "title": "Pool &amp; Terrace",
+        "description": "Post-session cooldown with Santa Cruz Mountain views. Queue up \"Space Vibes\" on the terrace speaker and let the last light do its thing."
+      },
+      {
+        "icon": "\ud83e\uddd8",
+        "title": "In-Room Recovery Kit",
+        "description": "Foam roller, resistance band, electrolyte water, high-protein snacks. Standard minibar replaced with what you'd actually reach for after training."
+      }
+    ]
+  },
+
+  "room": {
+    "items": [
+      {
+        "label": "\ud83d\udd0a Arrival Soundtrack",
+        "description": "Earthbound, Ookean, and Levity already playing on the in-room Sonos as you walk in. \"Space Vibes\" energy &mdash; warm pads, soft sub-bass, room to breathe."
+      },
+      {
+        "label": "\ud83c\udf19 Turndown Music",
+        "description": "Switches to a low ambient narrative soundscape at turndown &mdash; matching the \"Bedtime Stories\" vibe. Misted Minds and Unconscious Mind territory. Lights dim, fireplace lit."
+      },
+      {
+        "label": "\ud83d\udcda Nightstand",
+        "description": "A curated history book on ancient civilizations &mdash; connecting your \"Fall of the Aztecs\" curiosity to Madera's own Western exploration spirit. Not a generic coffee table book. A real read."
+      },
+      {
+        "label": "\ud83d\udd25 Fireplace &amp; Terrace",
+        "description": "Your suite's private terrace faces the Santa Cruz Mountains. Fireplace set for evening listening sessions. This is where \"Dubby Dub Dub\" was meant to be heard &mdash; deep bass, open sky, warm air."
+      }
+    ]
+  },
+
+  "concierge": {
+    "description": "From a 5am cycling route to a midnight playlist swap to a post-training ice bath &mdash; whatever you need, whenever you need it.",
+    "phone": "+16503614800"
+  }
+}

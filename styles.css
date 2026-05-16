@@ -1,6 +1,6 @@
 /* ============================================
-   ROSEWOOD SAND HILL — GUEST WELCOME
-   Personalized for Michael Gahan
+   ROSEWOOD — GUEST WELCOME TEMPLATE
+   Universal styles — no guest-specific content
    ============================================ */
 
 :root {
@@ -63,7 +63,10 @@ body {
 .hero-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: url('https://picasso.rosewoodhotelgroup.com/transform/3b246b58-9893-408d-aa96-9edc63d2339d/RWSHR_3-0_Brand-com_Assets_Facilities_Pool_DayShot') center/cover no-repeat;
+  /* background-image set via inline style in template.html */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   opacity: 0.15;
 }
 
