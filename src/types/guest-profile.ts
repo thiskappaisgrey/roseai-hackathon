@@ -5,7 +5,7 @@
  * Data flows: Social Media + Spotify + Concierge Notes → AI Engine → GuestProfile
  */
 
-// ─── Raw Data Inputs ────────────────────────────────────────────
+// ─── Raw Data Inputs ────────────────────────────────────────
 
 export interface SocialMediaData {
   platform: "instagram" | "twitter" | "linkedin" | "tiktok" | "facebook";
@@ -70,7 +70,7 @@ export type ConciergeCategory =
   | "occasion"
   | "general";
 
-// ─── Derived Preferences (AI-Generated) ────────────────────────
+// ─── Derived Preferences (AI-Generated) ────────────────────
 
 export interface DiningPreferences {
   dietaryRestrictions: string[]; // e.g., ["vegan", "gluten-free"]
@@ -130,7 +130,7 @@ export interface SpecialOccasion {
   suggestedGestures: string[]; // e.g., ["champagne on arrival", "handwritten card"]
 }
 
-// ─── Utility Types ─────────────────────────────────────────────
+// ─── Utility Types ─────────────────────────────────────────
 
 export interface RankedPreference {
   name: string;
@@ -146,7 +146,7 @@ export interface ConfidenceScore {
   notes?: string; // e.g., "Dietary preference inferred from 2 IG posts — confirm at check-in"
 }
 
-// ─── The Complete Guest Profile ────────────────────────────────
+// ─── The Complete Guest Profile ────────────────────────────
 
 export interface GuestProfile {
   // Identity
@@ -186,7 +186,7 @@ export interface GuestProfile {
   overallConfidence: ConfidenceScore;
 }
 
-// ─── Staff Briefing Output ─────────────────────────────────────
+// ─── Staff Briefing Output ─────────────────────────────────
 
 export interface StaffBriefing {
   guestName: string;
