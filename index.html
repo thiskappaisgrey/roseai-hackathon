@@ -1,384 +1,706 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome, Michael — Rosewood Sand Hill</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#1a1a1a" />
+<title>Welcome, {{GUEST_FIRST_NAME}} — Rosewood Sand Hill</title>
+<meta name="description" content="Your personalized guide to Rosewood Sand Hill, curated for {{GUEST_FIRST_NAME}} and {{GUEST_COMPANION_NAME}}." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* ---------- Reset & base ---------- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #f6f3ee;
+    color: #1a1a1a;
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Phone-shaped container ---------- */
+  .app {
+    max-width: 480px;
+    margin: 0 auto;
+    background: #f6f3ee;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* ---------- Header / Hero ---------- */
+  .hero {
+    position: relative;
+    height: 70vh;
+    min-height: 480px;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.65) 100%),
+      url('{{HERO_IMAGE_URL}}') center/cover no-repeat;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 22px 36px;
+    padding-top: calc(24px + env(safe-area-inset-top));
+  }
+
+  /* ---------- Hotel logo (wordmark) ---------- */
+  .logo {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    padding: 6px 0;
+    border-top: 1px solid rgba(255,255,255,0.35);
+    border-bottom: 1px solid rgba(255,255,255,0.35);
+    width: max-content;
+    margin: 0 auto;
+  }
+  .logo small {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    margin-top: 2px;
+    opacity: 0.85;
+  }
+
+  .hero-copy { }
+  .hero-copy .greeting {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    opacity: 0.9;
+  }
+  .hero-copy h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .hero-copy h1 em { font-style: italic; color: #e8d9b8; }
+  .hero-copy p { font-size: 14px; opacity: 0.9; max-width: 90%; }
+  .hero-copy .stay-meta {
+    margin-top: 16px;
+    display: flex;
+    gap: 14px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+  .hero-copy .stay-meta span::before { content: "·"; margin-right: 14px; opacity: 0.5; }
+  .hero-copy .stay-meta span:first-child::before { content: ""; margin: 0; }
+
+  /* ---------- Section base ---------- */
+  section { padding: 36px 20px; }
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #a8946f;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+  .section-intro {
+    font-size: 14px;
+    color: #6b6357;
+    margin-bottom: 22px;
+  }
+
+  /* ---------- Picked for you: horizontal scroller ---------- */
+  .picked-wrap {
+    background: #1a1a1a;
+    color: #f6f3ee;
+    margin: 0;
+    padding: 36px 0;
+  }
+  .picked-wrap .section-eyebrow { color: #c9a96b; padding: 0 20px; }
+  .picked-wrap .section-title { padding: 0 20px; color: #fff; }
+  .picked-wrap .section-intro { color: rgba(246,243,238,0.7); padding: 0 20px; }
+
+  .picked-scroller {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding: 6px 20px 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .picked-scroller::-webkit-scrollbar { display: none; }
+  .picked-card {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+    background: #262320;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+  }
+  .picked-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .picked-card .body { padding: 16px 18px 20px; }
+  .picked-card .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c9a96b;
+    margin-bottom: 8px;
+  }
+  .picked-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 22px;
+    margin-bottom: 6px;
+    color: #fff;
+  }
+  .picked-card p { font-size: 13px; color: rgba(246,243,238,0.75); margin-bottom: 14px; }
+  .picked-card .why {
+    font-size: 11px;
+    color: #c9a96b;
+    border-top: 1px solid rgba(201,169,107,0.3);
+    padding-top: 10px;
+    font-style: italic;
+  }
+  .picked-card .btn {
+    margin-top: 14px;
+    display: inline-block;
+    background: #c9a96b;
+    color: #1a1a1a;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* ---------- Amenities: 2-col list ---------- */
+  .amenities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .amenity {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 14px;
+    text-align: left;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .amenity .ico {
+    width: 32px; height: 32px;
+    border-radius: 999px;
+    background: #f1ebe1;
+    display: grid; place-items: center;
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+  .amenity h4 { font-family: 'Cormorant Garamond', serif; font-size: 17px; margin-bottom: 2px; }
+  .amenity p { font-size: 12px; color: #8a7e6e; }
+
+  /* ---------- Experiences: stacked image cards ---------- */
+  .exp-list { display: flex; flex-direction: column; gap: 14px; }
+  .exp-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  }
+  .exp-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+  .exp-card .body { padding: 16px 18px 20px; }
+  .exp-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; margin-bottom: 6px; }
+  .exp-card p { font-size: 13px; color: #6b6357; }
+  .exp-card .meta {
+    margin-top: 10px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a8946f;
+  }
+
+  /* ---------- Explore Menlo Park ---------- */
+  .explore-wrap { background: #efeae1; }
+  .explore-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .explore-tile {
+    position: relative;
+    aspect-ratio: 3/4;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  }
+  .explore-tile img { width: 100%; height: 100%; object-fit: cover; }
+  .explore-tile .overlay {
+    position: absolute; inset: auto 0 0 0;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.78));
+    color: #fff;
+    padding: 14px;
+  }
+  .explore-tile .overlay span {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.85;
+  }
+  .explore-tile .overlay h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 4px;
+  }
+  .explore-tile .overlay small { font-size: 11px; opacity: 0.8; }
+
+  /* ---------- FAQ accordion ---------- */
+  .faq-list { display: flex; flex-direction: column; gap: 8px; }
+  .faq {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .faq summary {
+    padding: 16px 18px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: "+";
+    font-size: 22px;
+    font-weight: 300;
+    color: #a8946f;
+    transition: transform 0.2s ease;
+  }
+  .faq[open] summary::after { content: "−"; }
+  .faq p { padding: 0 18px 18px; font-size: 13px; color: #6b6357; }
+
+  /* ---------- Footer / Concierge CTA ---------- */
+  .concierge-cta {
+    background: #1a1a1a;
+    color: #f6f3ee;
+    margin: 0 20px 24px;
+    border-radius: 18px;
+    padding: 28px 22px;
+    text-align: center;
+  }
+  .concierge-cta h2 { font-family: 'Cormorant Garamond', serif; font-size: 26px; margin-bottom: 6px; }
+  .concierge-cta p { font-size: 13px; opacity: 0.78; margin-bottom: 18px; }
+  .btn-gold {
+    display: inline-block;
+    background: #c9a96b;
+    color: #1a1a1a;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 11px;
+    color: #8a7e6e;
+  }
+
+  /* ---------- Desktop framing ---------- */
+  @media (min-width: 600px) {
+    body { background: #2a2622; padding: 24px 0; }
+    .app { border-radius: 28px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.4); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="rosewood-mark">ROSEWOOD</div>
-      <div class="rosewood-sub">SAND HILL</div>
-      <div class="divider"></div>
-      <h1>Welcome, <em>Michael</em></h1>
-      <p class="hero-tagline">Ninety playlists. One discipline. Zero half-measures.<br>We built your stay the same way.</p>
-      <a href="#welcome-note" class="scroll-cta">Begin Your Experience &darr;</a>
-    </div>
-  </section>
+<div class="app">
 
-  <!-- PERSONAL WELCOME NOTE -->
-  <section id="welcome-note" class="section section-note">
-    <div class="container">
-      <div class="note-card">
-        <span class="section-label">A Note Before You Settle In</span>
-        <h2>Michael, <em>we see you.</em></h2>
-        <div class="note-body">
-          <p>Not everyone gives INZO his own playlist. Not everyone tracks sweetHz and Ookean months before anyone else catches on. And not everyone names a playlist "Country<em>-ish</em>" &mdash; with the exact wink that says <em>I'm curious, not committed.</em></p>
-          <p>You organize your world through sound &mdash; 90 playlists, each one deliberate. "B&aelig;sic Vibes" isn't basic at all. "Pirate EDM" has its own flag. "Space Vibes" has its own orbit. And when the day is done, "Bedtime Stories" tells us you have a wind-down ritual you don't skip.</p>
-          <p>That same intentionality shows up on the mat. MMA isn't a hobby &mdash; it's a practice that demands the same strategic thinking you bring to a 4-hour playlist deep-dive. You balance the intensity of rolling bass lines and sparring rounds with the stillness of an ambient soundscape and a history podcast about fallen civilizations.</p>
-          <p>We've tried to match that range. Your mornings have fuel and movement. Your room has recovery gear, not just a minibar. Your evenings have vinyl DJs and mountain air. And your nights have the kind of deep sub-bass cocoon that makes a fireplace suite feel like the inside of a dub track.</p>
-          <p class="note-close">This isn't a standard stay.<br>It's curated &mdash; the way you'd do it.</p>
+  <!-- ====== HERO + LOGO ====== -->
+  <header class="hero">
+    <div class="logo">
+      Rosewood
+      <small>Sand Hill</small>
+    </div>
+
+    <div class="hero-copy">
+      <div class="greeting">{{GREETING}}</div>
+      <h1>{{GUEST_FIRST_NAME}}, <em>{{HERO_EMPHASIS}}</em></h1>
+      <p>{{HERO_DESCRIPTION}}</p>
+      <div class="stay-meta">
+        <span>{{STAY_META_1}}</span>
+        <span>{{STAY_META_2}}</span>
+        <span>{{STAY_META_3}}</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== PICKED FOR YOU ====== -->
+  <div class="picked-wrap">
+    <div class="section-eyebrow">Curated by Your Concierge</div>
+    <h2 class="section-title">Picked for you</h2>
+    <p class="section-intro">{{PICKED_INTRO}}</p>
+
+    <div class="picked-scroller">
+
+      <!-- PICKED CARD TEMPLATE — Repeat this block for each recommendation -->
+      <!--
+        Variables per card:
+          {{PICKED_N_IMAGE}}       - Image URL
+          {{PICKED_N_IMAGE_ALT}}   - Alt text
+          {{PICKED_N_TAG}}         - Category label (e.g. "Anniversary Afternoon")
+          {{PICKED_N_TITLE}}       - Experience title
+          {{PICKED_N_DESC}}        - Short description
+          {{PICKED_N_WHY}}         - Personalized reason (italic)
+          {{PICKED_N_CTA}}         - Button text (e.g. "Reserve", "Book Tasting")
+          {{PICKED_N_CTA_HREF}}    - Button link
+      -->
+
+      <article class="picked-card">
+        <img src="{{PICKED_1_IMAGE}}" alt="{{PICKED_1_IMAGE_ALT}}" />
+        <div class="body">
+          <span class="tag">{{PICKED_1_TAG}}</span>
+          <h3>{{PICKED_1_TITLE}}</h3>
+          <p>{{PICKED_1_DESC}}</p>
+          <div class="why">{{PICKED_1_WHY}}</div>
+          <a href="{{PICKED_1_CTA_HREF}}" class="btn">{{PICKED_1_CTA}}</a>
         </div>
-        <p class="note-signature">&mdash; Your Rosewood Sand Hill Team</p>
+      </article>
+
+      <article class="picked-card">
+        <img src="{{PICKED_2_IMAGE}}" alt="{{PICKED_2_IMAGE_ALT}}" />
+        <div class="body">
+          <span class="tag">{{PICKED_2_TAG}}</span>
+          <h3>{{PICKED_2_TITLE}}</h3>
+          <p>{{PICKED_2_DESC}}</p>
+          <div class="why">{{PICKED_2_WHY}}</div>
+          <a href="{{PICKED_2_CTA_HREF}}" class="btn">{{PICKED_2_CTA}}</a>
+        </div>
+      </article>
+
+      <article class="picked-card">
+        <img src="{{PICKED_3_IMAGE}}" alt="{{PICKED_3_IMAGE_ALT}}" />
+        <div class="body">
+          <span class="tag">{{PICKED_3_TAG}}</span>
+          <h3>{{PICKED_3_TITLE}}</h3>
+          <p>{{PICKED_3_DESC}}</p>
+          <div class="why">{{PICKED_3_WHY}}</div>
+          <a href="{{PICKED_3_CTA_HREF}}" class="btn">{{PICKED_3_CTA}}</a>
+        </div>
+      </article>
+
+      <article class="picked-card">
+        <img src="{{PICKED_4_IMAGE}}" alt="{{PICKED_4_IMAGE_ALT}}" />
+        <div class="body">
+          <span class="tag">{{PICKED_4_TAG}}</span>
+          <h3>{{PICKED_4_TITLE}}</h3>
+          <p>{{PICKED_4_DESC}}</p>
+          <div class="why">{{PICKED_4_WHY}}</div>
+          <a href="{{PICKED_4_CTA_HREF}}" class="btn">{{PICKED_4_CTA}}</a>
+        </div>
+      </article>
+
+      <article class="picked-card">
+        <img src="{{PICKED_5_IMAGE}}" alt="{{PICKED_5_IMAGE_ALT}}" />
+        <div class="body">
+          <span class="tag">{{PICKED_5_TAG}}</span>
+          <h3>{{PICKED_5_TITLE}}</h3>
+          <p>{{PICKED_5_DESC}}</p>
+          <div class="why">{{PICKED_5_WHY}}</div>
+          <a href="{{PICKED_5_CTA_HREF}}" class="btn">{{PICKED_5_CTA}}</a>
+        </div>
+      </article>
+
+      <!-- /END PICKED CARDS -->
+
+    </div>
+  </div>
+
+  <!-- ====== HOTEL AMENITIES ====== -->
+  <section id="amenities">
+    <div class="section-eyebrow">On Property</div>
+    <h2 class="section-title">Hotel amenities</h2>
+    <p class="section-intro">Everything within steps of your suite.</p>
+
+    <div class="amenities">
+      <!-- Amenities are generally static per-hotel. Customize hours/details if needed. -->
+      <div class="amenity">
+        <div class="ico">🏊</div>
+        <h4>Outdoor Pool</h4>
+        <p>Heated · 7A–10P</p>
+      </div>
+      <div class="amenity">
+        <div class="ico">🌿</div>
+        <h4>Asaya Spa</h4>
+        <p>Treatments · Sanctuary</p>
+      </div>
+      <div class="amenity">
+        <div class="ico">💪</div>
+        <h4>Fitness Center</h4>
+        <p>24 hrs · Peloton</p>
+      </div>
+      <div class="amenity">
+        <div class="ico">🧘</div>
+        <h4>Movement Studio</h4>
+        <p>Yoga · Pilates daily</p>
+      </div>
+      <div class="amenity">
+        <div class="ico">🍷</div>
+        <h4>Madera Bar</h4>
+        <p>Cocktails · 4P–Late</p>
+      </div>
+      <div class="amenity">
+        <div class="ico">☕</div>
+        <h4>Bici Coffee</h4>
+        <p>6:30A–4:30P daily</p>
+      </div>
+      <div class="amenity">
+        <div class="ico">🚲</div>
+        <h4>Blue Jay Bikes</h4>
+        <p>Complimentary loans</p>
+      </div>
+      <div class="amenity">
+        <div class="ico">🅿️</div>
+        <h4>Valet Parking</h4>
+        <p>Included with stay</p>
       </div>
     </div>
   </section>
 
-  <!-- SOUNDTRACK -->
-  <section id="soundtrack" class="section section-dark">
-    <div class="container">
-      <span class="section-label">Your Arrival Soundtrack</span>
-      <h2>Composed <em>for You</em></h2>
-      <p class="section-desc">We fed your sonic fingerprint into a composer &mdash; the dub warmth of <strong>Dubby Dub Dub</strong>, the atmospheric drift of <strong>Space Vibes</strong>, the rolling energy of <strong>Mid Temp D&amp;B</strong>. What came back is 60 seconds of ambient bass that sounds like arriving somewhere that already knows you.</p>
+  <!-- ====== EXPERIENCES ====== -->
+  <section id="experiences" style="background:#efeae1;">
+    <div class="section-eyebrow">Mark Your Stay</div>
+    <h2 class="section-title">Hotel experiences</h2>
+    <p class="section-intro">Curated programming during your visit.</p>
 
-      <div class="player-wrapper">
-        <div class="player-glow"></div>
-        <div class="player-card">
+    <div class="exp-list">
 
-          <!-- Equalizer + Play Button -->
-          <div class="player-top">
-            <div class="eq-container" id="eqContainer"></div>
-            <button class="play-btn" id="playBtn" aria-label="Play">
-              <svg class="play-icon" id="playIcon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-                <polygon points="6,3 20,12 6,21" />
-              </svg>
-              <svg class="pause-icon hidden" id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-                <rect x="5" y="3" width="4" height="18" rx="1" />
-                <rect x="15" y="3" width="4" height="18" rx="1" />
-              </svg>
-              <div class="play-ring"></div>
-            </button>
-          </div>
+      <!-- EXPERIENCE CARD TEMPLATE — Repeat for each experience
+        Variables per card:
+          {{EXP_N_IMAGE}}     - Image URL
+          {{EXP_N_ALT}}       - Alt text
+          {{EXP_N_TITLE}}     - Experience name
+          {{EXP_N_DESC}}      - Short description
+          {{EXP_N_META}}      - Timing/availability (e.g. "This Friday · 7P")
+      -->
 
-          <!-- Track Info -->
-          <div class="player-info">
-            <div class="track-title">Sand Hill Arrival</div>
-            <div class="track-artist">Composed for Michael Gahan</div>
-            <div class="track-meta">Ambient Melodic Bass &middot; 85 BPM &middot; AI-Composed</div>
-          </div>
-
-          <!-- Progress -->
-          <div class="player-progress">
-            <span class="time-current" id="timeCurrent">0:00</span>
-            <div class="progress-track" id="progressTrack">
-              <div class="progress-fill" id="progressFill"></div>
-              <div class="progress-thumb" id="progressThumb"></div>
-            </div>
-            <span class="time-total" id="timeTotal">1:00</span>
-          </div>
-
-          <!-- Playlist Tags -->
-          <div class="player-tags">
-            <span class="tag tag-playlist">👨‍🚀 Space Vibes</span>
-            <span class="tag tag-playlist">🎵 Dubby Dub Dub</span>
-            <span class="tag tag-playlist">🥁 Mid Temp D&amp;B</span>
-            <span class="tag tag-playlist">🏴‍☠️ Pirate EDM</span>
-          </div>
-
-          <div class="player-artists">
-            <span class="tag tag-artist">sweetHz</span>
-            <span class="tag tag-artist">Zephyrical</span>
-            <span class="tag tag-artist">Earthbound</span>
-            <span class="tag tag-artist">Ookean</span>
-            <span class="tag tag-artist">Levity</span>
-            <span class="tag tag-artist">Tape B</span>
-          </div>
-
+      <article class="exp-card">
+        <img src="{{EXP_1_IMAGE}}" alt="{{EXP_1_ALT}}" />
+        <div class="body">
+          <h4>{{EXP_1_TITLE}}</h4>
+          <p>{{EXP_1_DESC}}</p>
+          <div class="meta">{{EXP_1_META}}</div>
         </div>
-      </div>
+      </article>
 
-      <audio id="welcomeTrack" preload="metadata">
-        <source src="https://ojlymzrznqyuzlcp.public.blob.vercel-storage.com/generated-music/toolu01VyABt1qU2DdRk/1778969120874.mp3" type="audio/mpeg">
-      </audio>
+      <article class="exp-card">
+        <img src="{{EXP_2_IMAGE}}" alt="{{EXP_2_ALT}}" />
+        <div class="body">
+          <h4>{{EXP_2_TITLE}}</h4>
+          <p>{{EXP_2_DESC}}</p>
+          <div class="meta">{{EXP_2_META}}</div>
+        </div>
+      </article>
+
+      <article class="exp-card">
+        <img src="{{EXP_3_IMAGE}}" alt="{{EXP_3_ALT}}" />
+        <div class="body">
+          <h4>{{EXP_3_TITLE}}</h4>
+          <p>{{EXP_3_DESC}}</p>
+          <div class="meta">{{EXP_3_META}}</div>
+        </div>
+      </article>
+
+      <article class="exp-card">
+        <img src="{{EXP_4_IMAGE}}" alt="{{EXP_4_ALT}}" />
+        <div class="body">
+          <h4>{{EXP_4_TITLE}}</h4>
+          <p>{{EXP_4_DESC}}</p>
+          <div class="meta">{{EXP_4_META}}</div>
+        </div>
+      </article>
+
+      <!-- /END EXPERIENCE CARDS -->
 
     </div>
   </section>
 
-  <!-- CURATED EXPERIENCES -->
-  <section class="section section-light">
-    <div class="container">
-      <span class="section-label">For the Curator-Athlete</span>
-      <h2>Your <em>Experiences</em></h2>
-      <p class="section-desc">You move between intensity and stillness with intention. So does this lineup.</p>
+  <!-- ====== EXPLORE MENLO PARK ====== -->
+  <section id="explore" class="explore-wrap">
+    <div class="section-eyebrow">Beyond The Property</div>
+    <h2 class="section-title">Explore Menlo Park</h2>
+    <p class="section-intro">A few of our favorite places nearby.</p>
 
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/c31785e4-275f-4db9-95b2-7a58113d05d8/RWSHR_MADERABAR_FACILITIES_COCKTAIL')"></div>
-          <div class="card-body">
-            <span class="card-tag">🎧 Friday Nights</span>
-            <h3>DJ Nights @ Madera Bar</h3>
-            <p>DJs spinning vinyl on the terrace &mdash; not a Spotify algorithm, actual records. For someone who follows 66 artists and only 25 follow back, you'll appreciate the curation. Think "B&aelig;sic Vibes" with a cocktail and mountain air.</p>
-          </div>
-        </div>
+    <div class="explore-grid">
 
-        <div class="card">
-          <div class="card-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/5260c24f-94a2-4e55-9bc4-b36ceff3b84c/RWSHR_3-0_Brand-com_Assets_EXPERIENCES_FALCONRY_102225')"></div>
-          <div class="card-body">
-            <span class="card-tag">🦅 Adventure</span>
-            <h3>Falconry Experience</h3>
-            <p>A centuries-old discipline built on patience, precision, and the bond between human and raptor. Someone who listens to "Fall of the Aztecs" and practices a martial art will understand what this is really about &mdash; mastery passed down through time.</p>
-          </div>
-        </div>
+      <!-- EXPLORE TILE TEMPLATE — Repeat for each destination
+        Variables per tile:
+          {{EXPLORE_N_IMAGE}}    - Image URL
+          {{EXPLORE_N_ALT}}      - Alt text
+          {{EXPLORE_N_TYPE}}     - Category (e.g. "Hike", "Tasting", "Shop")
+          {{EXPLORE_N_TITLE}}    - Place name
+          {{EXPLORE_N_DETAIL}}   - Distance/details
+          {{EXPLORE_N_HREF}}     - Link URL
+      -->
 
-        <div class="card">
-          <div class="card-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/d8749943-75a8-4327-aa0a-e2bbc11b54b0/RWSHR_3-0_Brand-com_Assets_EXPERIENCES_CYCLING_BAYAREA2')"></div>
-          <div class="card-body">
-            <span class="card-tag">🚴 Active</span>
-            <h3>Cycling Concierge</h3>
-            <p>Electric bikes through the Santa Cruz Mountain foothills. Our concierge can map routes from recovery-pace to race-pace &mdash; because "Mid Temp" doesn't just describe your drum &amp; bass, it describes your off-day cardio.</p>
-          </div>
+      <a href="{{EXPLORE_1_HREF}}" class="explore-tile">
+        <img src="{{EXPLORE_1_IMAGE}}" alt="{{EXPLORE_1_ALT}}" />
+        <div class="overlay">
+          <span>{{EXPLORE_1_TYPE}}</span>
+          <h4>{{EXPLORE_1_TITLE}}</h4>
+          <small>{{EXPLORE_1_DETAIL}}</small>
         </div>
+      </a>
 
-        <div class="card">
-          <div class="card-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/8caaefcb-1d0e-450e-bab1-d77b80e7a2d3/RWSHR_3-0_Brand-com_Assets_FOOD-bEVERAGE_FALL_AFTERNOONTEA')"></div>
-          <div class="card-body">
-            <span class="card-tag">📖 Culture</span>
-            <h3>Afternoon Tea at The Library</h3>
-            <p>Flamingo Estate's seasonal teas and house-made pastries in a quiet, narrative-framed space. Your "Good Reads" and "Bedtime Stories" playlists tell us you already have a ritual like this &mdash; this is the Rosewood version.</p>
-          </div>
+      <a href="{{EXPLORE_2_HREF}}" class="explore-tile">
+        <img src="{{EXPLORE_2_IMAGE}}" alt="{{EXPLORE_2_ALT}}" />
+        <div class="overlay">
+          <span>{{EXPLORE_2_TYPE}}</span>
+          <h4>{{EXPLORE_2_TITLE}}</h4>
+          <small>{{EXPLORE_2_DETAIL}}</small>
         </div>
-      </div>
+      </a>
+
+      <a href="{{EXPLORE_3_HREF}}" class="explore-tile">
+        <img src="{{EXPLORE_3_IMAGE}}" alt="{{EXPLORE_3_ALT}}" />
+        <div class="overlay">
+          <span>{{EXPLORE_3_TYPE}}</span>
+          <h4>{{EXPLORE_3_TITLE}}</h4>
+          <small>{{EXPLORE_3_DETAIL}}</small>
+        </div>
+      </a>
+
+      <a href="{{EXPLORE_4_HREF}}" class="explore-tile">
+        <img src="{{EXPLORE_4_IMAGE}}" alt="{{EXPLORE_4_ALT}}" />
+        <div class="overlay">
+          <span>{{EXPLORE_4_TYPE}}</span>
+          <h4>{{EXPLORE_4_TITLE}}</h4>
+          <small>{{EXPLORE_4_DETAIL}}</small>
+        </div>
+      </a>
+
+      <a href="{{EXPLORE_5_HREF}}" class="explore-tile">
+        <img src="{{EXPLORE_5_IMAGE}}" alt="{{EXPLORE_5_ALT}}" />
+        <div class="overlay">
+          <span>{{EXPLORE_5_TYPE}}</span>
+          <h4>{{EXPLORE_5_TITLE}}</h4>
+          <small>{{EXPLORE_5_DETAIL}}</small>
+        </div>
+      </a>
+
+      <a href="{{EXPLORE_6_HREF}}" class="explore-tile">
+        <img src="{{EXPLORE_6_IMAGE}}" alt="{{EXPLORE_6_ALT}}" />
+        <div class="overlay">
+          <span>{{EXPLORE_6_TYPE}}</span>
+          <h4>{{EXPLORE_6_TITLE}}</h4>
+          <small>{{EXPLORE_6_DETAIL}}</small>
+        </div>
+      </a>
+
+      <!-- /END EXPLORE TILES -->
+
     </div>
   </section>
 
-  <!-- DINING -->
-  <section class="section section-dark">
-    <div class="container">
-      <span class="section-label">Dining &amp; Beverage</span>
-      <h2>Your <em>Table</em> Awaits</h2>
+  <!-- ====== FAQ ====== -->
+  <section id="faq">
+    <div class="section-eyebrow">Good to Know</div>
+    <h2 class="section-title">Frequently asked questions</h2>
+    <p class="section-intro">Answers to the things most guests ask us.</p>
 
-      <div class="dining-grid">
-        <div class="dining-card">
-          <div class="dining-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/1a9ad6fa-f895-4efd-addd-ace8d7d99bc1/RWSHR_MADERARESTAURANT_SPACE')"></div>
-          <div class="dining-info">
-            <h3>Madera Restaurant</h3>
-            <p>Terrace table reserved, mountain-view side. Farm-to-table Northern California cuisine with the same attention to sourcing you bring to finding artists nobody's heard of yet. Start with the seasonal tasting menu &mdash; it rewards the kind of patience that builds 90 playlists.</p>
-          </div>
-        </div>
+    <div class="faq-list">
 
-        <div class="dining-card">
-          <div class="dining-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/3cd54a3e-7258-49d3-8481-0e4465a76fdb/RWSHR_FoodandBeverage_BiciCoffee?io=transform:crop,height:900,width:1600,path:square&focuspoint=1,0.62')"></div>
-          <div class="dining-info">
-            <h3>Bici Coffee</h3>
-            <p>Pre-training fuel. Thoughtfully sourced beans, hyper-seasonal pastries, and the kind of craft that would earn its own playlist if coffee had a BPM. We know you're up early.</p>
-          </div>
-        </div>
+      <!-- FAQ TEMPLATE — Repeat for each question
+        Variables per FAQ:
+          {{FAQ_N_QUESTION}}  - The question
+          {{FAQ_N_ANSWER}}    - The answer (can include guest-specific details)
+      -->
 
-        <div class="dining-card">
-          <div class="dining-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/be80df39-babb-4698-b3e4-91750959e9b9/RWSHR_3-0_Brand-com_Assets_FACILITIES_MADERABAR')"></div>
-          <div class="dining-info">
-            <h3>Madera Bar &mdash; Your Cocktail</h3>
-            <p>Our bartender is preparing a bespoke seasonal cocktail &mdash; chosen with the same intentionality you bring to naming a playlist "B&aelig;sic Vibes" with a deliberate &aelig;. Ask for "The Curator."</p>
-          </div>
-        </div>
-      </div>
+      <details class="faq">
+        <summary>{{FAQ_1_QUESTION}}</summary>
+        <p>{{FAQ_1_ANSWER}}</p>
+      </details>
+
+      <details class="faq">
+        <summary>{{FAQ_2_QUESTION}}</summary>
+        <p>{{FAQ_2_ANSWER}}</p>
+      </details>
+
+      <details class="faq">
+        <summary>{{FAQ_3_QUESTION}}</summary>
+        <p>{{FAQ_3_ANSWER}}</p>
+      </details>
+
+      <details class="faq">
+        <summary>{{FAQ_4_QUESTION}}</summary>
+        <p>{{FAQ_4_ANSWER}}</p>
+      </details>
+
+      <details class="faq">
+        <summary>{{FAQ_5_QUESTION}}</summary>
+        <p>{{FAQ_5_ANSWER}}</p>
+      </details>
+
+      <details class="faq">
+        <summary>{{FAQ_6_QUESTION}}</summary>
+        <p>{{FAQ_6_ANSWER}}</p>
+      </details>
+
+      <details class="faq">
+        <summary>{{FAQ_7_QUESTION}}</summary>
+        <p>{{FAQ_7_ANSWER}}</p>
+      </details>
+
+      <!-- /END FAQ -->
+
     </div>
   </section>
 
-  <!-- WELLNESS -->
-  <section class="section section-light">
-    <div class="container">
-      <span class="section-label">Recovery &amp; Wellness</span>
-      <h2>Train. Recover. <em>Restore.</em></h2>
-      <p class="section-desc">We framed this as recovery work, not pampering &mdash; because language matters when you've built a discipline around the mat.</p>
+  <!-- ====== CONCIERGE CTA ====== -->
+  <div class="concierge-cta" id="concierge">
+    <h2>Your Concierge, Always On</h2>
+    <p>Text us directly — we'll book, plan, or recommend anything you need.</p>
+    <a class="btn-gold" href="sms:{{CONCIERGE_PHONE}}">Message Concierge</a>
+  </div>
 
-      <div class="wellness-grid">
-        <div class="wellness-item">
-          <div class="wellness-icon">🥊</div>
-          <h3>Movement Studio</h3>
-          <p>Mat space, bodyweight training, and stretching zones at Asaya Spa. Your practice doesn't pause for travel &mdash; and neither does your access to proper training space.</p>
-        </div>
-        <div class="wellness-item">
-          <div class="wellness-icon">💆</div>
-          <h3>Deep Tissue Recovery</h3>
-          <p>Sports-focused massage at Asaya Spa, pre-scheduled. Not a spa day &mdash; recovery work. The same way "Bedtime Stories" isn't entertainment, it's a ritual.</p>
-        </div>
-        <div class="wellness-item">
-          <div class="wellness-icon">🏊</div>
-          <h3>Pool &amp; Terrace</h3>
-          <p>Post-session cooldown with Santa Cruz Mountain views. Queue up "Space Vibes" on the terrace speaker and let the last light do its thing.</p>
-        </div>
-        <div class="wellness-item">
-          <div class="wellness-icon">🧘</div>
-          <h3>In-Room Recovery Kit</h3>
-          <p>Foam roller, resistance band, electrolyte water, high-protein snacks. Standard minibar replaced with what you'd actually reach for after training.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- IN-ROOM -->
-  <section class="section section-accent">
-    <div class="container">
-      <span class="section-label">Your Room</span>
-      <h2>Set to Your <em>Frequency</em></h2>
-
-      <div class="room-details">
-        <div class="room-item">
-          <div class="room-label">🔊 Arrival Soundtrack</div>
-          <div class="room-value">Earthbound, Ookean, and Levity already playing on the in-room Sonos as you walk in. "Space Vibes" energy &mdash; warm pads, soft sub-bass, room to breathe.</div>
-        </div>
-        <div class="room-item">
-          <div class="room-label">🌙 Turndown Music</div>
-          <div class="room-value">Switches to a low ambient narrative soundscape at turndown &mdash; matching the "Bedtime Stories" vibe. Misted Minds and Unconscious Mind territory. Lights dim, fireplace lit.</div>
-        </div>
-        <div class="room-item">
-          <div class="room-label">📚 Nightstand</div>
-          <div class="room-value">A curated history book on ancient civilizations &mdash; connecting your "Fall of the Aztecs" curiosity to Madera's own Western exploration spirit. Not a generic coffee table book. A real read.</div>
-        </div>
-        <div class="room-item">
-          <div class="room-label">🔥 Fireplace &amp; Terrace</div>
-          <div class="room-value">Your suite's private terrace faces the Santa Cruz Mountains. Fireplace set for evening listening sessions. This is where "Dubby Dub Dub" was meant to be heard &mdash; deep bass, open sky, warm air.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONCIERGE -->
-  <section class="section section-light" style="text-align: center;">
-    <div class="container">
-      <span class="section-label">At Your Service</span>
-      <h2>Your <em>Concierge</em> Team</h2>
-      <p class="section-desc" style="margin-left: auto; margin-right: auto;">From a 5am cycling route to a midnight playlist swap to a post-training ice bath &mdash; whatever you need, whenever you need it.</p>
-      <div class="concierge-buttons">
-        <a href="tel:+16503614800" class="cta-btn cta-primary">Call Concierge</a>
-        <a href="#" class="cta-btn cta-secondary">Send a Message</a>
-        <a href="#" class="cta-btn cta-secondary">Book an Experience</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-brand">
-        <div class="rosewood-mark">ROSEWOOD</div>
-        <div class="rosewood-sub">SAND HILL</div>
-      </div>
-      <p class="footer-text">2825 Sand Hill Road &middot; Menlo Park, California 94025</p>
-      <p class="footer-tagline">Recognition without surveillance.<br>The difference between luxury amenities and luxury intelligence.</p>
-      <p class="footer-powered">Personalized by Rosewood AI Concierge &middot; Powered by Ox</p>
-    </div>
+  <footer>
+    2825 Sand Hill Road · Menlo Park, CA<br/>
+    Welcome, {{GUEST_FIRST_NAME}} &amp; {{GUEST_COMPANION_NAME}} — {{FOOTER_OCCASION_MESSAGE}}
   </footer>
 
-  <script>
-    // ---- AUDIO PLAYER ----
-    const audio = document.getElementById('welcomeTrack');
-    const playBtn = document.getElementById('playBtn');
-    const playIcon = document.getElementById('playIcon');
-    const pauseIcon = document.getElementById('pauseIcon');
-    const progressFill = document.getElementById('progressFill');
-    const progressThumb = document.getElementById('progressThumb');
-    const progressTrack = document.getElementById('progressTrack');
-    const timeCurrent = document.getElementById('timeCurrent');
-    const timeTotal = document.getElementById('timeTotal');
-    const eqContainer = document.getElementById('eqContainer');
+</div>
 
-    // Generate equalizer bars
-    for (let i = 0; i < 40; i++) {
-      const bar = document.createElement('div');
-      bar.className = 'eq-bar';
-      bar.style.animationDelay = (Math.random() * 1.5).toFixed(2) + 's';
-      bar.style.height = (Math.random() * 60 + 10) + '%';
-      eqContainer.appendChild(bar);
-    }
-
-    function formatTime(s) {
-      const m = Math.floor(s / 60);
-      const sec = Math.floor(s % 60);
-      return m + ':' + (sec < 10 ? '0' : '') + sec;
-    }
-
-    playBtn.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-    });
-
-    audio.addEventListener('play', () => {
-      playIcon.classList.add('hidden');
-      pauseIcon.classList.remove('hidden');
-      playBtn.classList.add('playing');
-      eqContainer.classList.add('active');
-    });
-
-    audio.addEventListener('pause', () => {
-      playIcon.classList.remove('hidden');
-      pauseIcon.classList.add('hidden');
-      playBtn.classList.remove('playing');
-      eqContainer.classList.remove('active');
-    });
-
-    audio.addEventListener('ended', () => {
-      playIcon.classList.remove('hidden');
-      pauseIcon.classList.add('hidden');
-      playBtn.classList.remove('playing');
-      eqContainer.classList.remove('active');
-      progressFill.style.width = '0%';
-      progressThumb.style.left = '0%';
-    });
-
-    audio.addEventListener('loadedmetadata', () => {
-      timeTotal.textContent = formatTime(audio.duration);
-    });
-
-    audio.addEventListener('timeupdate', () => {
-      if (audio.duration) {
-        const pct = (audio.currentTime / audio.duration) * 100;
-        progressFill.style.width = pct + '%';
-        progressThumb.style.left = pct + '%';
-        timeCurrent.textContent = formatTime(audio.currentTime);
-      }
-    });
-
-    // Click to seek
-    progressTrack.addEventListener('click', (e) => {
-      const rect = progressTrack.getBoundingClientRect();
-      const pct = (e.clientX - rect.left) / rect.width;
-      audio.currentTime = pct * audio.duration;
-    });
-
-    // ---- SMOOTH SCROLL ----
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-
-    // ---- FADE IN ON SCROLL ----
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.card, .dining-card, .wellness-item, .room-item, .player-wrapper, .note-card').forEach(el => {
-      el.classList.add('fade-in');
-      observer.observe(el);
-    });
-  </script>
 </body>
 </html>
