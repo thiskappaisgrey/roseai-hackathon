@@ -12,6 +12,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
 <style>
+  /* ============================================
+     ROSEWOOD SAND HILL — Responsive Guest Page
+     Mobile-first · Tablet · Desktop
+     ============================================ */
+
   /* ---------- Reset & base ---------- */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -26,15 +31,23 @@
   img { display: block; max-width: 100%; height: auto; }
   a { color: inherit; text-decoration: none; }
 
-  /* ---------- Phone-shaped container ---------- */
+  /* ---------- App container — responsive ---------- */
   .app {
-    max-width: 480px;
+    width: 100%;
+    max-width: 1280px;
     margin: 0 auto;
     background: #f6f3ee;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
     padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* ---------- Constrained inner wrapper ---------- */
+  .inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 
   /* ---------- Header / Hero ---------- */
@@ -75,7 +88,6 @@
     opacity: 0.85;
   }
 
-  .hero-copy { }
   .hero-copy .greeting {
     font-size: 11px;
     letter-spacing: 0.32em;
@@ -91,7 +103,7 @@
     margin-bottom: 10px;
   }
   .hero-copy h1 em { font-style: italic; color: #e8d9b8; }
-  .hero-copy p { font-size: 14px; opacity: 0.9; max-width: 90%; }
+  .hero-copy p { font-size: 14px; opacity: 0.9; max-width: 600px; }
   .hero-copy .stay-meta {
     margin-top: 16px;
     display: flex;
@@ -125,7 +137,7 @@
     margin-bottom: 22px;
   }
 
-  /* ---------- Picked for you: horizontal scroller ---------- */
+  /* ---------- Picked for you ---------- */
   .picked-wrap {
     background: #1a1a1a;
     color: #f6f3ee;
@@ -196,9 +208,11 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 600;
+    transition: background 0.2s ease;
   }
+  .picked-card .btn:hover { background: #d4b87a; }
 
-  /* ---------- Amenities: 2-col list ---------- */
+  /* ---------- Amenities ---------- */
   .amenities {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -222,13 +236,18 @@
   .amenity h4 { font-family: 'Cormorant Garamond', serif; font-size: 17px; margin-bottom: 2px; }
   .amenity p { font-size: 12px; color: #8a7e6e; }
 
-  /* ---------- Experiences: stacked image cards ---------- */
+  /* ---------- Experiences ---------- */
   .exp-list { display: flex; flex-direction: column; gap: 14px; }
   .exp-card {
     background: #fff;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .exp-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.10);
   }
   .exp-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
   .exp-card .body { padding: 16px 18px 20px; }
@@ -255,7 +274,9 @@
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
   }
+  .explore-tile:hover { transform: scale(1.02); }
   .explore-tile img { width: 100%; height: 100%; object-fit: cover; }
   .explore-tile .overlay {
     position: absolute; inset: auto 0 0 0;
@@ -274,7 +295,7 @@
   }
   .explore-tile .overlay small { font-size: 11px; opacity: 0.8; }
 
-  /* ---------- FAQ accordion ---------- */
+  /* ---------- FAQ ---------- */
   .faq-list { display: flex; flex-direction: column; gap: 8px; }
   .faq {
     background: #fff;
@@ -299,11 +320,13 @@
     font-weight: 300;
     color: #a8946f;
     transition: transform 0.2s ease;
+    flex-shrink: 0;
+    margin-left: 16px;
   }
   .faq[open] summary::after { content: "−"; }
   .faq p { padding: 0 18px 18px; font-size: 13px; color: #6b6357; }
 
-  /* ---------- Footer / Concierge CTA ---------- */
+  /* ---------- Concierge CTA ---------- */
   .concierge-cta {
     background: #1a1a1a;
     color: #f6f3ee;
@@ -324,7 +347,9 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 600;
+    transition: background 0.2s ease;
   }
+  .btn-gold:hover { background: #d4b87a; }
 
   footer {
     text-align: center;
@@ -333,12 +358,177 @@
     color: #8a7e6e;
   }
 
-  /* ---------- Desktop framing ---------- */
+  /* ============================================
+     TABLET — 600px+
+     ============================================ */
   @media (min-width: 600px) {
-    body { background: #2a2622; padding: 24px 0; }
-    .app { border-radius: 28px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.4); }
+    .hero {
+      height: 65vh;
+      min-height: 520px;
+      padding: 36px 40px 48px;
+    }
+
+    .logo { font-size: 16px; }
+    .logo small { font-size: 10px; }
+
+    .hero-copy h1 { font-size: 56px; }
+    .hero-copy p { font-size: 15px; }
+    .hero-copy .greeting { font-size: 12px; }
+
+    section { padding: 48px 32px; }
+
+    .section-title { font-size: 34px; }
+
+    /* Picked for you: narrower cards in scroller */
+    .picked-wrap { padding: 48px 0; }
+    .picked-wrap .section-eyebrow,
+    .picked-wrap .section-title,
+    .picked-wrap .section-intro { padding: 0 32px; }
+    .picked-scroller { padding: 6px 32px 20px; gap: 18px; }
+    .picked-card { flex: 0 0 55%; }
+
+    /* Amenities: 3 columns */
+    .amenities {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    /* Experiences: 2 columns */
+    .exp-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    /* Explore: keep 2 col but bigger gap */
+    .explore-grid { gap: 16px; }
+    .explore-tile .overlay h4 { font-size: 20px; }
+
+    /* FAQ: constrain width */
+    .faq-list { max-width: 700px; }
+
+    /* Concierge CTA wider */
+    .concierge-cta {
+      margin: 0 32px 32px;
+      padding: 36px 32px;
+    }
+    .concierge-cta h2 { font-size: 30px; }
   }
 
+  /* ============================================
+     DESKTOP — 960px+
+     ============================================ */
+  @media (min-width: 960px) {
+    .hero {
+      height: 75vh;
+      min-height: 580px;
+      padding: 48px 64px 60px;
+    }
+
+    .logo { font-size: 18px; }
+    .logo small { font-size: 11px; }
+
+    .hero-copy h1 { font-size: 68px; }
+    .hero-copy p { font-size: 16px; max-width: 520px; }
+    .hero-copy .greeting { font-size: 13px; letter-spacing: 0.38em; }
+    .hero-copy .stay-meta { font-size: 12px; gap: 20px; }
+
+    section { padding: 64px 48px; }
+
+    .section-title { font-size: 38px; margin-bottom: 8px; }
+    .section-intro { font-size: 15px; margin-bottom: 32px; }
+
+    /* Picked for you: grid on desktop, no horizontal scroll */
+    .picked-wrap { padding: 64px 0; }
+    .picked-wrap .section-eyebrow,
+    .picked-wrap .section-title,
+    .picked-wrap .section-intro { padding: 0 48px; }
+    .picked-scroller {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 8px 48px 24px;
+      overflow-x: visible;
+      scroll-snap-type: none;
+    }
+    .picked-card {
+      flex: none;
+    }
+    .picked-card h3 { font-size: 24px; }
+
+    /* Amenities: 4 columns */
+    .amenities {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .amenity { padding: 22px 18px; }
+    .amenity h4 { font-size: 18px; }
+
+    /* Experiences: 2 col with larger cards */
+    .exp-list { gap: 24px; }
+    .exp-card h4 { font-size: 26px; }
+    .exp-card p { font-size: 14px; }
+    .exp-card .body { padding: 20px 24px 24px; }
+
+    /* Explore: 3 columns */
+    .explore-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .explore-tile .overlay { padding: 18px; }
+    .explore-tile .overlay h4 { font-size: 22px; }
+
+    /* FAQ */
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq summary { font-size: 15px; padding: 18px 22px; }
+    .faq p { font-size: 14px; padding: 0 22px 20px; }
+
+    /* Concierge */
+    .concierge-cta {
+      max-width: 680px;
+      margin: 0 auto 48px;
+      padding: 48px 40px;
+      border-radius: 24px;
+    }
+    .concierge-cta h2 { font-size: 34px; }
+    .concierge-cta p { font-size: 14px; }
+
+    footer { padding: 28px; font-size: 12px; }
+  }
+
+  /* ============================================
+     WIDE DESKTOP — 1200px+
+     ============================================ */
+  @media (min-width: 1200px) {
+    .hero {
+      height: 80vh;
+      min-height: 640px;
+      padding: 56px 80px 72px;
+    }
+
+    .hero-copy h1 { font-size: 78px; }
+    .hero-copy p { font-size: 17px; max-width: 560px; }
+
+    section { padding: 72px 64px; }
+
+    .section-title { font-size: 42px; }
+
+    .picked-wrap { padding: 72px 0; }
+    .picked-wrap .section-eyebrow,
+    .picked-wrap .section-title,
+    .picked-wrap .section-intro { padding: 0 64px; }
+    .picked-scroller {
+      padding: 8px 64px 28px;
+      gap: 24px;
+    }
+
+    .amenities { gap: 18px; }
+    .amenity { padding: 24px 20px; }
+
+    .explore-grid { gap: 20px; }
+  }
+
+  /* ---------- Accessibility ---------- */
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; scroll-behavior: auto !important; }
   }
@@ -488,7 +678,7 @@
     </div>
   </section>
 
-  <!-- ====== EXPERIENCES (full menu) ====== -->
+  <!-- ====== EXPERIENCES ====== -->
   <section id="experiences" style="background:#efeae1;">
     <div class="section-eyebrow">Mark Your Stay</div>
     <h2 class="section-title">Hotel experiences</h2>
