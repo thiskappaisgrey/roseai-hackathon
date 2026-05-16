@@ -1,6 +1,6 @@
 /* ============================================
    Rosewood AI Concierge — Guest Welcome Page
-   Personalized for Maya Chen
+   Personalized for Michael Gahan
    ============================================ */
 
 :root {
@@ -13,7 +13,6 @@
   --rose-white: #fdfcfa;
   --rose-muted: #9a9590;
   --rose-border: #e8e2db;
-  --rose-green: #7a9a7e;
   --font-serif: 'Cormorant Garamond', 'Georgia', serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -117,19 +116,6 @@ body {
   line-height: 1.8;
 }
 
-.loyalty-badge {
-  display: inline-block;
-  margin-top: 2rem;
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--rose-gold);
-  border: 1px solid rgba(196, 168, 107, 0.3);
-  padding: 0.5rem 1.25rem;
-  border-radius: 20px;
-  font-weight: 400;
-}
-
 /* ---- Sections ---- */
 .section {
   padding: 5rem 0;
@@ -167,7 +153,7 @@ body {
   line-height: 1.8;
 }
 
-/* ---- Suite Detail Grid ---- */
+/* ---- Detail Grid (Room) ---- */
 .detail-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -207,6 +193,54 @@ body {
   line-height: 1.7;
 }
 
+/* ---- Fitness Grid ---- */
+.fitness-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.fitness-card {
+  background: var(--rose-white);
+  border: 1px solid var(--rose-border);
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.fitness-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.fitness-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--rose-dark);
+}
+
+.fitness-badge {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rose-gold);
+  border: 1px solid var(--rose-gold);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.fitness-card > p {
+  font-size: 0.9rem;
+  color: var(--rose-muted);
+  line-height: 1.7;
+}
+
 /* ---- Dining ---- */
 .dining-grid {
   display: grid;
@@ -215,7 +249,7 @@ body {
 }
 
 .dining-card {
-  background: var(--rose-white);
+  background: var(--rose-cream);
   border: 1px solid var(--rose-border);
   border-radius: 8px;
   padding: 2rem;
@@ -260,6 +294,24 @@ body {
   font-size: 0.9rem;
   color: var(--rose-muted);
   line-height: 1.7;
+}
+
+.dietary-note {
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  background: var(--rose-cream);
+  border-left: 3px solid var(--rose-gold);
+  border-radius: 0 8px 8px 0;
+}
+
+.dietary-note p {
+  font-size: 0.9rem;
+  color: var(--rose-charcoal);
+  line-height: 1.7;
+}
+
+.dietary-note strong {
+  font-weight: 500;
 }
 
 /* ---- Experiences ---- */
@@ -321,11 +373,11 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .music-block {
-  background: var(--rose-white);
+  background: var(--rose-cream);
   border: 1px solid var(--rose-border);
   border-radius: 8px;
   padding: 1.5rem;
@@ -355,57 +407,38 @@ body {
   font-weight: 300;
 }
 
+.music-extras {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.music-extra-item {
+  padding: 1.5rem;
+  background: var(--rose-cream);
+  border-radius: 8px;
+  border: 1px solid var(--rose-border);
+}
+
+.music-extra-item h4 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--rose-dark);
+  margin-bottom: 0.5rem;
+}
+
+.music-extra-item p {
+  font-size: 0.85rem;
+  color: var(--rose-muted);
+  line-height: 1.7;
+}
+
 .music-note {
   font-size: 0.85rem;
   color: var(--rose-muted);
   font-style: italic;
-}
-
-/* ---- Birthday ---- */
-.birthday {
-  background: linear-gradient(135deg, #f7f3ee 0%, #f0ebe3 100%);
-  text-align: center;
-}
-
-.birthday-content {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.birthday-content h2 {
-  margin-bottom: 0.75rem;
-}
-
-.birthday-content > p {
-  font-size: 1rem;
-  color: var(--rose-muted);
-  margin-bottom: 3rem;
-  line-height: 1.8;
-}
-
-.birthday-gestures {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  text-align: left;
-}
-
-.gesture {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-}
-
-.gesture-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-  margin-top: 0.1rem;
-}
-
-.gesture p {
-  font-size: 0.9rem;
-  color: var(--rose-muted);
-  line-height: 1.7;
 }
 
 /* ---- Closing ---- */
@@ -537,7 +570,8 @@ body {
     font-size: 1.5rem;
   }
 
-  .dining-header {
+  .dining-header,
+  .fitness-header {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -553,11 +587,7 @@ body {
     text-align: center;
   }
 
-  .birthday-gestures {
+  .music-extras {
     grid-template-columns: 1fr;
-  }
-
-  .gesture {
-    flex-direction: row;
   }
 }
