@@ -1,527 +1,577 @@
 /* ============================================
-   ROSEWOOD SAND HILL — GUEST WELCOME
-   Personalized for Michael Gahan
+   Rosewood Sand Hill — Personalized Welcome
+   Guest: Mike Gahan
    ============================================ */
 
-:root {
-  --rosewood-black: #1a1a1a;
-  --rosewood-charcoal: #2d2d2d;
-  --rosewood-warm: #3d3229;
-  --rosewood-gold: #c9a96e;
-  --rosewood-gold-light: #dfc9a0;
-  --rosewood-cream: #f5f0e8;
-  --rosewood-white: #faf8f5;
-  --rosewood-text: #4a4a4a;
-  --rosewood-muted: #8a8a8a;
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+/* Reset & Base */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+    --charcoal: #1a1a1a;
+    --gold: #c4a86b;
+    --cream: #f7f3ee;
+    --warm-gray: #a09888;
+    --light-gold: #d4c49b;
+    --deep-charcoal: #111111;
+    --off-white: #faf8f5;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-sans);
-  color: var(--rosewood-text);
-  background: var(--rosewood-white);
-  line-height: 1.7;
-  font-weight: 300;
-  -webkit-font-smoothing: antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--charcoal);
+    background-color: var(--cream);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
-/* ---- HERO ---- */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5em;
+}
+
+h3 {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    margin-bottom: 0.3em;
+}
+
+h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.25em;
+    color: var(--charcoal);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
 .hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #1a1612 0%, #2d2519 40%, #1a1a1a 100%);
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(201, 169, 110, 0.08) 0%, transparent 70%);
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: url('https://picasso.rosewoodhotelgroup.com/transform/3b246b58-9893-408d-aa96-9edc63d2339d/RWSHR_3-0_Brand-com_Assets_Facilities_Pool_DayShot');
+    background-size: cover;
+    background-position: center;
+    color: white;
 }
 
 .hero-overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: url('https://picasso.rosewoodhotelgroup.com/transform/3b246b58-9893-408d-aa96-9edc63d2339d/RWSHR_3-0_Brand-com_Assets_Facilities_Pool_DayShot') center/cover no-repeat;
-  opacity: 0.15;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(17, 17, 17, 0.25) 0%,
+        rgba(17, 17, 17, 0.45) 50%,
+        rgba(17, 17, 17, 0.7) 100%
+    );
 }
 
 .hero-content {
-  position: relative;
-  text-align: center;
-  color: var(--rosewood-cream);
-  animation: fadeUp 1.2s ease-out;
+    position: relative;
+    z-index: 1;
+    padding: 24px;
 }
 
-.rosewood-mark {
-  font-family: var(--font-serif);
-  font-size: 0.9rem;
-  letter-spacing: 0.5em;
-  font-weight: 400;
-  color: var(--rosewood-gold);
-  margin-bottom: 0.2rem;
+.hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
 }
 
-.rosewood-sub {
-  font-family: var(--font-sans);
-  font-size: 0.65rem;
-  letter-spacing: 0.4em;
-  font-weight: 300;
-  color: var(--rosewood-gold-light);
-  opacity: 0.7;
-  margin-bottom: 2.5rem;
+h1 {
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
-.divider {
-  width: 60px;
-  height: 1px;
-  background: var(--rosewood-gold);
-  margin: 0 auto 2.5rem;
-  opacity: 0.5;
+.hero-subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 1rem;
 }
 
-.hero h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 300;
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
+/* Hero Audio Player */
+.hero-audio {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-.hero h1 em {
-  font-style: italic;
-  color: var(--rosewood-gold-light);
-}
-
-.hero-tagline {
-  font-size: 1.05rem;
-  font-weight: 300;
-  line-height: 1.8;
-  opacity: 0.8;
-  max-width: 500px;
-  margin: 0 auto 3rem;
-}
-
-.scroll-cta {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--rosewood-gold);
-  text-decoration: none;
-  border: 1px solid rgba(201, 169, 110, 0.3);
-  padding: 0.9rem 2.5rem;
-  transition: all 0.4s ease;
-}
-
-.scroll-cta:hover {
-  background: rgba(201, 169, 110, 0.1);
-  border-color: var(--rosewood-gold);
-}
-
-/* ---- SECTIONS ---- */
-.section {
-  padding: 6rem 0;
-}
-
-.section-dark {
-  background: var(--rosewood-black);
-  color: var(--rosewood-cream);
-}
-
-.section-light {
-  background: var(--rosewood-white);
-  color: var(--rosewood-text);
-}
-
-.section-accent {
-  background: linear-gradient(135deg, #2d2519 0%, #1a1612 100%);
-  color: var(--rosewood-cream);
-}
-
-.section-label {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--rosewood-gold);
-  margin-bottom: 1rem;
-}
-
-.section h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 300;
-  margin-bottom: 1.5rem;
-}
-
-.section h2 em {
-  font-style: italic;
-}
-
-.section-desc {
-  font-size: 1rem;
-  font-weight: 300;
-  max-width: 650px;
-  line-height: 1.8;
-  opacity: 0.85;
-  margin-bottom: 3rem;
-}
-
-.section-dark .section-desc strong {
-  color: var(--rosewood-gold-light);
-  font-weight: 400;
-}
-
-/* ---- AUDIO PLAYER ---- */
-.audio-player {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(201, 169, 110, 0.15);
-  border-radius: 12px;
-  padding: 2rem;
-  margin: 2rem 0;
-  max-width: 600px;
-}
-
-.audio-info {
-  margin-bottom: 1.2rem;
-}
-
-.track-title {
-  font-family: var(--font-serif);
-  font-size: 1.3rem;
-  font-weight: 400;
-  color: var(--rosewood-gold-light);
-}
-
-.track-subtitle {
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  color: var(--rosewood-muted);
-  margin-top: 0.3rem;
-}
-
-audio {
-  width: 100%;
-  height: 40px;
-  outline: none;
-}
-
-audio::-webkit-media-controls-panel {
-  background: rgba(255,255,255,0.05);
+.audio-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
 }
 
 .audio-note {
-  font-size: 0.8rem;
-  font-style: italic;
-  color: var(--rosewood-muted);
-  margin-top: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.45);
+    max-width: 360px;
+    line-height: 1.5;
+    margin-top: 4px;
 }
 
-/* ---- CARD GRID ---- */
+.hero-audio audio {
+    width: 280px;
+    height: 36px;
+    opacity: 0.85;
+    filter: invert(1);
+    border-radius: 18px;
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.section {
+    padding: 100px 0;
+}
+
+.section-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+}
+
+.section-intro {
+    font-size: 1.05rem;
+    color: var(--warm-gray);
+    max-width: 600px;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+}
+
+/* ============================================
+   YOUR ROOM
+   ============================================ */
+.room-section {
+    background-color: var(--off-white);
+}
+
+.room-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 2rem;
+    align-items: start;
+}
+
+.room-image img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.room-details {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.room-detail-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.detail-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(196, 168, 107, 0.1);
+    border-radius: 50%;
+}
+
+.room-detail-item p {
+    font-size: 0.9rem;
+    color: var(--warm-gray);
+    line-height: 1.65;
+}
+
+/* ============================================
+   CARD GRID (Dining + Experiences)
+   ============================================ */
 .card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 32px;
 }
 
 .card {
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.06);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
 
-.card-img {
-  height: 200px;
-  background-size: cover;
-  background-position: center;
+.card-image {
+    position: relative;
+    overflow: hidden;
 }
 
-.card-body {
-  padding: 1.5rem;
+.card-image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-image img {
+    transform: scale(1.03);
+}
+
+.card-content {
+    padding: 24px;
 }
 
 .card-tag {
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--rosewood-gold);
-  font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
 }
 
-.card-body h3 {
-  font-family: var(--font-serif);
-  font-size: 1.35rem;
-  font-weight: 400;
-  margin: 0.5rem 0 0.8rem;
-  color: var(--rosewood-charcoal);
+.card-content > p:last-child {
+    font-size: 0.9rem;
+    color: var(--warm-gray);
+    line-height: 1.7;
 }
 
-.card-body p {
-  font-size: 0.88rem;
-  line-height: 1.7;
-  color: var(--rosewood-text);
+/* Dining */
+.dining-section {
+    background-color: var(--cream);
 }
 
-/* ---- DINING GRID ---- */
-.dining-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  margin-top: 2rem;
+/* Experiences */
+.experiences-section {
+    background-color: var(--off-white);
 }
 
-.dining-card {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(201, 169, 110, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: border-color 0.4s ease;
+/* ============================================
+   SOUNDTRACK
+   ============================================ */
+.soundtrack-section {
+    background-color: var(--deep-charcoal);
+    color: white;
 }
 
-.dining-card:hover {
-  border-color: rgba(201, 169, 110, 0.3);
+.soundtrack-section .section-eyebrow {
+    color: var(--gold);
 }
 
-.dining-img {
-  min-width: 280px;
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-  flex-shrink: 0;
+.soundtrack-section .section-intro {
+    color: rgba(255, 255, 255, 0.45);
 }
 
-.dining-info {
-  padding: 1.5rem 2rem 1.5rem 0;
+.soundtrack-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
 }
 
-.dining-info h3 {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: var(--rosewood-gold-light);
-  margin-bottom: 0.8rem;
+.soundtrack-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 4px;
+    padding: 32px 24px;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-.dining-info p {
-  font-size: 0.9rem;
-  line-height: 1.7;
-  opacity: 0.8;
+.soundtrack-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(196, 168, 107, 0.2);
 }
 
-/* ---- WELLNESS GRID ---- */
-.wellness-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
-  margin-top: 1rem;
+.soundtrack-time {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 4px;
 }
 
-.wellness-item {
-  background: white;
-  border: 1px solid rgba(0,0,0,0.06);
-  border-radius: 10px;
-  padding: 2rem;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.soundtrack-mood {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
 }
 
-.wellness-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+.soundtrack-description {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 1.25rem;
+    line-height: 1.55;
 }
 
-.wellness-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+.soundtrack-artists {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1rem;
 }
 
-.wellness-item h3 {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: var(--rosewood-charcoal);
-  margin-bottom: 0.6rem;
+.artist-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    border: 1px solid rgba(196, 168, 107, 0.35);
+    border-radius: 20px;
+    color: var(--light-gold);
+    transition: border-color 0.3s ease, background 0.3s ease;
 }
 
-.wellness-item p {
-  font-size: 0.85rem;
-  line-height: 1.7;
+.soundtrack-card:hover .artist-tag {
+    border-color: rgba(196, 168, 107, 0.6);
 }
 
-/* ---- ROOM DETAILS ---- */
-.room-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+.soundtrack-playlist {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.25);
 }
 
-.room-item {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(201, 169, 110, 0.12);
-  border-radius: 8px;
-  padding: 1.8rem;
-  transition: border-color 0.3s ease;
+/* ============================================
+   PERSONAL NOTE
+   ============================================ */
+.note-section {
+    background-color: var(--cream);
 }
 
-.room-item:hover {
-  border-color: rgba(201, 169, 110, 0.35);
+.note-card {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.room-label {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  color: var(--rosewood-gold-light);
-  margin-bottom: 0.6rem;
+.note-card > p {
+    font-size: 1.05rem;
+    color: var(--warm-gray);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
 }
 
-.room-value {
-  font-size: 0.88rem;
-  line-height: 1.7;
-  opacity: 0.8;
+.note-card h2 {
+    margin-bottom: 1.5rem;
 }
 
-/* ---- FOOTER ---- */
+.note-signature {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1.15rem !important;
+    color: var(--gold) !important;
+    margin-top: 2rem !important;
+}
+
+/* ============================================
+   CONCIERGE
+   ============================================ */
+.concierge-section {
+    background-color: var(--off-white);
+    text-align: center;
+}
+
+.concierge-section .section-intro {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.concierge-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 36px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--gold);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #b39a5c;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--charcoal);
+    border: 1px solid var(--charcoal);
+}
+
+.btn-secondary:hover {
+    background-color: var(--charcoal);
+    color: white;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
 .footer {
-  background: var(--rosewood-black);
-  color: var(--rosewood-cream);
-  text-align: center;
-  padding: 4rem 2rem;
-  border-top: 1px solid rgba(201, 169, 110, 0.1);
+    background-color: var(--deep-charcoal);
+    color: white;
+    text-align: center;
+    padding: 60px 0;
 }
 
-.footer .rosewood-mark {
-  font-size: 1rem;
-  margin-bottom: 0.2rem;
+.footer-logo {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
 }
 
-.footer .rosewood-sub {
-  margin-bottom: 2rem;
-}
-
-.footer-text {
-  font-size: 0.85rem;
-  opacity: 0.6;
-  margin-bottom: 0.5rem;
-}
-
-.footer-text em {
-  color: var(--rosewood-gold-light);
-  font-style: italic;
+.footer-property {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 0.25rem;
 }
 
 .footer-tagline {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  font-style: italic;
-  color: var(--rosewood-gold);
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--gold);
+    margin-bottom: 2rem;
 }
 
-.footer-powered {
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  opacity: 0.35;
+.footer-legal {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.25);
 }
 
-/* ---- ANIMATIONS ---- */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 968px) {
+    .room-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .room-image img {
+        height: 300px;
+    }
+
+    .soundtrack-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
+@media (max-width: 640px) {
+    .section {
+        padding: 64px 0;
+    }
 
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
 
-/* ---- RESPONSIVE ---- */
-@media (max-width: 768px) {
-  .section {
-    padding: 4rem 0;
-  }
+    .soundtrack-grid {
+        grid-template-columns: 1fr;
+    }
 
-  .dining-card {
-    flex-direction: column;
-  }
+    .concierge-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .dining-img {
-    min-width: 100%;
-    height: 180px;
-  }
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
 
-  .dining-info {
-    padding: 1.5rem;
-  }
+    .hero-audio audio {
+        width: 240px;
+    }
 
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-
-  .audio-player {
-    padding: 1.2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 1.2rem;
-  }
-
-  .wellness-grid,
-  .room-details {
-    grid-template-columns: 1fr;
-  }
+    .room-image img {
+        height: 240px;
+    }
 }
