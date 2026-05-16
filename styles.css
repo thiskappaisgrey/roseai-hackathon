@@ -1,6 +1,7 @@
 /* ============================================
    Rosewood AI Concierge — Guest Welcome Page
    Personalized for Michael Gahan
+   With property photography from rosewoodhotels.com
    ============================================ */
 
 :root {
@@ -38,7 +39,7 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -51,18 +52,27 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2926 40%, #3d3530 70%, #1a1a1a 100%);
   overflow: hidden;
 }
 
-.hero::before {
-  content: '';
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(196, 168, 107, 0.08) 0%, transparent 70%);
+  background: linear-gradient(to bottom, rgba(26,26,26,0.55) 0%, rgba(26,26,26,0.7) 100%);
+  z-index: 1;
 }
 
 .hero-content {
@@ -84,7 +94,7 @@ body {
   font-family: var(--font-sans);
   font-size: 0.7rem;
   letter-spacing: 0.3em;
-  color: var(--rose-muted);
+  color: rgba(255,255,255,0.5);
   font-weight: 300;
   text-transform: uppercase;
   margin-bottom: 2.5rem;
@@ -99,17 +109,17 @@ body {
 
 .hero h1 {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 300;
-  color: var(--rose-cream);
+  color: #fff;
   margin-bottom: 1rem;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .hero-sub {
   font-family: var(--font-sans);
   font-size: 1rem;
-  color: var(--rose-muted);
+  color: rgba(255,255,255,0.7);
   font-weight: 300;
   max-width: 520px;
   margin: 0 auto;
@@ -123,6 +133,10 @@ body {
 
 .alt-bg {
   background: var(--rose-cream);
+}
+
+.section-intro {
+  margin-bottom: 2.5rem;
 }
 
 .section-label {
@@ -141,16 +155,42 @@ body {
   font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 300;
   color: var(--rose-dark);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
   line-height: 1.2;
 }
 
-.section > .container > p {
+.section-intro > p {
   font-size: 1rem;
   color: var(--rose-charcoal);
   max-width: 640px;
-  margin-bottom: 2.5rem;
   line-height: 1.8;
+}
+
+/* ---- Photo Feature ---- */
+.photo-feature {
+  margin-bottom: 2.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.photo-feature img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---- Full-width Photo Break ---- */
+.photo-break {
+  width: 100%;
+  max-height: 50vh;
+  overflow: hidden;
+}
+
+.photo-break img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ---- Suite Detail Grid ---- */
@@ -158,7 +198,6 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem;
-  margin-top: 2rem;
 }
 
 .detail-card {
@@ -193,7 +232,53 @@ body {
   line-height: 1.7;
 }
 
-/* ---- Dining ---- */
+/* ---- Dining Featured ---- */
+.dining-featured {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+  align-items: center;
+}
+
+.dining-featured-image {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dining-featured-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.dining-featured-text h3 {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--rose-dark);
+  margin-bottom: 0.75rem;
+}
+
+.dining-featured-text .dining-badge {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.dining-featured-text .dining-time {
+  font-size: 0.8rem;
+  color: var(--rose-warm);
+  margin-bottom: 0.75rem;
+  font-weight: 400;
+}
+
+.dining-featured-text > p:last-child {
+  font-size: 0.95rem;
+  color: var(--rose-muted);
+  line-height: 1.8;
+}
+
+/* ---- Dining Grid ---- */
 .dining-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -201,10 +286,26 @@ body {
 }
 
 .dining-card {
-  background: var(--rose-white);
+  background: var(--rose-cream);
   border: 1px solid var(--rose-border);
   border-radius: 8px;
-  padding: 2rem;
+  overflow: hidden;
+}
+
+.dining-card-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.dining-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dining-card-body {
+  padding: 1.5rem;
 }
 
 .dining-header {
@@ -224,7 +325,7 @@ body {
 }
 
 .dining-badge {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--rose-gold);
@@ -246,67 +347,78 @@ body {
   font-weight: 400;
 }
 
-.dining-card > p:last-child {
+.dining-card-body > p:last-child {
   font-size: 0.9rem;
   color: var(--rose-muted);
   line-height: 1.7;
 }
 
-/* ---- Experiences ---- */
-.experience-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+/* ---- Experience Cards ---- */
+.experience-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
-.experience-item {
-  display: flex;
-  gap: 2rem;
-  padding: 2.5rem 0;
-  border-bottom: 1px solid var(--rose-border);
-  align-items: flex-start;
+.experience-card {
+  background: var(--rose-white);
+  border: 1px solid var(--rose-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.experience-item:first-child {
-  padding-top: 1rem;
+.experience-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
 }
 
-.experience-item:last-child {
-  border-bottom: none;
+.experience-card-image {
+  height: 220px;
+  overflow: hidden;
 }
 
-.experience-number {
+.experience-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.experience-card:hover .experience-card-image img {
+  transform: scale(1.03);
+}
+
+.experience-card-body {
+  padding: 1.5rem;
+}
+
+.experience-tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rose-gold);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.experience-card-body h3 {
   font-family: var(--font-serif);
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: var(--rose-gold-light);
-  line-height: 1;
-  min-width: 50px;
-}
-
-.experience-content h3 {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
   color: var(--rose-dark);
 }
 
-.experience-content p {
-  font-size: 0.95rem;
+.experience-card-body p {
+  font-size: 0.9rem;
   color: var(--rose-muted);
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 /* ---- Music ---- */
-.music-intro {
-  font-size: 1rem;
-  color: var(--rose-charcoal);
-  max-width: 640px;
-  margin-bottom: 2.5rem;
-  line-height: 1.8;
-}
-
 .music-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -315,7 +427,7 @@ body {
 }
 
 .music-block {
-  background: var(--rose-white);
+  background: var(--rose-cream);
   border: 1px solid var(--rose-border);
   border-radius: 8px;
   padding: 1.5rem;
@@ -367,7 +479,7 @@ body {
   margin-bottom: 1.25rem;
 }
 
-.profile-text:last-child {
+.profile-text.last {
   margin-bottom: 0;
   font-family: var(--font-serif);
   font-size: 1.15rem;
@@ -489,6 +601,13 @@ body {
 }
 
 /* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .dining-featured {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 @media (max-width: 600px) {
   .container {
     padding: 0 1.25rem;
@@ -499,16 +618,7 @@ body {
   }
 
   .hero {
-    min-height: 80vh;
-  }
-
-  .experience-item {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .experience-number {
-    font-size: 1.5rem;
+    min-height: 85vh;
   }
 
   .dining-header {
@@ -525,5 +635,13 @@ body {
     width: 100%;
     max-width: 280px;
     text-align: center;
+  }
+
+  .experience-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dining-grid {
+    grid-template-columns: 1fr;
   }
 }
