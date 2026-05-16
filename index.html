@@ -1,256 +1,658 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to Rosewood Sand Hill — Michael</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#1a1a1a" />
+<title>Welcome, Michael — Rosewood Sand Hill</title>
+<meta name="description" content="Your personalized guide to Rosewood Sand Hill, curated for Michael and Mrs. Gahan." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* ---------- Reset & base ---------- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #f6f3ee;
+    color: #1a1a1a;
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Phone-shaped container ---------- */
+  .app {
+    max-width: 480px;
+    margin: 0 auto;
+    background: #f6f3ee;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* ---------- Header / Hero ---------- */
+  .hero {
+    position: relative;
+    height: 70vh;
+    min-height: 480px;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.65) 100%),
+      url('https://picasso.rosewoodhotelgroup.com/transform/61288ea5-80e5-489e-baaf-2834449bfefb/RWSHR_3-0_Brand-com_Assets_EXTERIOR_SUNSETLAWN_OUTDOOR_SPACE') center/cover no-repeat;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 22px 36px;
+    padding-top: calc(24px + env(safe-area-inset-top));
+  }
+
+  /* ---------- Hotel logo (wordmark) ---------- */
+  .logo {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    padding: 6px 0;
+    border-top: 1px solid rgba(255,255,255,0.35);
+    border-bottom: 1px solid rgba(255,255,255,0.35);
+    width: max-content;
+    margin: 0 auto;
+  }
+  .logo small {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    margin-top: 2px;
+    opacity: 0.85;
+  }
+
+  .hero-copy { }
+  .hero-copy .greeting {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    opacity: 0.9;
+  }
+  .hero-copy h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .hero-copy h1 em { font-style: italic; color: #e8d9b8; }
+  .hero-copy p { font-size: 14px; opacity: 0.9; max-width: 90%; }
+  .hero-copy .stay-meta {
+    margin-top: 16px;
+    display: flex;
+    gap: 14px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+  .hero-copy .stay-meta span::before { content: "·"; margin-right: 14px; opacity: 0.5; }
+  .hero-copy .stay-meta span:first-child::before { content: ""; margin: 0; }
+
+  /* ---------- Section base ---------- */
+  section { padding: 36px 20px; }
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #a8946f;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+  .section-intro {
+    font-size: 14px;
+    color: #6b6357;
+    margin-bottom: 22px;
+  }
+
+  /* ---------- Picked for you: horizontal scroller ---------- */
+  .picked-wrap {
+    background: #1a1a1a;
+    color: #f6f3ee;
+    margin: 0;
+    padding: 36px 0;
+  }
+  .picked-wrap .section-eyebrow { color: #c9a96b; padding: 0 20px; }
+  .picked-wrap .section-title { padding: 0 20px; color: #fff; }
+  .picked-wrap .section-intro { color: rgba(246,243,238,0.7); padding: 0 20px; }
+
+  .picked-scroller {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding: 6px 20px 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .picked-scroller::-webkit-scrollbar { display: none; }
+  .picked-card {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+    background: #262320;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+  }
+  .picked-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .picked-card .body { padding: 16px 18px 20px; }
+  .picked-card .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c9a96b;
+    margin-bottom: 8px;
+  }
+  .picked-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 22px;
+    margin-bottom: 6px;
+    color: #fff;
+  }
+  .picked-card p { font-size: 13px; color: rgba(246,243,238,0.75); margin-bottom: 14px; }
+  .picked-card .why {
+    font-size: 11px;
+    color: #c9a96b;
+    border-top: 1px solid rgba(201,169,107,0.3);
+    padding-top: 10px;
+    font-style: italic;
+  }
+  .picked-card .btn {
+    margin-top: 14px;
+    display: inline-block;
+    background: #c9a96b;
+    color: #1a1a1a;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* ---------- Amenities: 2-col list ---------- */
+  .amenities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .amenity {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 14px;
+    text-align: left;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .amenity .ico {
+    width: 32px; height: 32px;
+    border-radius: 999px;
+    background: #f1ebe1;
+    display: grid; place-items: center;
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+  .amenity h4 { font-family: 'Cormorant Garamond', serif; font-size: 17px; margin-bottom: 2px; }
+  .amenity p { font-size: 12px; color: #8a7e6e; }
+
+  /* ---------- Experiences: stacked image cards ---------- */
+  .exp-list { display: flex; flex-direction: column; gap: 14px; }
+  .exp-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  }
+  .exp-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+  .exp-card .body { padding: 16px 18px 20px; }
+  .exp-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; margin-bottom: 6px; }
+  .exp-card p { font-size: 13px; color: #6b6357; }
+  .exp-card .meta {
+    margin-top: 10px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a8946f;
+  }
+
+  /* ---------- Explore Menlo Park ---------- */
+  .explore-wrap { background: #efeae1; }
+  .explore-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .explore-tile {
+    position: relative;
+    aspect-ratio: 3/4;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  }
+  .explore-tile img { width: 100%; height: 100%; object-fit: cover; }
+  .explore-tile .overlay {
+    position: absolute; inset: auto 0 0 0;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.78));
+    color: #fff;
+    padding: 14px;
+  }
+  .explore-tile .overlay span {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.85;
+  }
+  .explore-tile .overlay h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 4px;
+  }
+  .explore-tile .overlay small { font-size: 11px; opacity: 0.8; }
+
+  /* ---------- FAQ accordion ---------- */
+  .faq-list { display: flex; flex-direction: column; gap: 8px; }
+  .faq {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .faq summary {
+    padding: 16px 18px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: "+";
+    font-size: 22px;
+    font-weight: 300;
+    color: #a8946f;
+    transition: transform 0.2s ease;
+  }
+  .faq[open] summary::after { content: "−"; }
+  .faq p { padding: 0 18px 18px; font-size: 13px; color: #6b6357; }
+
+  /* ---------- Footer / Concierge CTA ---------- */
+  .concierge-cta {
+    background: #1a1a1a;
+    color: #f6f3ee;
+    margin: 0 20px 24px;
+    border-radius: 18px;
+    padding: 28px 22px;
+    text-align: center;
+  }
+  .concierge-cta h2 { font-family: 'Cormorant Garamond', serif; font-size: 26px; margin-bottom: 6px; }
+  .concierge-cta p { font-size: 13px; opacity: 0.78; margin-bottom: 18px; }
+  .btn-gold {
+    display: inline-block;
+    background: #c9a96b;
+    color: #1a1a1a;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 11px;
+    color: #8a7e6e;
+  }
+
+  /* ---------- Desktop framing ---------- */
+  @media (min-width: 600px) {
+    body { background: #2a2622; padding: 24px 0; }
+    .app { border-radius: 28px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.4); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="rosewood-monogram">R</div>
-      <p class="hero-eyebrow">Rosewood Sand Hill</p>
-      <h1 class="hero-title">Welcome, Michael</h1>
-      <p class="hero-subtitle">Your curated stay in Silicon Valley awaits</p>
-      <div class="scroll-indicator">
-        <span></span>
+<div class="app">
+
+  <!-- ====== HERO + LOGO ====== -->
+  <header class="hero">
+    <div class="logo">
+      Rosewood
+      <small>Sand Hill</small>
+    </div>
+
+    <div class="hero-copy">
+      <div class="greeting">Welcome Back</div>
+      <h1>Michael, <em>congratulations</em></h1>
+      <p>An anniversary worth celebrating in the heart of the Santa Cruz foothills. We've curated a few moments just for you and Mrs. Gahan.</p>
+      <div class="stay-meta">
+        <span>Suite 312</span>
+        <span>3 Nights</span>
+        <span>Anniversary</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== PICKED FOR YOU ====== -->
+  <div class="picked-wrap">
+    <div class="section-eyebrow">Curated by Your Concierge</div>
+    <h2 class="section-title">Picked for you</h2>
+    <p class="section-intro">Hand-selected based on your stay — celebrate, slow down, savor.</p>
+
+    <div class="picked-scroller">
+
+      <!-- 1. Pool cabana -->
+      <article class="picked-card">
+        <img src="https://picasso.rosewoodhotelgroup.com/transform/20b26ec6-dc9b-4fb3-bb5c-c9ef325f98c9/RWSHR_3-0_Brand-com_Assets_Facilities_Cabana_Pool_DayShot2" alt="Private cabana at Rosewood Sand Hill pool" />
+        <div class="body">
+          <span class="tag">Anniversary Afternoon</span>
+          <h3>Private Poolside Cabana</h3>
+          <p>Reserved cabana for two with chilled rosé, seasonal bites, and uninterrupted views of the rose garden.</p>
+          <div class="why">Because you mentioned a pool cabana day.</div>
+          <a href="#concierge" class="btn">Reserve</a>
+        </div>
+      </article>
+
+      <!-- 2. Wine tasting -->
+      <article class="picked-card">
+        <img src="https://picasso.rosewoodhotelgroup.com/transform/e55ae8df-cbab-40ab-87fe-c293f132daa5/" alt="Ridge Vineyards rosé tasting" />
+        <div class="body">
+          <span class="tag">Sommelier Series</span>
+          <h3>Ridge Vineyards Tasting</h3>
+          <p>A guided pairing of Ridge's estate selections led by Madera's sommelier — held in the Library at sunset.</p>
+          <div class="why">Matched to your wine tasting interest.</div>
+          <a href="#concierge" class="btn">Book Tasting</a>
+        </div>
+      </article>
+
+      <!-- 3. Anniversary dinner -->
+      <article class="picked-card">
+        <img src="https://picasso.rosewoodhotelgroup.com/transform/7fde4a17-5299-4fba-b036-f5e78fea2a15/RWSHR_3-0_Brand-com_Assets_Facilities_Food-Beverage_Madera" alt="Madera Restaurant interior" />
+        <div class="body">
+          <span class="tag">Celebrate</span>
+          <h3>Anniversary Tasting Menu at Madera</h3>
+          <p>A bespoke tasting menu with optional pairing — quiet table by the window, candle service, complimentary toast.</p>
+          <div class="why">An evening worthy of the occasion.</div>
+          <a href="#concierge" class="btn">Reserve Table</a>
+        </div>
+      </article>
+
+      <!-- 4. Cycling concierge -->
+      <article class="picked-card">
+        <img src="https://picasso.rosewoodhotelgroup.com/transform/d7cf0810-b946-41d5-b798-43078d0ce4a2/RWSHR_EXPERIENCES_CYCLING_BAYAREA" alt="Cycling Concierge guided ride" />
+        <div class="body">
+          <span class="tag">Morning Adventure</span>
+          <h3>Guided Foothills Ride</h3>
+          <p>Two‑hour guided ride through Portola Valley and the Santa Cruz foothills. Premium e‑bikes provided.</p>
+          <div class="why">Active itinerary, no traffic to plan around.</div>
+          <a href="#concierge" class="btn">Schedule Ride</a>
+        </div>
+      </article>
+
+      <!-- 5. Couples spa -->
+      <article class="picked-card">
+        <img src="https://picasso.rosewoodhotelgroup.com/transform/0be73f5e-e67c-423e-af13-3ffbd28461fd/RWSHR_3-0_Brand-com_Assets_FACILITIES_ASAYASPA_TREATMENTROOMS" alt="Asaya Spa couples treatment room" />
+        <div class="body">
+          <span class="tag">Together Time</span>
+          <h3>Asaya Couples Ritual</h3>
+          <p>Side‑by‑side 90‑minute massage in a private treatment suite with rooftop garden access.</p>
+          <div class="why">Slow down together before dinner.</div>
+          <a href="#concierge" class="btn">Add to Stay</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- ====== HOTEL AMENITIES ====== -->
+  <section id="amenities">
+    <div class="section-eyebrow">On Property</div>
+    <h2 class="section-title">Hotel amenities</h2>
+    <p class="section-intro">Everything within steps of your suite.</p>
+
+    <div class="amenities">
+      <div class="amenity">
+        <div class="ico">🏊</div>
+        <h4>Outdoor Pool</h4>
+        <p>Heated · 7A–10P</p>
+      </div>
+      <div class="amenity">
+        <div class="ico">🌿</div>
+        <h4>Asaya Spa</h4>
+        <p>Treatments · Sanctuary</p>
+      </div>
+      <div class="amenity">
+        <div class="ico">💪</div>
+        <h4>Fitness Center</h4>
+        <p>24 hrs · Peloton</p>
+      </div>
+      <div class="amenity">
+        <div class="ico">🧘</div>
+        <h4>Movement Studio</h4>
+        <p>Yoga · Pilates daily</p>
+      </div>
+      <div class="amenity">
+        <div class="ico">🍷</div>
+        <h4>Madera Bar</h4>
+        <p>Cocktails · 4P–Late</p>
+      </div>
+      <div class="amenity">
+        <div class="ico">☕</div>
+        <h4>Bici Coffee</h4>
+        <p>6:30A–4:30P daily</p>
+      </div>
+      <div class="amenity">
+        <div class="ico">🚲</div>
+        <h4>Blue Jay Bikes</h4>
+        <p>Complimentary loans</p>
+      </div>
+      <div class="amenity">
+        <div class="ico">🅿️</div>
+        <h4>Valet Parking</h4>
+        <p>Included with stay</p>
       </div>
     </div>
   </section>
 
-  <!-- CUSTOM SONG -->
-  <section class="section song-section">
-    <div class="container">
-      <p class="section-eyebrow">Composed for You</p>
-      <h2 class="section-title">Your Arrival Soundtrack</h2>
-      <p class="section-desc">An original electronic composition inspired by your love of dub, drum & bass, and ambient space — crafted to welcome you to Rosewood Sand Hill.</p>
-      <div class="audio-player">
-        <div class="audio-meta">
-          <div class="audio-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M9 18V5l12-2v13"/>
-              <circle cx="6" cy="18" r="3"/>
-              <circle cx="18" cy="16" r="3"/>
-            </svg>
-          </div>
-          <div>
-            <div class="audio-title">Welcome to Rosewood Sand Hill</div>
-            <div class="audio-artist">Composed by AI · Inspired by your playlists</div>
-          </div>
+  <!-- ====== EXPERIENCES (full menu) ====== -->
+  <section id="experiences" style="background:#efeae1;">
+    <div class="section-eyebrow">Mark Your Stay</div>
+    <h2 class="section-title">Hotel experiences</h2>
+    <p class="section-intro">Curated programming during your visit.</p>
+
+    <div class="exp-list">
+      <article class="exp-card">
+        <img src="https://picasso.rosewoodhotelgroup.com/transform/2d76d387-fc4b-4f60-9dcc-929626700a50/" alt="Friday Nights @ Madera" />
+        <div class="body">
+          <h4>Friday Nights @ Madera Bar</h4>
+          <p>Live jazz and vinyl DJs alongside a refreshed cocktail program. Open seating.</p>
+          <div class="meta">This Friday · 7P</div>
         </div>
-        <audio id="welcomeSong" controls>
-          <source src="https://ojlymzrznqyuzlcp.public.blob.vercel-storage.com/generated-music/toolu01Pzi4hVS8LmNcu/1778972438882.mp3" type="audio/mpeg">
-        </audio>
-      </div>
+      </article>
+
+      <article class="exp-card">
+        <img src="https://picasso.rosewoodhotelgroup.com/transform/b2fd8dfe-d79f-4dba-bfd3-0ae31792d704/" alt="Clubhouse Series" />
+        <div class="body">
+          <h4>Clubhouse Series</h4>
+          <p>Intimate evenings of conversation, food, and music with founders, makers, and artists.</p>
+          <div class="meta">Monthly · By Invitation</div>
+        </div>
+      </article>
+
+      <article class="exp-card">
+        <img src="https://picasso.rosewoodhotelgroup.com/transform/51ec6d63-8081-48f7-a6a9-ddfb54074330/" alt="Afternoon Tea" />
+        <div class="body">
+          <h4>Afternoon Tea with Flamingo Estate</h4>
+          <p>Curated tea service in the Library with savory bites and house‑made pastries.</p>
+          <div class="meta">Daily · 2P–4P</div>
+        </div>
+      </article>
+
+      <article class="exp-card">
+        <img src="https://picasso.rosewoodhotelgroup.com/transform/4abd0ea4-de16-48ad-9cf7-8c5552443ac7/RWSHR_3-0_Brand-com_Assets_EXTERIOR_PROGRAMMING_BLUEJAYBIKES_EXPERIENCES2" alt="Blue Jay Bikes" />
+        <div class="body">
+          <h4>Blue Jay Bikes</h4>
+          <p>Take out one of our premium loaner bikes and explore the trails of Portola Valley.</p>
+          <div class="meta">Complimentary</div>
+        </div>
+      </article>
     </div>
   </section>
 
-  <!-- GUEST PROFILE -->
-  <section class="section profile-section">
-    <div class="container">
-      <p class="section-eyebrow">We See You</p>
-      <h2 class="section-title">The Curator-Athlete</h2>
-      <p class="section-desc">90 playlists. Underground electronic. MMA discipline. History narratives at bedtime. You live at the intersection of physical intensity and aesthetic curation — and we've shaped your stay around exactly that.</p>
-      <div class="profile-cards">
-        <div class="profile-card">
-          <div class="card-icon">🎵</div>
-          <h3>Sonic Identity</h3>
-          <p>Dub · Drum & Bass · Ambient Electronic · Space Vibes — your room speakers are pre-loaded with artists from your recently played: Earthbound, Ookean, Levity, and Tape B.</p>
+  <!-- ====== EXPLORE MENLO PARK ====== -->
+  <section id="explore" class="explore-wrap">
+    <div class="section-eyebrow">Beyond The Property</div>
+    <h2 class="section-title">Explore Menlo Park</h2>
+    <p class="section-intro">A few of our favorite places nearby.</p>
+
+    <div class="explore-grid">
+      <a href="#" class="explore-tile">
+        <img src="https://images.rosewoodhotels.com/is/image/rwhg/h7wcd-38991550-rsh-garden-wed-1:WIDE-LARGE-16-9" alt="Stanford Dish trail" />
+        <div class="overlay">
+          <span>Hike</span>
+          <h4>The Stanford Dish</h4>
+          <small>4 mi loop · 12 min drive</small>
         </div>
-        <div class="profile-card">
-          <div class="card-icon">🥊</div>
-          <h3>Athletic Edge</h3>
-          <p>Electrolyte water, protein-rich snacks, and a foam roller await in-room. Asaya Spa's Movement Studio is reserved for your training sessions, and a deep tissue recovery massage slot is held for you.</p>
+      </a>
+
+      <a href="#" class="explore-tile">
+        <img src="https://picasso.rosewoodhotelgroup.com/transform/3b246b58-9893-408d-aa96-9edc63d2339d/RWSHR_3-0_Brand-com_Assets_Facilities_Pool_DayShot" alt="Portola Valley winery" />
+        <div class="overlay">
+          <span>Tasting</span>
+          <h4>Portola Vineyards</h4>
+          <small>Tastings by appt · 15 min</small>
         </div>
-        <div class="profile-card">
-          <div class="card-icon">📖</div>
-          <h3>Curious Mind</h3>
-          <p>A curated history book sits on your nightstand — selected to match the "Fall of the Aztecs" energy. Wind down with your Bedtime Stories ritual in complete comfort.</p>
+      </a>
+
+      <a href="#" class="explore-tile">
+        <img src="https://picasso.rosewoodhotelgroup.com/transform/d8749943-75a8-4327-aa0a-e2bbc11b54b0/RWSHR_3-0_Brand-com_Assets_EXPERIENCES_CYCLING_BAYAREA2" alt="Filoli Gardens" />
+        <div class="overlay">
+          <span>Gardens</span>
+          <h4>Filoli Estate</h4>
+          <small>654‑acre estate · 20 min</small>
         </div>
-      </div>
+      </a>
+
+      <a href="#" class="explore-tile">
+        <img src="https://picasso.rosewoodhotelgroup.com/transform/24e1e84a-ec83-4769-a843-0dc3be3aa034/RWSHR_3-0_Brand-com_Assets_The_Library-MaderaBar_Exterior" alt="Stanford Shopping Center" />
+        <div class="overlay">
+          <span>Shop</span>
+          <h4>Stanford Shopping Center</h4>
+          <small>Open‑air · 8 min drive</small>
+        </div>
+      </a>
+
+      <a href="#" class="explore-tile">
+        <img src="https://picasso.rosewoodhotelgroup.com/transform/cf8f4a51-2cf6-4f77-b2c5-bd989213c71e/RWSHR_3-0_Brand-com_Assets_FACILITIES_MADERABAR" alt="Allied Arts Guild" />
+        <div class="overlay">
+          <span>Stroll</span>
+          <h4>Allied Arts Guild</h4>
+          <small>Historic gardens · 6 min</small>
+        </div>
+      </a>
+
+      <a href="#" class="explore-tile">
+        <img src="https://picasso.rosewoodhotelgroup.com/transform/af679713-6bb5-4f7f-b4d0-b0cea27da330/RWSHR_POOLSIDE_EXTERIOR_LIFESTYLE2" alt="Half Moon Bay coast" />
+        <div class="overlay">
+          <span>Day Trip</span>
+          <h4>Half Moon Bay Coast</h4>
+          <small>Scenic drive · 35 min</small>
+        </div>
+      </a>
     </div>
   </section>
 
-  <!-- CURATED EXPERIENCES -->
-  <section class="section experiences-section">
-    <div class="container">
-      <p class="section-eyebrow">Handpicked for Michael</p>
-      <h2 class="section-title">Your Curated Experiences</h2>
-      <div class="experience-grid">
+  <!-- ====== FAQ ====== -->
+  <section id="faq">
+    <div class="section-eyebrow">Good to Know</div>
+    <h2 class="section-title">Frequently asked questions</h2>
+    <p class="section-intro">Answers to the things most guests ask us.</p>
 
-        <div class="experience-card">
-          <div class="experience-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/be80df39-babb-4698-b3e4-91750959e9b9/RWSHR_3-0_Brand-com_Assets_FACILITIES_MADERABAR');"></div>
-          <div class="experience-content">
-            <span class="experience-tag">Music + Nightlife</span>
-            <h3>Friday Nights @ Madera Bar</h3>
-            <p>DJs spinning vinyl on alternating weeks. Your electronic music sensibility meets craft cocktails with Santa Cruz Mountain views. We think you'll feel right at home.</p>
-          </div>
-        </div>
+    <div class="faq-list">
+      <details class="faq">
+        <summary>What time is check‑out, and can it be extended?</summary>
+        <p>Standard check‑out is 12:00 PM. As an anniversary guest, we're happy to extend to 2:00 PM at no charge. Later checkouts can be arranged through your concierge based on availability.</p>
+      </details>
 
-        <div class="experience-card">
-          <div class="experience-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/0be73f5e-e67c-423e-af13-3ffbd28461fd/RWSHR_3-0_Brand-com_Assets_FACILITIES_ASAYASPA_TREATMENTROOMS');"></div>
-          <div class="experience-content">
-            <span class="experience-tag">Recovery + Strength</span>
-            <h3>Asaya Spa & Movement Studio</h3>
-            <p>Sports recovery, deep tissue work, and mat space for your MMA training. We framed it as recovery work — because that's what athletes actually need.</p>
-          </div>
-        </div>
+      <details class="faq">
+        <summary>Is there a dress code at Madera?</summary>
+        <p>Smart casual. Collared shirts preferred for gentlemen at dinner; no athletic wear. The bar is more relaxed.</p>
+      </details>
 
-        <div class="experience-card">
-          <div class="experience-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/d7cf0810-b946-41d5-b798-43078d0ce4a2/RWSHR_EXPERIENCES_CYCLING_BAYAREA');"></div>
-          <div class="experience-content">
-            <span class="experience-tag">Active + Outdoors</span>
-            <h3>Cycling Concierge</h3>
-            <p>High-intensity rides through the Santa Cruz Mountain foothills. Electric or road — the Cycling Concierge maps your perfect route through Northern California's best terrain.</p>
-          </div>
-        </div>
+      <details class="faq">
+        <summary>How do I reserve a private cabana?</summary>
+        <p>Cabanas are available for half‑day or full‑day reservation. Tap "Reserve" on the Picked for You card, or text your concierge — we'll handle the rest, including a chilled welcome bottle.</p>
+      </details>
 
-        <div class="experience-card">
-          <div class="experience-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/5260c24f-94a2-4e55-9bc4-b36ceff3b84c/RWSHR_3-0_Brand-com_Assets_EXPERIENCES_FALCONRY_102225');"></div>
-          <div class="experience-content">
-            <span class="experience-tag">Unforgettable</span>
-            <h3>Falconry Experience</h3>
-            <p>Meet a trained falcon, hawk, and owl. A centuries-old bond between human and bird — the kind of unexpected, immersive experience a Curator-Athlete remembers.</p>
-          </div>
-        </div>
+      <details class="faq">
+        <summary>Can the concierge arrange a wine country day trip?</summary>
+        <p>Yes — Napa and Sonoma are about 90 minutes by car. We can arrange a private driver and curated tasting itinerary tailored to your preferences. 48 hours' notice recommended.</p>
+      </details>
 
-        <div class="experience-card">
-          <div class="experience-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/1a9ad6fa-f895-4efd-addd-ace8d7d99bc1/RWSHR_MADERARESTAURANT_SPACE');"></div>
-          <div class="experience-content">
-            <span class="experience-tag">Dining</span>
-            <h3>Madera Restaurant — Terrace Table Reserved</h3>
-            <p>A mountain-view terrace table with Northern California's seasonal bounty, crafted over an open artisan wood-burning kitchen. Your aesthetic sensibility deserves this view.</p>
-          </div>
-        </div>
+      <details class="faq">
+        <summary>Are bikes complimentary?</summary>
+        <p>Our Blue Jay loaner bikes are complimentary for all overnight guests. Helmets, locks, and route maps included. Guided rides with our Cycling Concierge are bookable separately.</p>
+      </details>
 
-        <div class="experience-card">
-          <div class="experience-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/8caaefcb-1d0e-450e-bab1-d77b80e7a2d3/RWSHR_3-0_Brand-com_Assets_FOOD-bEVERAGE_FALL_AFTERNOONTEA');"></div>
-          <div class="experience-content">
-            <span class="experience-tag">Culture + Curation</span>
-            <h3>Afternoon Tea at The Library</h3>
-            <p>Flamingo Estate's signature teas paired with house-made pastries. A curated experience for the guest who named a playlist "Good Reads."</p>
-          </div>
-        </div>
+      <details class="faq">
+        <summary>How do I access the spa and pool?</summary>
+        <p>As an overnight guest, both are complimentary throughout your stay. The Asaya Spa lobby is open 7A–9P. Treatments require advance booking — we recommend reserving as soon as possible during peak season.</p>
+      </details>
 
-      </div>
+      <details class="faq">
+        <summary>Is parking included?</summary>
+        <p>Yes — complimentary valet parking is included with your stay. Self‑parking is also available around the property.</p>
+      </details>
     </div>
   </section>
 
-  <!-- ROOM PREPARATION -->
-  <section class="section room-section">
-    <div class="container">
-      <p class="section-eyebrow">Your Room Awaits</p>
-      <h2 class="section-title">Prepared with Intention</h2>
-      <div class="room-grid">
-        <div class="room-item">
-          <div class="room-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-          </div>
-          <h4>Ambient Arrival</h4>
-          <p>In-room speakers set to Space Vibes energy — Earthbound, Ookean, and Levity on rotation. Turndown switches to ambient bedtime soundscapes.</p>
-        </div>
-        <div class="room-item">
-          <div class="room-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          </div>
-          <h4>Athlete's Essentials</h4>
-          <p>Electrolyte water, high-protein snacks, foam roller, and resistance bands — beyond the standard minibar.</p>
-        </div>
-        <div class="room-item">
-          <div class="room-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-          </div>
-          <h4>Nightstand Read</h4>
-          <p>A curated history book — civilizational narratives and exploration, matched to your "Fall of the Aztecs" curiosity.</p>
-        </div>
-        <div class="room-item">
-          <div class="room-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          </div>
-          <h4>Morning Ritual</h4>
-          <p>Bici Coffee is steps away — locally sourced beans and fresh pastries. Your concierge has the hours and route ready.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ====== CONCIERGE CTA ====== -->
+  <div class="concierge-cta" id="concierge">
+    <h2>Your Concierge, Always On</h2>
+    <p>Text us directly — we'll book, plan, or recommend anything you need.</p>
+    <a class="btn-gold" href="sms:+16505611500">Message Concierge</a>
+  </div>
 
-  <!-- SPOTIFY PLAYLISTS -->
-  <section class="section playlist-section">
-    <div class="container">
-      <p class="section-eyebrow">Your Sound, Your Stay</p>
-      <h2 class="section-title">Playlists We Loved</h2>
-      <p class="section-desc">We explored your 90 public playlists. Here are the ones that shaped your stay's sonic design.</p>
-      <div class="playlist-grid">
-        <a href="https://open.spotify.com/playlist/4heyQFUUFRQOgg01qIQ0Dx" target="_blank" class="playlist-card">
-          <div class="playlist-emoji">🔊</div>
-          <h4>Dubby Dub Dub</h4>
-          <p>Deep dub basslines — your arrival vibe</p>
-        </a>
-        <a href="https://open.spotify.com/playlist/1Ff6s1zzB4NwwDaAmLRRc3" target="_blank" class="playlist-card">
-          <div class="playlist-emoji">🏴‍☠️</div>
-          <h4>Pirate EDM</h4>
-          <p>High-energy bass — Madera Bar energy</p>
-        </a>
-        <a href="https://open.spotify.com/playlist/2jJpLvlzBAmn1iheE31Ola" target="_blank" class="playlist-card">
-          <div class="playlist-emoji">👨‍🚀</div>
-          <h4>Space Vibes</h4>
-          <p>Ambient unwinding — your in-room soundtrack</p>
-        </a>
-        <a href="https://open.spotify.com/playlist/4E3CXzHM0poXvaTC0No2m8" target="_blank" class="playlist-card">
-          <div class="playlist-emoji">🥁</div>
-          <h4>Mid Temp Drum & Bass</h4>
-          <p>Genre-specific curation — sophisticated taste</p>
-        </a>
-        <a href="https://open.spotify.com/playlist/4C3fMFXisf5eJg5QFGkjC3" target="_blank" class="playlist-card">
-          <div class="playlist-emoji">🤠</div>
-          <h4>Country-ish</h4>
-          <p>Genre-curious — the "-ish" says it all</p>
-        </a>
-        <a href="https://open.spotify.com/playlist/0YZl1TVfB3lpSvHKij2wZh" target="_blank" class="playlist-card">
-          <div class="playlist-emoji">⚡</div>
-          <h4>INZO</h4>
-          <p>Fan-level devotion — emotional progressive house</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-monogram">R</div>
-      <p class="footer-name">Rosewood Sand Hill</p>
-      <p class="footer-address">2825 Sand Hill Road, Menlo Park, California 94025</p>
-      <p class="footer-tagline">A sense of place. A sense of you.</p>
-      <p class="footer-note">This welcome experience was personally generated for Michael Gahan using AI-powered guest intelligence.</p>
-    </div>
+  <footer>
+    2825 Sand Hill Road · Menlo Park, CA<br/>
+    Welcome, Michael &amp; Mrs. Gahan — Happy Anniversary
   </footer>
 
-  <script>
-    // Smooth scroll indicator
-    document.querySelector('.scroll-indicator')?.addEventListener('click', () => {
-      document.querySelector('.song-section')?.scrollIntoView({ behavior: 'smooth' });
-    });
-
-    // Intersection Observer for fade-in animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.section').forEach(section => {
-      observer.observe(section);
-    });
-  </script>
+</div>
 
 </body>
 </html>
