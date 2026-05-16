@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome, Michael — Rosewood Sand Hill</title>
+  <title>Welcome to Rosewood Sand Hill — Michael</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -15,253 +14,209 @@
   <section class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="rosewood-mark">ROSEWOOD</div>
-      <div class="rosewood-sub">SAND HILL</div>
-      <div class="divider"></div>
-      <h1>Welcome, <em>Michael</em></h1>
-      <p class="hero-tagline">Ninety playlists. One discipline. Zero half-measures.<br>We built your stay the same way.</p>
-      <a href="#welcome-note" class="scroll-cta">Begin Your Experience &darr;</a>
-    </div>
-  </section>
-
-  <!-- PERSONAL WELCOME NOTE -->
-  <section id="welcome-note" class="section section-note">
-    <div class="container">
-      <div class="note-card">
-        <span class="section-label">A Note Before You Settle In</span>
-        <h2>Michael, <em>we see you.</em></h2>
-        <div class="note-body">
-          <p>Not everyone gives INZO his own playlist. Not everyone tracks sweetHz and Ookean months before anyone else catches on. And not everyone names a playlist "Country<em>-ish</em>" &mdash; with the exact wink that says <em>I'm curious, not committed.</em></p>
-          <p>You organize your world through sound &mdash; 90 playlists, each one deliberate. "B&aelig;sic Vibes" isn't basic at all. "Pirate EDM" has its own flag. "Space Vibes" has its own orbit. And when the day is done, "Bedtime Stories" tells us you have a wind-down ritual you don't skip.</p>
-          <p>That same intentionality shows up on the mat. MMA isn't a hobby &mdash; it's a practice that demands the same strategic thinking you bring to a 4-hour playlist deep-dive. You balance the intensity of rolling bass lines and sparring rounds with the stillness of an ambient soundscape and a history podcast about fallen civilizations.</p>
-          <p>We've tried to match that range. Your mornings have fuel and movement. Your room has recovery gear, not just a minibar. Your evenings have vinyl DJs and mountain air. And your nights have the kind of deep sub-bass cocoon that makes a fireplace suite feel like the inside of a dub track.</p>
-          <p class="note-close">This isn't a standard stay.<br>It's curated &mdash; the way you'd do it.</p>
-        </div>
-        <p class="note-signature">&mdash; Your Rosewood Sand Hill Team</p>
+      <div class="rosewood-monogram">R</div>
+      <p class="hero-eyebrow">Rosewood Sand Hill</p>
+      <h1 class="hero-title">Welcome, Michael</h1>
+      <p class="hero-subtitle">Your curated stay in Silicon Valley awaits</p>
+      <div class="scroll-indicator">
+        <span></span>
       </div>
     </div>
   </section>
 
-  <!-- SOUNDTRACK -->
-  <section id="soundtrack" class="section section-dark">
+  <!-- CUSTOM SONG -->
+  <section class="section song-section">
     <div class="container">
-      <span class="section-label">Your Arrival Soundtrack</span>
-      <h2>Composed <em>for You</em></h2>
-      <p class="section-desc">We fed your sonic fingerprint into a composer &mdash; the dub warmth of <strong>Dubby Dub Dub</strong>, the atmospheric drift of <strong>Space Vibes</strong>, the rolling energy of <strong>Mid Temp D&amp;B</strong>. What came back is 60 seconds of ambient bass that sounds like arriving somewhere that already knows you.</p>
-
-      <div class="player-wrapper">
-        <div class="player-glow"></div>
-        <div class="player-card">
-
-          <!-- Equalizer + Play Button -->
-          <div class="player-top">
-            <div class="eq-container" id="eqContainer"></div>
-            <button class="play-btn" id="playBtn" aria-label="Play">
-              <svg class="play-icon" id="playIcon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-                <polygon points="6,3 20,12 6,21" />
-              </svg>
-              <svg class="pause-icon hidden" id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-                <rect x="5" y="3" width="4" height="18" rx="1" />
-                <rect x="15" y="3" width="4" height="18" rx="1" />
-              </svg>
-              <div class="play-ring"></div>
-            </button>
+      <p class="section-eyebrow">Composed for You</p>
+      <h2 class="section-title">Your Arrival Soundtrack</h2>
+      <p class="section-desc">An original electronic composition inspired by your love of dub, drum & bass, and ambient space — crafted to welcome you to Rosewood Sand Hill.</p>
+      <div class="audio-player">
+        <div class="audio-meta">
+          <div class="audio-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 18V5l12-2v13"/>
+              <circle cx="6" cy="18" r="3"/>
+              <circle cx="18" cy="16" r="3"/>
+            </svg>
           </div>
-
-          <!-- Track Info -->
-          <div class="player-info">
-            <div class="track-title">Sand Hill Arrival</div>
-            <div class="track-artist">Composed for Michael Gahan</div>
-            <div class="track-meta">Ambient Melodic Bass &middot; 85 BPM &middot; AI-Composed</div>
+          <div>
+            <div class="audio-title">Welcome to Rosewood Sand Hill</div>
+            <div class="audio-artist">Composed by AI · Inspired by your playlists</div>
           </div>
+        </div>
+        <audio id="welcomeSong" controls>
+          <source src="https://ojlymzrznqyuzlcp.public.blob.vercel-storage.com/generated-music/toolu01Pzi4hVS8LmNcu/1778972438882.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+  </section>
 
-          <!-- Progress -->
-          <div class="player-progress">
-            <span class="time-current" id="timeCurrent">0:00</span>
-            <div class="progress-track" id="progressTrack">
-              <div class="progress-fill" id="progressFill"></div>
-              <div class="progress-thumb" id="progressThumb"></div>
-            </div>
-            <span class="time-total" id="timeTotal">1:00</span>
-          </div>
-
-          <!-- Playlist Tags -->
-          <div class="player-tags">
-            <span class="tag tag-playlist">👨‍🚀 Space Vibes</span>
-            <span class="tag tag-playlist">🎵 Dubby Dub Dub</span>
-            <span class="tag tag-playlist">🥁 Mid Temp D&amp;B</span>
-            <span class="tag tag-playlist">🏴‍☠️ Pirate EDM</span>
-          </div>
-
-          <div class="player-artists">
-            <span class="tag tag-artist">sweetHz</span>
-            <span class="tag tag-artist">Zephyrical</span>
-            <span class="tag tag-artist">Earthbound</span>
-            <span class="tag tag-artist">Ookean</span>
-            <span class="tag tag-artist">Levity</span>
-            <span class="tag tag-artist">Tape B</span>
-          </div>
-
+  <!-- GUEST PROFILE -->
+  <section class="section profile-section">
+    <div class="container">
+      <p class="section-eyebrow">We See You</p>
+      <h2 class="section-title">The Curator-Athlete</h2>
+      <p class="section-desc">90 playlists. Underground electronic. MMA discipline. History narratives at bedtime. You live at the intersection of physical intensity and aesthetic curation — and we've shaped your stay around exactly that.</p>
+      <div class="profile-cards">
+        <div class="profile-card">
+          <div class="card-icon">🎵</div>
+          <h3>Sonic Identity</h3>
+          <p>Dub · Drum & Bass · Ambient Electronic · Space Vibes — your room speakers are pre-loaded with artists from your recently played: Earthbound, Ookean, Levity, and Tape B.</p>
+        </div>
+        <div class="profile-card">
+          <div class="card-icon">🥊</div>
+          <h3>Athletic Edge</h3>
+          <p>Electrolyte water, protein-rich snacks, and a foam roller await in-room. Asaya Spa's Movement Studio is reserved for your training sessions, and a deep tissue recovery massage slot is held for you.</p>
+        </div>
+        <div class="profile-card">
+          <div class="card-icon">📖</div>
+          <h3>Curious Mind</h3>
+          <p>A curated history book sits on your nightstand — selected to match the "Fall of the Aztecs" energy. Wind down with your Bedtime Stories ritual in complete comfort.</p>
         </div>
       </div>
-
-      <audio id="welcomeTrack" preload="metadata">
-        <source src="https://ojlymzrznqyuzlcp.public.blob.vercel-storage.com/generated-music/toolu01VyABt1qU2DdRk/1778969120874.mp3" type="audio/mpeg">
-      </audio>
-
     </div>
   </section>
 
   <!-- CURATED EXPERIENCES -->
-  <section class="section section-light">
+  <section class="section experiences-section">
     <div class="container">
-      <span class="section-label">For the Curator-Athlete</span>
-      <h2>Your <em>Experiences</em></h2>
-      <p class="section-desc">You move between intensity and stillness with intention. So does this lineup.</p>
+      <p class="section-eyebrow">Handpicked for Michael</p>
+      <h2 class="section-title">Your Curated Experiences</h2>
+      <div class="experience-grid">
 
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/c31785e4-275f-4db9-95b2-7a58113d05d8/RWSHR_MADERABAR_FACILITIES_COCKTAIL')"></div>
-          <div class="card-body">
-            <span class="card-tag">🎧 Friday Nights</span>
-            <h3>DJ Nights @ Madera Bar</h3>
-            <p>DJs spinning vinyl on the terrace &mdash; not a Spotify algorithm, actual records. For someone who follows 66 artists and only 25 follow back, you'll appreciate the curation. Think "B&aelig;sic Vibes" with a cocktail and mountain air.</p>
+        <div class="experience-card">
+          <div class="experience-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/be80df39-babb-4698-b3e4-91750959e9b9/RWSHR_3-0_Brand-com_Assets_FACILITIES_MADERABAR');"></div>
+          <div class="experience-content">
+            <span class="experience-tag">Music + Nightlife</span>
+            <h3>Friday Nights @ Madera Bar</h3>
+            <p>DJs spinning vinyl on alternating weeks. Your electronic music sensibility meets craft cocktails with Santa Cruz Mountain views. We think you'll feel right at home.</p>
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/5260c24f-94a2-4e55-9bc4-b36ceff3b84c/RWSHR_3-0_Brand-com_Assets_EXPERIENCES_FALCONRY_102225')"></div>
-          <div class="card-body">
-            <span class="card-tag">🦅 Adventure</span>
-            <h3>Falconry Experience</h3>
-            <p>A centuries-old discipline built on patience, precision, and the bond between human and raptor. Someone who listens to "Fall of the Aztecs" and practices a martial art will understand what this is really about &mdash; mastery passed down through time.</p>
+        <div class="experience-card">
+          <div class="experience-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/0be73f5e-e67c-423e-af13-3ffbd28461fd/RWSHR_3-0_Brand-com_Assets_FACILITIES_ASAYASPA_TREATMENTROOMS');"></div>
+          <div class="experience-content">
+            <span class="experience-tag">Recovery + Strength</span>
+            <h3>Asaya Spa & Movement Studio</h3>
+            <p>Sports recovery, deep tissue work, and mat space for your MMA training. We framed it as recovery work — because that's what athletes actually need.</p>
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/d8749943-75a8-4327-aa0a-e2bbc11b54b0/RWSHR_3-0_Brand-com_Assets_EXPERIENCES_CYCLING_BAYAREA2')"></div>
-          <div class="card-body">
-            <span class="card-tag">🚴 Active</span>
+        <div class="experience-card">
+          <div class="experience-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/d7cf0810-b946-41d5-b798-43078d0ce4a2/RWSHR_EXPERIENCES_CYCLING_BAYAREA');"></div>
+          <div class="experience-content">
+            <span class="experience-tag">Active + Outdoors</span>
             <h3>Cycling Concierge</h3>
-            <p>Electric bikes through the Santa Cruz Mountain foothills. Our concierge can map routes from recovery-pace to race-pace &mdash; because "Mid Temp" doesn't just describe your drum &amp; bass, it describes your off-day cardio.</p>
+            <p>High-intensity rides through the Santa Cruz Mountain foothills. Electric or road — the Cycling Concierge maps your perfect route through Northern California's best terrain.</p>
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/8caaefcb-1d0e-450e-bab1-d77b80e7a2d3/RWSHR_3-0_Brand-com_Assets_FOOD-bEVERAGE_FALL_AFTERNOONTEA')"></div>
-          <div class="card-body">
-            <span class="card-tag">📖 Culture</span>
+        <div class="experience-card">
+          <div class="experience-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/5260c24f-94a2-4e55-9bc4-b36ceff3b84c/RWSHR_3-0_Brand-com_Assets_EXPERIENCES_FALCONRY_102225');"></div>
+          <div class="experience-content">
+            <span class="experience-tag">Unforgettable</span>
+            <h3>Falconry Experience</h3>
+            <p>Meet a trained falcon, hawk, and owl. A centuries-old bond between human and bird — the kind of unexpected, immersive experience a Curator-Athlete remembers.</p>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="experience-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/1a9ad6fa-f895-4efd-addd-ace8d7d99bc1/RWSHR_MADERARESTAURANT_SPACE');"></div>
+          <div class="experience-content">
+            <span class="experience-tag">Dining</span>
+            <h3>Madera Restaurant — Terrace Table Reserved</h3>
+            <p>A mountain-view terrace table with Northern California's seasonal bounty, crafted over an open artisan wood-burning kitchen. Your aesthetic sensibility deserves this view.</p>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="experience-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/8caaefcb-1d0e-450e-bab1-d77b80e7a2d3/RWSHR_3-0_Brand-com_Assets_FOOD-bEVERAGE_FALL_AFTERNOONTEA');"></div>
+          <div class="experience-content">
+            <span class="experience-tag">Culture + Curation</span>
             <h3>Afternoon Tea at The Library</h3>
-            <p>Flamingo Estate's seasonal teas and house-made pastries in a quiet, narrative-framed space. Your "Good Reads" and "Bedtime Stories" playlists tell us you already have a ritual like this &mdash; this is the Rosewood version.</p>
+            <p>Flamingo Estate's signature teas paired with house-made pastries. A curated experience for the guest who named a playlist "Good Reads."</p>
           </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOM PREPARATION -->
+  <section class="section room-section">
+    <div class="container">
+      <p class="section-eyebrow">Your Room Awaits</p>
+      <h2 class="section-title">Prepared with Intention</h2>
+      <div class="room-grid">
+        <div class="room-item">
+          <div class="room-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          </div>
+          <h4>Ambient Arrival</h4>
+          <p>In-room speakers set to Space Vibes energy — Earthbound, Ookean, and Levity on rotation. Turndown switches to ambient bedtime soundscapes.</p>
+        </div>
+        <div class="room-item">
+          <div class="room-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h4>Athlete's Essentials</h4>
+          <p>Electrolyte water, high-protein snacks, foam roller, and resistance bands — beyond the standard minibar.</p>
+        </div>
+        <div class="room-item">
+          <div class="room-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          </div>
+          <h4>Nightstand Read</h4>
+          <p>A curated history book — civilizational narratives and exploration, matched to your "Fall of the Aztecs" curiosity.</p>
+        </div>
+        <div class="room-item">
+          <div class="room-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </div>
+          <h4>Morning Ritual</h4>
+          <p>Bici Coffee is steps away — locally sourced beans and fresh pastries. Your concierge has the hours and route ready.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DINING -->
-  <section class="section section-dark">
+  <!-- SPOTIFY PLAYLISTS -->
+  <section class="section playlist-section">
     <div class="container">
-      <span class="section-label">Dining &amp; Beverage</span>
-      <h2>Your <em>Table</em> Awaits</h2>
-
-      <div class="dining-grid">
-        <div class="dining-card">
-          <div class="dining-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/1a9ad6fa-f895-4efd-addd-ace8d7d99bc1/RWSHR_MADERARESTAURANT_SPACE')"></div>
-          <div class="dining-info">
-            <h3>Madera Restaurant</h3>
-            <p>Terrace table reserved, mountain-view side. Farm-to-table Northern California cuisine with the same attention to sourcing you bring to finding artists nobody's heard of yet. Start with the seasonal tasting menu &mdash; it rewards the kind of patience that builds 90 playlists.</p>
-          </div>
-        </div>
-
-        <div class="dining-card">
-          <div class="dining-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/3cd54a3e-7258-49d3-8481-0e4465a76fdb/RWSHR_FoodandBeverage_BiciCoffee?io=transform:crop,height:900,width:1600,path:square&focuspoint=1,0.62')"></div>
-          <div class="dining-info">
-            <h3>Bici Coffee</h3>
-            <p>Pre-training fuel. Thoughtfully sourced beans, hyper-seasonal pastries, and the kind of craft that would earn its own playlist if coffee had a BPM. We know you're up early.</p>
-          </div>
-        </div>
-
-        <div class="dining-card">
-          <div class="dining-img" style="background-image: url('https://picasso.rosewoodhotelgroup.com/transform/be80df39-babb-4698-b3e4-91750959e9b9/RWSHR_3-0_Brand-com_Assets_FACILITIES_MADERABAR')"></div>
-          <div class="dining-info">
-            <h3>Madera Bar &mdash; Your Cocktail</h3>
-            <p>Our bartender is preparing a bespoke seasonal cocktail &mdash; chosen with the same intentionality you bring to naming a playlist "B&aelig;sic Vibes" with a deliberate &aelig;. Ask for "The Curator."</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WELLNESS -->
-  <section class="section section-light">
-    <div class="container">
-      <span class="section-label">Recovery &amp; Wellness</span>
-      <h2>Train. Recover. <em>Restore.</em></h2>
-      <p class="section-desc">We framed this as recovery work, not pampering &mdash; because language matters when you've built a discipline around the mat.</p>
-
-      <div class="wellness-grid">
-        <div class="wellness-item">
-          <div class="wellness-icon">🥊</div>
-          <h3>Movement Studio</h3>
-          <p>Mat space, bodyweight training, and stretching zones at Asaya Spa. Your practice doesn't pause for travel &mdash; and neither does your access to proper training space.</p>
-        </div>
-        <div class="wellness-item">
-          <div class="wellness-icon">💆</div>
-          <h3>Deep Tissue Recovery</h3>
-          <p>Sports-focused massage at Asaya Spa, pre-scheduled. Not a spa day &mdash; recovery work. The same way "Bedtime Stories" isn't entertainment, it's a ritual.</p>
-        </div>
-        <div class="wellness-item">
-          <div class="wellness-icon">🏊</div>
-          <h3>Pool &amp; Terrace</h3>
-          <p>Post-session cooldown with Santa Cruz Mountain views. Queue up "Space Vibes" on the terrace speaker and let the last light do its thing.</p>
-        </div>
-        <div class="wellness-item">
-          <div class="wellness-icon">🧘</div>
-          <h3>In-Room Recovery Kit</h3>
-          <p>Foam roller, resistance band, electrolyte water, high-protein snacks. Standard minibar replaced with what you'd actually reach for after training.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- IN-ROOM -->
-  <section class="section section-accent">
-    <div class="container">
-      <span class="section-label">Your Room</span>
-      <h2>Set to Your <em>Frequency</em></h2>
-
-      <div class="room-details">
-        <div class="room-item">
-          <div class="room-label">🔊 Arrival Soundtrack</div>
-          <div class="room-value">Earthbound, Ookean, and Levity already playing on the in-room Sonos as you walk in. "Space Vibes" energy &mdash; warm pads, soft sub-bass, room to breathe.</div>
-        </div>
-        <div class="room-item">
-          <div class="room-label">🌙 Turndown Music</div>
-          <div class="room-value">Switches to a low ambient narrative soundscape at turndown &mdash; matching the "Bedtime Stories" vibe. Misted Minds and Unconscious Mind territory. Lights dim, fireplace lit.</div>
-        </div>
-        <div class="room-item">
-          <div class="room-label">📚 Nightstand</div>
-          <div class="room-value">A curated history book on ancient civilizations &mdash; connecting your "Fall of the Aztecs" curiosity to Madera's own Western exploration spirit. Not a generic coffee table book. A real read.</div>
-        </div>
-        <div class="room-item">
-          <div class="room-label">🔥 Fireplace &amp; Terrace</div>
-          <div class="room-value">Your suite's private terrace faces the Santa Cruz Mountains. Fireplace set for evening listening sessions. This is where "Dubby Dub Dub" was meant to be heard &mdash; deep bass, open sky, warm air.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONCIERGE -->
-  <section class="section section-light" style="text-align: center;">
-    <div class="container">
-      <span class="section-label">At Your Service</span>
-      <h2>Your <em>Concierge</em> Team</h2>
-      <p class="section-desc" style="margin-left: auto; margin-right: auto;">From a 5am cycling route to a midnight playlist swap to a post-training ice bath &mdash; whatever you need, whenever you need it.</p>
-      <div class="concierge-buttons">
-        <a href="tel:+16503614800" class="cta-btn cta-primary">Call Concierge</a>
-        <a href="#" class="cta-btn cta-secondary">Send a Message</a>
-        <a href="#" class="cta-btn cta-secondary">Book an Experience</a>
+      <p class="section-eyebrow">Your Sound, Your Stay</p>
+      <h2 class="section-title">Playlists We Loved</h2>
+      <p class="section-desc">We explored your 90 public playlists. Here are the ones that shaped your stay's sonic design.</p>
+      <div class="playlist-grid">
+        <a href="https://open.spotify.com/playlist/4heyQFUUFRQOgg01qIQ0Dx" target="_blank" class="playlist-card">
+          <div class="playlist-emoji">🔊</div>
+          <h4>Dubby Dub Dub</h4>
+          <p>Deep dub basslines — your arrival vibe</p>
+        </a>
+        <a href="https://open.spotify.com/playlist/1Ff6s1zzB4NwwDaAmLRRc3" target="_blank" class="playlist-card">
+          <div class="playlist-emoji">🏴‍☠️</div>
+          <h4>Pirate EDM</h4>
+          <p>High-energy bass — Madera Bar energy</p>
+        </a>
+        <a href="https://open.spotify.com/playlist/2jJpLvlzBAmn1iheE31Ola" target="_blank" class="playlist-card">
+          <div class="playlist-emoji">👨‍🚀</div>
+          <h4>Space Vibes</h4>
+          <p>Ambient unwinding — your in-room soundtrack</p>
+        </a>
+        <a href="https://open.spotify.com/playlist/4E3CXzHM0poXvaTC0No2m8" target="_blank" class="playlist-card">
+          <div class="playlist-emoji">🥁</div>
+          <h4>Mid Temp Drum & Bass</h4>
+          <p>Genre-specific curation — sophisticated taste</p>
+        </a>
+        <a href="https://open.spotify.com/playlist/4C3fMFXisf5eJg5QFGkjC3" target="_blank" class="playlist-card">
+          <div class="playlist-emoji">🤠</div>
+          <h4>Country-ish</h4>
+          <p>Genre-curious — the "-ish" says it all</p>
+        </a>
+        <a href="https://open.spotify.com/playlist/0YZl1TVfB3lpSvHKij2wZh" target="_blank" class="playlist-card">
+          <div class="playlist-emoji">⚡</div>
+          <h4>INZO</h4>
+          <p>Fan-level devotion — emotional progressive house</p>
+        </a>
       </div>
     </div>
   </section>
@@ -269,104 +224,21 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-brand">
-        <div class="rosewood-mark">ROSEWOOD</div>
-        <div class="rosewood-sub">SAND HILL</div>
-      </div>
-      <p class="footer-text">2825 Sand Hill Road &middot; Menlo Park, California 94025</p>
-      <p class="footer-tagline">Recognition without surveillance.<br>The difference between luxury amenities and luxury intelligence.</p>
-      <p class="footer-powered">Personalized by Rosewood AI Concierge &middot; Powered by Ox</p>
+      <div class="footer-monogram">R</div>
+      <p class="footer-name">Rosewood Sand Hill</p>
+      <p class="footer-address">2825 Sand Hill Road, Menlo Park, California 94025</p>
+      <p class="footer-tagline">A sense of place. A sense of you.</p>
+      <p class="footer-note">This welcome experience was personally generated for Michael Gahan using AI-powered guest intelligence.</p>
     </div>
   </footer>
 
   <script>
-    // ---- AUDIO PLAYER ----
-    const audio = document.getElementById('welcomeTrack');
-    const playBtn = document.getElementById('playBtn');
-    const playIcon = document.getElementById('playIcon');
-    const pauseIcon = document.getElementById('pauseIcon');
-    const progressFill = document.getElementById('progressFill');
-    const progressThumb = document.getElementById('progressThumb');
-    const progressTrack = document.getElementById('progressTrack');
-    const timeCurrent = document.getElementById('timeCurrent');
-    const timeTotal = document.getElementById('timeTotal');
-    const eqContainer = document.getElementById('eqContainer');
-
-    // Generate equalizer bars
-    for (let i = 0; i < 40; i++) {
-      const bar = document.createElement('div');
-      bar.className = 'eq-bar';
-      bar.style.animationDelay = (Math.random() * 1.5).toFixed(2) + 's';
-      bar.style.height = (Math.random() * 60 + 10) + '%';
-      eqContainer.appendChild(bar);
-    }
-
-    function formatTime(s) {
-      const m = Math.floor(s / 60);
-      const sec = Math.floor(s % 60);
-      return m + ':' + (sec < 10 ? '0' : '') + sec;
-    }
-
-    playBtn.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
+    // Smooth scroll indicator
+    document.querySelector('.scroll-indicator')?.addEventListener('click', () => {
+      document.querySelector('.song-section')?.scrollIntoView({ behavior: 'smooth' });
     });
 
-    audio.addEventListener('play', () => {
-      playIcon.classList.add('hidden');
-      pauseIcon.classList.remove('hidden');
-      playBtn.classList.add('playing');
-      eqContainer.classList.add('active');
-    });
-
-    audio.addEventListener('pause', () => {
-      playIcon.classList.remove('hidden');
-      pauseIcon.classList.add('hidden');
-      playBtn.classList.remove('playing');
-      eqContainer.classList.remove('active');
-    });
-
-    audio.addEventListener('ended', () => {
-      playIcon.classList.remove('hidden');
-      pauseIcon.classList.add('hidden');
-      playBtn.classList.remove('playing');
-      eqContainer.classList.remove('active');
-      progressFill.style.width = '0%';
-      progressThumb.style.left = '0%';
-    });
-
-    audio.addEventListener('loadedmetadata', () => {
-      timeTotal.textContent = formatTime(audio.duration);
-    });
-
-    audio.addEventListener('timeupdate', () => {
-      if (audio.duration) {
-        const pct = (audio.currentTime / audio.duration) * 100;
-        progressFill.style.width = pct + '%';
-        progressThumb.style.left = pct + '%';
-        timeCurrent.textContent = formatTime(audio.currentTime);
-      }
-    });
-
-    // Click to seek
-    progressTrack.addEventListener('click', (e) => {
-      const rect = progressTrack.getBoundingClientRect();
-      const pct = (e.clientX - rect.left) / rect.width;
-      audio.currentTime = pct * audio.duration;
-    });
-
-    // ---- SMOOTH SCROLL ----
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-
-    // ---- FADE IN ON SCROLL ----
+    // Intersection Observer for fade-in animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -375,10 +247,10 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.card, .dining-card, .wellness-item, .room-item, .player-wrapper, .note-card').forEach(el => {
-      el.classList.add('fade-in');
-      observer.observe(el);
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
     });
   </script>
+
 </body>
 </html>
