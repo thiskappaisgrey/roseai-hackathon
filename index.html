@@ -14,10 +14,8 @@
 <style>
   /* ============================================
      ROSEWOOD SAND HILL — Responsive Guest Page
-     Mobile-first · Tablet · Desktop
      ============================================ */
 
-  /* ---------- Reset & base ---------- */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
@@ -31,7 +29,6 @@
   img { display: block; max-width: 100%; height: auto; }
   a { color: inherit; text-decoration: none; }
 
-  /* ---------- App container — responsive ---------- */
   .app {
     width: 100%;
     max-width: 1280px;
@@ -43,14 +40,9 @@
     padding-bottom: env(safe-area-inset-bottom);
   }
 
-  /* ---------- Constrained inner wrapper ---------- */
-  .inner {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
+  .inner { max-width: 800px; margin: 0 auto; padding: 0 20px; }
 
-  /* ---------- Header / Hero ---------- */
+  /* ---------- Hero ---------- */
   .hero {
     position: relative;
     height: 70vh;
@@ -66,7 +58,6 @@
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 
-  /* ---------- Hotel logo (wordmark) ---------- */
   .logo {
     text-align: center;
     font-family: 'Cormorant Garamond', serif;
@@ -80,535 +71,397 @@
     width: max-content;
     margin: 0 auto;
   }
-  .logo small {
-    display: block;
-    font-size: 9px;
-    letter-spacing: 0.4em;
-    margin-top: 2px;
-    opacity: 0.85;
-  }
+  .logo small { display: block; font-size: 9px; letter-spacing: 0.4em; margin-top: 2px; opacity: 0.85; }
 
-  .hero-copy .greeting {
-    font-size: 11px;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    opacity: 0.9;
-  }
-  .hero-copy h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 400;
-    font-size: 44px;
-    line-height: 1.05;
-    margin-bottom: 10px;
-  }
+  .hero-copy .greeting { font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 14px; opacity: 0.9; }
+  .hero-copy h1 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.05; margin-bottom: 10px; }
   .hero-copy h1 em { font-style: italic; color: #e8d9b8; }
   .hero-copy p { font-size: 14px; opacity: 0.9; max-width: 600px; }
-  .hero-copy .stay-meta {
-    margin-top: 16px;
-    display: flex;
-    gap: 14px;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    opacity: 0.9;
-  }
-  .hero-copy .stay-meta span::before { content: "·"; margin-right: 14px; opacity: 0.5; }
+  .hero-copy .stay-meta { margin-top: 16px; display: flex; gap: 14px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.9; }
+  .hero-copy .stay-meta span::before { content: "\00b7"; margin-right: 14px; opacity: 0.5; }
   .hero-copy .stay-meta span:first-child::before { content: ""; margin: 0; }
 
-  /* ---------- Section base ---------- */
+  /* ---------- Sections ---------- */
   section { padding: 36px 20px; }
-  .section-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: #a8946f;
-    margin-bottom: 8px;
+  .section-eyebrow { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: #a8946f; margin-bottom: 8px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1.15; margin-bottom: 6px; }
+  .section-intro { font-size: 14px; color: #6b6357; margin-bottom: 22px; }
+
+  /* ---------- Soundtrack Section ---------- */
+  .soundtrack-wrap {
+    background: linear-gradient(160deg, #1a1612 0%, #262220 50%, #1a1a1a 100%);
+    color: #f6f3ee;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
   }
-  .section-title {
+  .soundtrack-wrap::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 140%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 40%, rgba(201,169,110,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .soundtrack-wrap .section-eyebrow { color: #c9a96b; position: relative; }
+  .soundtrack-wrap .section-title { color: #fff; position: relative; }
+  .soundtrack-wrap .section-intro { color: rgba(246,243,238,0.6); position: relative; }
+
+  .player-container {
+    position: relative;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .player-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,169,107,0.15);
+    border-radius: 20px;
+    padding: 24px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* Waveform visualizer */
+  .player-viz {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2px;
+    height: 48px;
+    margin-bottom: 20px;
+    padding: 0 4px;
+  }
+  .viz-bar {
+    flex: 1;
+    min-width: 2px;
+    max-width: 5px;
+    background: linear-gradient(to top, rgba(201,169,110,0.25), rgba(201,169,110,0.6));
+    border-radius: 2px 2px 0 0;
+    transition: height 0.15s ease;
+  }
+  .player-card.playing .viz-bar {
+    animation: vizPulse 1.1s ease-in-out infinite alternate;
+  }
+  @keyframes vizPulse {
+    0%   { height: 12%; opacity: 0.4; }
+    25%  { height: 65%; opacity: 0.7; }
+    50%  { height: 25%; opacity: 0.5; }
+    75%  { height: 80%; opacity: 0.8; }
+    100% { height: 18%; opacity: 0.4; }
+  }
+
+  /* Track info row */
+  .player-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .play-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(201,169,110,0.12);
+    color: #c9a96b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  .play-btn::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,169,110,0.2);
+    transition: all 0.3s ease;
+  }
+  .play-btn:hover { background: rgba(201,169,110,0.2); transform: scale(1.05); }
+  .play-btn:hover::after { border-color: rgba(201,169,110,0.4); }
+  .play-btn.active::after { animation: ringGlow 2s ease-in-out infinite; }
+  @keyframes ringGlow {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50%      { transform: scale(1.1); opacity: 0.2; }
+  }
+  .play-btn svg { width: 22px; height: 22px; fill: currentColor; }
+  .play-btn .icon-pause { display: none; }
+  .play-btn.active .icon-play { display: none; }
+  .play-btn.active .icon-pause { display: block; }
+
+  .track-details { flex: 1; min-width: 0; }
+  .track-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 30px;
-    line-height: 1.15;
-    margin-bottom: 6px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #f0e6d0;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  .section-intro {
-    font-size: 14px;
-    color: #6b6357;
-    margin-bottom: 22px;
+  .track-subtitle {
+    font-size: 12px;
+    color: rgba(246,243,238,0.55);
+    margin-bottom: 2px;
+  }
+  .track-genre {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #c9a96b;
+    opacity: 0.7;
+  }
+
+  /* Progress */
+  .player-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .time-label {
+    font-size: 11px;
+    color: rgba(246,243,238,0.4);
+    font-variant-numeric: tabular-nums;
+    min-width: 32px;
+    user-select: none;
+  }
+  .time-label:last-child { text-align: right; }
+  .progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    transition: height 0.15s ease;
+  }
+  .progress-bar:hover { height: 6px; }
+  .progress-fill {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 0%;
+    background: linear-gradient(90deg, #c9a96b, #dfc9a0);
+    border-radius: 4px;
+    transition: width 0.1s linear;
+  }
+  .progress-knob {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: 14px;
+    height: 14px;
+    background: #dfc9a0;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.15s ease, left 0.1s linear;
+    box-shadow: 0 0 10px rgba(201,169,110,0.4);
+  }
+  .progress-bar:hover .progress-knob { transform: translate(-50%, -50%) scale(1); }
+
+  /* Inspiration tags */
+  .player-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+  .ptag {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .ptag-playlist {
+    background: rgba(201,169,110,0.1);
+    color: #dfc9a0;
+    border: 1px solid rgba(201,169,110,0.18);
+  }
+  .ptag-artist {
+    background: rgba(255,255,255,0.04);
+    color: rgba(246,243,238,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
   }
 
   /* ---------- Picked for you ---------- */
-  .picked-wrap {
-    background: #1a1a1a;
-    color: #f6f3ee;
-    margin: 0;
-    padding: 36px 0;
-  }
+  .picked-wrap { background: #1a1a1a; color: #f6f3ee; margin: 0; padding: 36px 0; }
   .picked-wrap .section-eyebrow { color: #c9a96b; padding: 0 20px; }
   .picked-wrap .section-title { padding: 0 20px; color: #fff; }
   .picked-wrap .section-intro { color: rgba(246,243,238,0.7); padding: 0 20px; }
 
-  .picked-scroller {
-    display: flex;
-    gap: 14px;
-    overflow-x: auto;
-    padding: 6px 20px 16px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
+  .picked-scroller { display: flex; gap: 14px; overflow-x: auto; padding: 6px 20px 16px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .picked-scroller::-webkit-scrollbar { display: none; }
-  .picked-card {
-    flex: 0 0 78%;
-    scroll-snap-align: start;
-    background: #262320;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    display: flex;
-    flex-direction: column;
-  }
-  .picked-card img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-  }
+  .picked-card { flex: 0 0 78%; scroll-snap-align: start; background: #262320; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: flex; flex-direction: column; }
+  .picked-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
   .picked-card .body { padding: 16px 18px 20px; }
-  .picked-card .tag {
-    display: inline-block;
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: #c9a96b;
-    margin-bottom: 8px;
-  }
-  .picked-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 500;
-    font-size: 22px;
-    margin-bottom: 6px;
-    color: #fff;
-  }
+  .picked-card .tag { display: inline-block; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a96b; margin-bottom: 8px; }
+  .picked-card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 22px; margin-bottom: 6px; color: #fff; }
   .picked-card p { font-size: 13px; color: rgba(246,243,238,0.75); margin-bottom: 14px; }
-  .picked-card .why {
-    font-size: 11px;
-    color: #c9a96b;
-    border-top: 1px solid rgba(201,169,107,0.3);
-    padding-top: 10px;
-    font-style: italic;
-  }
-  .picked-card .btn {
-    margin-top: 14px;
-    display: inline-block;
-    background: #c9a96b;
-    color: #1a1a1a;
-    padding: 10px 20px;
-    border-radius: 999px;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: background 0.2s ease;
-  }
+  .picked-card .why { font-size: 11px; color: #c9a96b; border-top: 1px solid rgba(201,169,107,0.3); padding-top: 10px; font-style: italic; }
+  .picked-card .btn { margin-top: 14px; display: inline-block; background: #c9a96b; color: #1a1a1a; padding: 10px 20px; border-radius: 999px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; transition: background 0.2s ease; }
   .picked-card .btn:hover { background: #d4b87a; }
 
   /* ---------- Amenities ---------- */
-  .amenities {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .amenity {
-    background: #fff;
-    border-radius: 14px;
-    padding: 18px 14px;
-    text-align: left;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-  }
-  .amenity .ico {
-    width: 32px; height: 32px;
-    border-radius: 999px;
-    background: #f1ebe1;
-    display: grid; place-items: center;
-    margin-bottom: 12px;
-    font-size: 16px;
-  }
+  .amenities { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .amenity { background: #fff; border-radius: 14px; padding: 18px 14px; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+  .amenity .ico { width: 32px; height: 32px; border-radius: 999px; background: #f1ebe1; display: grid; place-items: center; margin-bottom: 12px; font-size: 16px; }
   .amenity h4 { font-family: 'Cormorant Garamond', serif; font-size: 17px; margin-bottom: 2px; }
   .amenity p { font-size: 12px; color: #8a7e6e; }
 
   /* ---------- Experiences ---------- */
   .exp-list { display: flex; flex-direction: column; gap: 14px; }
-  .exp-card {
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .exp-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 28px rgba(0,0,0,0.10);
-  }
+  .exp-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,0.06); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .exp-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.10); }
   .exp-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
   .exp-card .body { padding: 16px 18px 20px; }
   .exp-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; margin-bottom: 6px; }
   .exp-card p { font-size: 13px; color: #6b6357; }
-  .exp-card .meta {
-    margin-top: 10px;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #a8946f;
-  }
+  .exp-card .meta { margin-top: 10px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #a8946f; }
 
-  /* ---------- Explore Menlo Park ---------- */
+  /* ---------- Explore ---------- */
   .explore-wrap { background: #efeae1; }
-  .explore-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .explore-tile {
-    position: relative;
-    aspect-ratio: 3/4;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease;
-  }
+  .explore-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .explore-tile { position: relative; aspect-ratio: 3/4; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease; }
   .explore-tile:hover { transform: scale(1.02); }
   .explore-tile img { width: 100%; height: 100%; object-fit: cover; }
-  .explore-tile .overlay {
-    position: absolute; inset: auto 0 0 0;
-    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.78));
-    color: #fff;
-    padding: 14px;
-  }
-  .explore-tile .overlay span {
-    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.85;
-  }
-  .explore-tile .overlay h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 500;
-    font-size: 18px;
-    margin-top: 4px;
-  }
+  .explore-tile .overlay { position: absolute; inset: auto 0 0 0; background: linear-gradient(180deg, transparent, rgba(0,0,0,0.78)); color: #fff; padding: 14px; }
+  .explore-tile .overlay span { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.85; }
+  .explore-tile .overlay h4 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 18px; margin-top: 4px; }
   .explore-tile .overlay small { font-size: 11px; opacity: 0.8; }
 
   /* ---------- FAQ ---------- */
   .faq-list { display: flex; flex-direction: column; gap: 8px; }
-  .faq {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(0,0,0,0.04);
-  }
-  .faq summary {
-    padding: 16px 18px;
-    cursor: pointer;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 500;
-  }
+  .faq { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid rgba(0,0,0,0.04); }
+  .faq summary { padding: 16px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 500; }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after {
-    content: "+";
-    font-size: 22px;
-    font-weight: 300;
-    color: #a8946f;
-    transition: transform 0.2s ease;
-    flex-shrink: 0;
-    margin-left: 16px;
-  }
-  .faq[open] summary::after { content: "−"; }
+  .faq summary::after { content: "+"; font-size: 22px; font-weight: 300; color: #a8946f; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 16px; }
+  .faq[open] summary::after { content: "\2212"; }
   .faq p { padding: 0 18px 18px; font-size: 13px; color: #6b6357; }
 
   /* ---------- Concierge CTA ---------- */
-  .concierge-cta {
-    background: #1a1a1a;
-    color: #f6f3ee;
-    margin: 0 20px 24px;
-    border-radius: 18px;
-    padding: 28px 22px;
-    text-align: center;
-  }
+  .concierge-cta { background: #1a1a1a; color: #f6f3ee; margin: 0 20px 24px; border-radius: 18px; padding: 28px 22px; text-align: center; }
   .concierge-cta h2 { font-family: 'Cormorant Garamond', serif; font-size: 26px; margin-bottom: 6px; }
   .concierge-cta p { font-size: 13px; opacity: 0.78; margin-bottom: 18px; }
-  .btn-gold {
-    display: inline-block;
-    background: #c9a96b;
-    color: #1a1a1a;
-    padding: 14px 28px;
-    border-radius: 999px;
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: background 0.2s ease;
-  }
+  .btn-gold { display: inline-block; background: #c9a96b; color: #1a1a1a; padding: 14px 28px; border-radius: 999px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; transition: background 0.2s ease; }
   .btn-gold:hover { background: #d4b87a; }
 
-  footer {
-    text-align: center;
-    padding: 20px;
-    padding-bottom: calc(20px + 80px);
-    font-size: 11px;
-    color: #8a7e6e;
-  }
+  footer { text-align: center; padding: 20px; padding-bottom: calc(20px + 80px); font-size: 11px; color: #8a7e6e; }
 
-  /* ---------- Floating Chat FAB ---------- */
-  .chat-fab {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 9999;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #3d8b8b;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow:
-      0 4px 14px rgba(0,0,0,0.25),
-      0 0 0 0 rgba(61,139,139,0.4);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    cursor: pointer;
-    text-decoration: none;
-    border: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .chat-fab:hover {
-    transform: scale(1.08);
-    background: #358080;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-  }
-  .chat-fab:active {
-    transform: scale(0.95);
-  }
-  .chat-fab svg {
-    width: 26px;
-    height: 26px;
-    fill: currentColor;
-  }
-
-  /* Tooltip label */
-  .chat-fab .fab-label {
-    position: absolute;
-    right: calc(100% + 12px);
-    top: 50%;
-    transform: translateY(-50%);
-    background: #1a1a1a;
-    color: #f6f3ee;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    padding: 8px 14px;
-    border-radius: 10px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    transform: translateY(-50%) translateX(6px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-  .chat-fab .fab-label::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: -5px;
-    transform: translateY(-50%);
-    border: 5px solid transparent;
-    border-left-color: #1a1a1a;
-  }
-  .chat-fab:hover .fab-label {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
-  }
-
-  /* Pulse animation on load */
-  @keyframes fabPulse {
-    0%   { box-shadow: 0 4px 14px rgba(0,0,0,0.25), 0 0 0 0 rgba(61,139,139,0.5); }
-    70%  { box-shadow: 0 4px 14px rgba(0,0,0,0.25), 0 0 0 14px rgba(61,139,139,0); }
-    100% { box-shadow: 0 4px 14px rgba(0,0,0,0.25), 0 0 0 0 rgba(61,139,139,0); }
-  }
+  /* ---------- Chat FAB ---------- */
+  .chat-fab { position: fixed; bottom: 24px; right: 24px; z-index: 9999; width: 60px; height: 60px; border-radius: 50%; background: #3d8b8b; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.25), 0 0 0 0 rgba(61,139,139,0.4); transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; cursor: pointer; text-decoration: none; border: none; -webkit-tap-highlight-color: transparent; }
+  .chat-fab:hover { transform: scale(1.08); background: #358080; box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+  .chat-fab:active { transform: scale(0.95); }
+  .chat-fab svg { width: 26px; height: 26px; fill: currentColor; }
+  .chat-fab .fab-label { position: absolute; right: calc(100% + 12px); top: 50%; transform: translateY(-50%); background: #1a1a1a; color: #f6f3ee; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; padding: 8px 14px; border-radius: 10px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease; transform: translateY(-50%) translateX(6px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .chat-fab .fab-label::after { content: ""; position: absolute; top: 50%; right: -5px; transform: translateY(-50%); border: 5px solid transparent; border-left-color: #1a1a1a; }
+  .chat-fab:hover .fab-label { opacity: 1; transform: translateY(-50%) translateX(0); }
+  @keyframes fabPulse { 0% { box-shadow: 0 4px 14px rgba(0,0,0,0.25), 0 0 0 0 rgba(61,139,139,0.5); } 70% { box-shadow: 0 4px 14px rgba(0,0,0,0.25), 0 0 0 14px rgba(61,139,139,0); } 100% { box-shadow: 0 4px 14px rgba(0,0,0,0.25), 0 0 0 0 rgba(61,139,139,0); } }
   .chat-fab { animation: fabPulse 2s ease-out 1.5s 3; }
+  @supports (padding-bottom: env(safe-area-inset-bottom)) { .chat-fab { bottom: calc(24px + env(safe-area-inset-bottom)); } }
 
-  /* Safe area for mobile bottom */
-  @supports (padding-bottom: env(safe-area-inset-bottom)) {
-    .chat-fab { bottom: calc(24px + env(safe-area-inset-bottom)); }
-  }
-
-  /* ============================================
-     TABLET — 600px+
-     ============================================ */
+  /* ============================================ TABLET ============================================ */
   @media (min-width: 600px) {
-    .hero {
-      height: 65vh;
-      min-height: 520px;
-      padding: 36px 40px 48px;
-    }
-
+    .hero { height: 65vh; min-height: 520px; padding: 36px 40px 48px; }
     .logo { font-size: 16px; }
     .logo small { font-size: 10px; }
-
     .hero-copy h1 { font-size: 56px; }
     .hero-copy p { font-size: 15px; }
     .hero-copy .greeting { font-size: 12px; }
-
     section { padding: 48px 32px; }
-
     .section-title { font-size: 34px; }
 
+    .soundtrack-wrap { padding: 48px 32px; }
+    .player-container { max-width: 580px; }
+    .player-card { padding: 28px; }
+
     .picked-wrap { padding: 48px 0; }
-    .picked-wrap .section-eyebrow,
-    .picked-wrap .section-title,
-    .picked-wrap .section-intro { padding: 0 32px; }
+    .picked-wrap .section-eyebrow, .picked-wrap .section-title, .picked-wrap .section-intro { padding: 0 32px; }
     .picked-scroller { padding: 6px 32px 20px; gap: 18px; }
     .picked-card { flex: 0 0 55%; }
-
-    .amenities {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .exp-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
+    .amenities { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .exp-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     .explore-grid { gap: 16px; }
     .explore-tile .overlay h4 { font-size: 20px; }
-
     .faq-list { max-width: 700px; }
-
-    .concierge-cta {
-      margin: 0 32px 32px;
-      padding: 36px 32px;
-    }
+    .concierge-cta { margin: 0 32px 32px; padding: 36px 32px; }
     .concierge-cta h2 { font-size: 30px; }
-
     .chat-fab { width: 64px; height: 64px; bottom: 28px; right: 28px; }
     .chat-fab svg { width: 28px; height: 28px; }
   }
 
-  /* ============================================
-     DESKTOP — 960px+
-     ============================================ */
+  /* ============================================ DESKTOP ============================================ */
   @media (min-width: 960px) {
-    .hero {
-      height: 75vh;
-      min-height: 580px;
-      padding: 48px 64px 60px;
-    }
-
+    .hero { height: 75vh; min-height: 580px; padding: 48px 64px 60px; }
     .logo { font-size: 18px; }
     .logo small { font-size: 11px; }
-
     .hero-copy h1 { font-size: 68px; }
     .hero-copy p { font-size: 16px; max-width: 520px; }
     .hero-copy .greeting { font-size: 13px; letter-spacing: 0.38em; }
     .hero-copy .stay-meta { font-size: 12px; gap: 20px; }
-
     section { padding: 64px 48px; }
-
     .section-title { font-size: 38px; margin-bottom: 8px; }
     .section-intro { font-size: 15px; margin-bottom: 32px; }
 
+    .soundtrack-wrap { padding: 64px 48px; text-align: center; }
+    .soundtrack-wrap .section-intro { margin-left: auto; margin-right: auto; max-width: 520px; }
+    .player-container { max-width: 620px; }
+    .player-card { padding: 32px; }
+    .player-viz { height: 56px; }
+    .track-title { font-size: 22px; }
+
     .picked-wrap { padding: 64px 0; }
-    .picked-wrap .section-eyebrow,
-    .picked-wrap .section-title,
-    .picked-wrap .section-intro { padding: 0 48px; }
-    .picked-scroller {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding: 8px 48px 24px;
-      overflow-x: visible;
-      scroll-snap-type: none;
-    }
+    .picked-wrap .section-eyebrow, .picked-wrap .section-title, .picked-wrap .section-intro { padding: 0 48px; }
+    .picked-scroller { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 8px 48px 24px; overflow-x: visible; scroll-snap-type: none; }
     .picked-card { flex: none; }
     .picked-card h3 { font-size: 24px; }
-
-    .amenities {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
+    .amenities { grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .amenity { padding: 22px 18px; }
     .amenity h4 { font-size: 18px; }
-
     .exp-list { gap: 24px; }
     .exp-card h4 { font-size: 26px; }
     .exp-card p { font-size: 14px; }
     .exp-card .body { padding: 20px 24px 24px; }
-
-    .explore-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
+    .explore-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .explore-tile .overlay { padding: 18px; }
     .explore-tile .overlay h4 { font-size: 22px; }
-
     .faq-list { max-width: 780px; margin: 0 auto; }
     .faq summary { font-size: 15px; padding: 18px 22px; }
     .faq p { font-size: 14px; padding: 0 22px 20px; }
-
-    .concierge-cta {
-      max-width: 680px;
-      margin: 0 auto 48px;
-      padding: 48px 40px;
-      border-radius: 24px;
-    }
+    .concierge-cta { max-width: 680px; margin: 0 auto 48px; padding: 48px 40px; border-radius: 24px; }
     .concierge-cta h2 { font-size: 34px; }
     .concierge-cta p { font-size: 14px; }
-
     footer { padding: 28px; padding-bottom: 28px; font-size: 12px; }
-
     .chat-fab { width: 68px; height: 68px; bottom: 32px; right: 32px; }
     .chat-fab svg { width: 30px; height: 30px; }
   }
 
-  /* ============================================
-     WIDE DESKTOP — 1200px+
-     ============================================ */
+  /* ============================================ WIDE ============================================ */
   @media (min-width: 1200px) {
-    .hero {
-      height: 80vh;
-      min-height: 640px;
-      padding: 56px 80px 72px;
-    }
-
+    .hero { height: 80vh; min-height: 640px; padding: 56px 80px 72px; }
     .hero-copy h1 { font-size: 78px; }
     .hero-copy p { font-size: 17px; max-width: 560px; }
-
     section { padding: 72px 64px; }
-
     .section-title { font-size: 42px; }
-
+    .soundtrack-wrap { padding: 72px 64px; }
     .picked-wrap { padding: 72px 0; }
-    .picked-wrap .section-eyebrow,
-    .picked-wrap .section-title,
-    .picked-wrap .section-intro { padding: 0 64px; }
-    .picked-scroller {
-      padding: 8px 64px 28px;
-      gap: 24px;
-    }
-
+    .picked-wrap .section-eyebrow, .picked-wrap .section-title, .picked-wrap .section-intro { padding: 0 64px; }
+    .picked-scroller { padding: 8px 64px 28px; gap: 24px; }
     .amenities { gap: 18px; }
     .amenity { padding: 24px 20px; }
-
     .explore-grid { gap: 20px; }
-
     .chat-fab { bottom: 36px; right: 36px; }
   }
 
-  /* ---------- Accessibility ---------- */
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; scroll-behavior: auto !important; animation: none !important; }
   }
@@ -618,13 +471,9 @@
 
 <div class="app">
 
-  <!-- ====== HERO + LOGO ====== -->
+  <!-- ====== HERO ====== -->
   <header class="hero">
-    <div class="logo">
-      Rosewood
-      <small>Sand Hill</small>
-    </div>
-
+    <div class="logo">Rosewood<small>Sand Hill</small></div>
     <div class="hero-copy">
       <div class="greeting">Welcome Back</div>
       <h1>Michael, <em>congratulations</em></h1>
@@ -637,15 +486,67 @@
     </div>
   </header>
 
+  <!-- ====== YOUR ARRIVAL SOUNDTRACK ====== -->
+  <div class="soundtrack-wrap" id="soundtrack">
+    <div class="section-eyebrow">Your Arrival Soundtrack</div>
+    <h2 class="section-title">Composed for you</h2>
+    <p class="section-intro">Built from your listening DNA — the dub warmth of <em>Dubby Dub Dub</em>, the drift of <em>Space Vibes</em>, the rolling energy of <em>Mid Temp D&amp;B</em>.</p>
+
+    <div class="player-container">
+      <div class="player-card" id="playerCard">
+
+        <div class="player-viz" id="playerViz"></div>
+
+        <div class="player-info">
+          <button class="play-btn" id="playBtn" aria-label="Play">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+            <svg class="icon-pause" viewBox="0 0 24 24"><rect x="5" y="3" width="4" height="18" rx="1"/><rect x="15" y="3" width="4" height="18" rx="1"/></svg>
+          </button>
+          <div class="track-details">
+            <div class="track-title">Sand Hill Arrival</div>
+            <div class="track-subtitle">Composed for Michael Gahan</div>
+            <div class="track-genre">Ambient Melodic Bass · 85 BPM · AI-Composed</div>
+          </div>
+        </div>
+
+        <div class="player-progress">
+          <span class="time-label" id="timeCurrent">0:00</span>
+          <div class="progress-bar" id="progressBar">
+            <div class="progress-fill" id="progressFill"></div>
+            <div class="progress-knob" id="progressKnob"></div>
+          </div>
+          <span class="time-label" id="timeTotal">1:00</span>
+        </div>
+
+        <div class="player-tags">
+          <span class="ptag ptag-playlist">👨‍🚀 Space Vibes</span>
+          <span class="ptag ptag-playlist">🎵 Dubby Dub Dub</span>
+          <span class="ptag ptag-playlist">🥁 Mid Temp D&amp;B</span>
+          <span class="ptag ptag-playlist">🏴‍☠️ Pirate EDM</span>
+        </div>
+        <div class="player-tags" style="margin-top: 6px;">
+          <span class="ptag ptag-artist">sweetHz</span>
+          <span class="ptag ptag-artist">Zephyrical</span>
+          <span class="ptag ptag-artist">Earthbound</span>
+          <span class="ptag ptag-artist">Ookean</span>
+          <span class="ptag ptag-artist">Levity</span>
+          <span class="ptag ptag-artist">Tape B</span>
+        </div>
+
+      </div>
+    </div>
+
+    <audio id="audioTrack" preload="metadata">
+      <source src="https://ojlymzrznqyuzlcp.public.blob.vercel-storage.com/generated-music/toolu01L9f1jNkgjSVwY/1778974489895.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
   <!-- ====== PICKED FOR YOU ====== -->
   <div class="picked-wrap">
     <div class="section-eyebrow">Curated by Your Concierge</div>
     <h2 class="section-title">Picked for you</h2>
     <p class="section-intro">Hand-selected based on your stay — celebrate, slow down, savor.</p>
-
     <div class="picked-scroller">
-
-      <!-- 1. Pool cabana -->
       <article class="picked-card">
         <img src="https://picasso.rosewoodhotelgroup.com/transform/20b26ec6-dc9b-4fb3-bb5c-c9ef325f98c9/RWSHR_3-0_Brand-com_Assets_Facilities_Cabana_Pool_DayShot2" alt="Private cabana at Rosewood Sand Hill pool" />
         <div class="body">
@@ -656,8 +557,6 @@
           <a href="#concierge" class="btn">Reserve</a>
         </div>
       </article>
-
-      <!-- 2. Wine tasting -->
       <article class="picked-card">
         <img src="https://picasso.rosewoodhotelgroup.com/transform/e55ae8df-cbab-40ab-87fe-c293f132daa5/" alt="Ridge Vineyards rosé tasting" />
         <div class="body">
@@ -668,8 +567,6 @@
           <a href="#concierge" class="btn">Book Tasting</a>
         </div>
       </article>
-
-      <!-- 3. Anniversary dinner -->
       <article class="picked-card">
         <img src="https://picasso.rosewoodhotelgroup.com/transform/7fde4a17-5299-4fba-b036-f5e78fea2a15/RWSHR_3-0_Brand-com_Assets_Facilities_Food-Beverage_Madera" alt="Madera Restaurant interior" />
         <div class="body">
@@ -680,8 +577,6 @@
           <a href="#concierge" class="btn">Reserve Table</a>
         </div>
       </article>
-
-      <!-- 4. Cycling concierge -->
       <article class="picked-card">
         <img src="https://picasso.rosewoodhotelgroup.com/transform/d7cf0810-b946-41d5-b798-43078d0ce4a2/RWSHR_EXPERIENCES_CYCLING_BAYAREA" alt="Cycling Concierge guided ride" />
         <div class="body">
@@ -692,8 +587,6 @@
           <a href="#concierge" class="btn">Schedule Ride</a>
         </div>
       </article>
-
-      <!-- 5. Couples spa -->
       <article class="picked-card">
         <img src="https://picasso.rosewoodhotelgroup.com/transform/0be73f5e-e67c-423e-af13-3ffbd28461fd/RWSHR_3-0_Brand-com_Assets_FACILITIES_ASAYASPA_TREATMENTROOMS" alt="Asaya Spa couples treatment room" />
         <div class="body">
@@ -704,57 +597,23 @@
           <a href="#concierge" class="btn">Add to Stay</a>
         </div>
       </article>
-
     </div>
   </div>
 
-  <!-- ====== HOTEL AMENITIES ====== -->
+  <!-- ====== AMENITIES ====== -->
   <section id="amenities">
     <div class="section-eyebrow">On Property</div>
     <h2 class="section-title">Hotel amenities</h2>
     <p class="section-intro">Everything within steps of your suite.</p>
-
     <div class="amenities">
-      <div class="amenity">
-        <div class="ico">🏊</div>
-        <h4>Outdoor Pool</h4>
-        <p>Heated · 7A–10P</p>
-      </div>
-      <div class="amenity">
-        <div class="ico">🌿</div>
-        <h4>Asaya Spa</h4>
-        <p>Treatments · Sanctuary</p>
-      </div>
-      <div class="amenity">
-        <div class="ico">💪</div>
-        <h4>Fitness Center</h4>
-        <p>24 hrs · Peloton</p>
-      </div>
-      <div class="amenity">
-        <div class="ico">🧘</div>
-        <h4>Movement Studio</h4>
-        <p>Yoga · Pilates daily</p>
-      </div>
-      <div class="amenity">
-        <div class="ico">🍷</div>
-        <h4>Madera Bar</h4>
-        <p>Cocktails · 4P–Late</p>
-      </div>
-      <div class="amenity">
-        <div class="ico">☕</div>
-        <h4>Bici Coffee</h4>
-        <p>6:30A–4:30P daily</p>
-      </div>
-      <div class="amenity">
-        <div class="ico">🚲</div>
-        <h4>Blue Jay Bikes</h4>
-        <p>Complimentary loans</p>
-      </div>
-      <div class="amenity">
-        <div class="ico">🅿️</div>
-        <h4>Valet Parking</h4>
-        <p>Included with stay</p>
-      </div>
+      <div class="amenity"><div class="ico">🏊</div><h4>Outdoor Pool</h4><p>Heated · 7A–10P</p></div>
+      <div class="amenity"><div class="ico">🌿</div><h4>Asaya Spa</h4><p>Treatments · Sanctuary</p></div>
+      <div class="amenity"><div class="ico">💪</div><h4>Fitness Center</h4><p>24 hrs · Peloton</p></div>
+      <div class="amenity"><div class="ico">🧘</div><h4>Movement Studio</h4><p>Yoga · Pilates daily</p></div>
+      <div class="amenity"><div class="ico">🍷</div><h4>Madera Bar</h4><p>Cocktails · 4P–Late</p></div>
+      <div class="amenity"><div class="ico">☕</div><h4>Bici Coffee</h4><p>6:30A–4:30P daily</p></div>
+      <div class="amenity"><div class="ico">🚲</div><h4>Blue Jay Bikes</h4><p>Complimentary loans</p></div>
+      <div class="amenity"><div class="ico">🅿️</div><h4>Valet Parking</h4><p>Included with stay</p></div>
     </div>
   </section>
 
@@ -763,106 +622,26 @@
     <div class="section-eyebrow">Mark Your Stay</div>
     <h2 class="section-title">Hotel experiences</h2>
     <p class="section-intro">Curated programming during your visit.</p>
-
     <div class="exp-list">
-      <article class="exp-card">
-        <img src="https://picasso.rosewoodhotelgroup.com/transform/2d76d387-fc4b-4f60-9dcc-929626700a50/" alt="Friday Nights @ Madera" />
-        <div class="body">
-          <h4>Friday Nights @ Madera Bar</h4>
-          <p>Live jazz and vinyl DJs alongside a refreshed cocktail program. Open seating.</p>
-          <div class="meta">This Friday · 7P</div>
-        </div>
-      </article>
-
-      <article class="exp-card">
-        <img src="https://picasso.rosewoodhotelgroup.com/transform/b2fd8dfe-d79f-4dba-bfd3-0ae31792d704/" alt="Clubhouse Series" />
-        <div class="body">
-          <h4>Clubhouse Series</h4>
-          <p>Intimate evenings of conversation, food, and music with founders, makers, and artists.</p>
-          <div class="meta">Monthly · By Invitation</div>
-        </div>
-      </article>
-
-      <article class="exp-card">
-        <img src="https://picasso.rosewoodhotelgroup.com/transform/51ec6d63-8081-48f7-a6a9-ddfb54074330/" alt="Afternoon Tea" />
-        <div class="body">
-          <h4>Afternoon Tea with Flamingo Estate</h4>
-          <p>Curated tea service in the Library with savory bites and house‑made pastries.</p>
-          <div class="meta">Daily · 2P–4P</div>
-        </div>
-      </article>
-
-      <article class="exp-card">
-        <img src="https://picasso.rosewoodhotelgroup.com/transform/4abd0ea4-de16-48ad-9cf7-8c5552443ac7/RWSHR_3-0_Brand-com_Assets_EXTERIOR_PROGRAMMING_BLUEJAYBIKES_EXPERIENCES2" alt="Blue Jay Bikes" />
-        <div class="body">
-          <h4>Blue Jay Bikes</h4>
-          <p>Take out one of our premium loaner bikes and explore the trails of Portola Valley.</p>
-          <div class="meta">Complimentary</div>
-        </div>
-      </article>
+      <article class="exp-card"><img src="https://picasso.rosewoodhotelgroup.com/transform/2d76d387-fc4b-4f60-9dcc-929626700a50/" alt="Friday Nights @ Madera" /><div class="body"><h4>Friday Nights @ Madera Bar</h4><p>Live jazz and vinyl DJs alongside a refreshed cocktail program. Open seating.</p><div class="meta">This Friday · 7P</div></div></article>
+      <article class="exp-card"><img src="https://picasso.rosewoodhotelgroup.com/transform/b2fd8dfe-d79f-4dba-bfd3-0ae31792d704/" alt="Clubhouse Series" /><div class="body"><h4>Clubhouse Series</h4><p>Intimate evenings of conversation, food, and music with founders, makers, and artists.</p><div class="meta">Monthly · By Invitation</div></div></article>
+      <article class="exp-card"><img src="https://picasso.rosewoodhotelgroup.com/transform/51ec6d63-8081-48f7-a6a9-ddfb54074330/" alt="Afternoon Tea" /><div class="body"><h4>Afternoon Tea with Flamingo Estate</h4><p>Curated tea service in the Library with savory bites and house‑made pastries.</p><div class="meta">Daily · 2P–4P</div></div></article>
+      <article class="exp-card"><img src="https://picasso.rosewoodhotelgroup.com/transform/4abd0ea4-de16-48ad-9cf7-8c5552443ac7/RWSHR_3-0_Brand-com_Assets_EXTERIOR_PROGRAMMING_BLUEJAYBIKES_EXPERIENCES2" alt="Blue Jay Bikes" /><div class="body"><h4>Blue Jay Bikes</h4><p>Take out one of our premium loaner bikes and explore the trails of Portola Valley.</p><div class="meta">Complimentary</div></div></article>
     </div>
   </section>
 
-  <!-- ====== EXPLORE MENLO PARK ====== -->
+  <!-- ====== EXPLORE ====== -->
   <section id="explore" class="explore-wrap">
     <div class="section-eyebrow">Beyond The Property</div>
     <h2 class="section-title">Explore Menlo Park</h2>
     <p class="section-intro">A few of our favorite places nearby.</p>
-
     <div class="explore-grid">
-      <a href="#" class="explore-tile">
-        <img src="https://images.rosewoodhotels.com/is/image/rwhg/h7wcd-38991550-rsh-garden-wed-1:WIDE-LARGE-16-9" alt="Stanford Dish trail" />
-        <div class="overlay">
-          <span>Hike</span>
-          <h4>The Stanford Dish</h4>
-          <small>4 mi loop · 12 min drive</small>
-        </div>
-      </a>
-
-      <a href="#" class="explore-tile">
-        <img src="https://picasso.rosewoodhotelgroup.com/transform/3b246b58-9893-408d-aa96-9edc63d2339d/RWSHR_3-0_Brand-com_Assets_Facilities_Pool_DayShot" alt="Portola Valley winery" />
-        <div class="overlay">
-          <span>Tasting</span>
-          <h4>Portola Vineyards</h4>
-          <small>Tastings by appt · 15 min</small>
-        </div>
-      </a>
-
-      <a href="#" class="explore-tile">
-        <img src="https://picasso.rosewoodhotelgroup.com/transform/d8749943-75a8-4327-aa0a-e2bbc11b54b0/RWSHR_3-0_Brand-com_Assets_EXPERIENCES_CYCLING_BAYAREA2" alt="Filoli Gardens" />
-        <div class="overlay">
-          <span>Gardens</span>
-          <h4>Filoli Estate</h4>
-          <small>654‑acre estate · 20 min</small>
-        </div>
-      </a>
-
-      <a href="#" class="explore-tile">
-        <img src="https://picasso.rosewoodhotelgroup.com/transform/24e1e84a-ec83-4769-a843-0dc3be3aa034/RWSHR_3-0_Brand-com_Assets_The_Library-MaderaBar_Exterior" alt="Stanford Shopping Center" />
-        <div class="overlay">
-          <span>Shop</span>
-          <h4>Stanford Shopping Center</h4>
-          <small>Open‑air · 8 min drive</small>
-        </div>
-      </a>
-
-      <a href="#" class="explore-tile">
-        <img src="https://picasso.rosewoodhotelgroup.com/transform/cf8f4a51-2cf6-4f77-b2c5-bd989213c71e/RWSHR_3-0_Brand-com_Assets_FACILITIES_MADERABAR" alt="Allied Arts Guild" />
-        <div class="overlay">
-          <span>Stroll</span>
-          <h4>Allied Arts Guild</h4>
-          <small>Historic gardens · 6 min</small>
-        </div>
-      </a>
-
-      <a href="#" class="explore-tile">
-        <img src="https://picasso.rosewoodhotelgroup.com/transform/af679713-6bb5-4f7f-b4d0-b0cea27da330/RWSHR_POOLSIDE_EXTERIOR_LIFESTYLE2" alt="Half Moon Bay coast" />
-        <div class="overlay">
-          <span>Day Trip</span>
-          <h4>Half Moon Bay Coast</h4>
-          <small>Scenic drive · 35 min</small>
-        </div>
-      </a>
+      <a href="#" class="explore-tile"><img src="https://images.rosewoodhotels.com/is/image/rwhg/h7wcd-38991550-rsh-garden-wed-1:WIDE-LARGE-16-9" alt="Stanford Dish trail" /><div class="overlay"><span>Hike</span><h4>The Stanford Dish</h4><small>4 mi loop · 12 min drive</small></div></a>
+      <a href="#" class="explore-tile"><img src="https://picasso.rosewoodhotelgroup.com/transform/3b246b58-9893-408d-aa96-9edc63d2339d/RWSHR_3-0_Brand-com_Assets_Facilities_Pool_DayShot" alt="Portola Valley winery" /><div class="overlay"><span>Tasting</span><h4>Portola Vineyards</h4><small>Tastings by appt · 15 min</small></div></a>
+      <a href="#" class="explore-tile"><img src="https://picasso.rosewoodhotelgroup.com/transform/d8749943-75a8-4327-aa0a-e2bbc11b54b0/RWSHR_3-0_Brand-com_Assets_EXPERIENCES_CYCLING_BAYAREA2" alt="Filoli Gardens" /><div class="overlay"><span>Gardens</span><h4>Filoli Estate</h4><small>654‑acre estate · 20 min</small></div></a>
+      <a href="#" class="explore-tile"><img src="https://picasso.rosewoodhotelgroup.com/transform/24e1e84a-ec83-4769-a843-0dc3be3aa034/RWSHR_3-0_Brand-com_Assets_The_Library-MaderaBar_Exterior" alt="Stanford Shopping Center" /><div class="overlay"><span>Shop</span><h4>Stanford Shopping Center</h4><small>Open‑air · 8 min drive</small></div></a>
+      <a href="#" class="explore-tile"><img src="https://picasso.rosewoodhotelgroup.com/transform/cf8f4a51-2cf6-4f77-b2c5-bd989213c71e/RWSHR_3-0_Brand-com_Assets_FACILITIES_MADERABAR" alt="Allied Arts Guild" /><div class="overlay"><span>Stroll</span><h4>Allied Arts Guild</h4><small>Historic gardens · 6 min</small></div></a>
+      <a href="#" class="explore-tile"><img src="https://picasso.rosewoodhotelgroup.com/transform/af679713-6bb5-4f7f-b4d0-b0cea27da330/RWSHR_POOLSIDE_EXTERIOR_LIFESTYLE2" alt="Half Moon Bay coast" /><div class="overlay"><span>Day Trip</span><h4>Half Moon Bay Coast</h4><small>Scenic drive · 35 min</small></div></a>
     </div>
   </section>
 
@@ -871,67 +650,101 @@
     <div class="section-eyebrow">Good to Know</div>
     <h2 class="section-title">Frequently asked questions</h2>
     <p class="section-intro">Answers to the things most guests ask us.</p>
-
     <div class="faq-list">
-      <details class="faq">
-        <summary>What time is check‑out, and can it be extended?</summary>
-        <p>Standard check‑out is 12:00 PM. As an anniversary guest, we're happy to extend to 2:00 PM at no charge. Later checkouts can be arranged through your concierge based on availability.</p>
-      </details>
-
-      <details class="faq">
-        <summary>Is there a dress code at Madera?</summary>
-        <p>Smart casual. Collared shirts preferred for gentlemen at dinner; no athletic wear. The bar is more relaxed.</p>
-      </details>
-
-      <details class="faq">
-        <summary>How do I reserve a private cabana?</summary>
-        <p>Cabanas are available for half‑day or full‑day reservation. Tap "Reserve" on the Picked for You card, or text your concierge — we'll handle the rest, including a chilled welcome bottle.</p>
-      </details>
-
-      <details class="faq">
-        <summary>Can the concierge arrange a wine country day trip?</summary>
-        <p>Yes — Napa and Sonoma are about 90 minutes by car. We can arrange a private driver and curated tasting itinerary tailored to your preferences. 48 hours' notice recommended.</p>
-      </details>
-
-      <details class="faq">
-        <summary>Are bikes complimentary?</summary>
-        <p>Our Blue Jay loaner bikes are complimentary for all overnight guests. Helmets, locks, and route maps included. Guided rides with our Cycling Concierge are bookable separately.</p>
-      </details>
-
-      <details class="faq">
-        <summary>How do I access the spa and pool?</summary>
-        <p>As an overnight guest, both are complimentary throughout your stay. The Asaya Spa lobby is open 7A–9P. Treatments require advance booking — we recommend reserving as soon as possible during peak season.</p>
-      </details>
-
-      <details class="faq">
-        <summary>Is parking included?</summary>
-        <p>Yes — complimentary valet parking is included with your stay. Self‑parking is also available around the property.</p>
-      </details>
+      <details class="faq"><summary>What time is check‑out, and can it be extended?</summary><p>Standard check‑out is 12:00 PM. As an anniversary guest, we're happy to extend to 2:00 PM at no charge. Later checkouts can be arranged through your concierge based on availability.</p></details>
+      <details class="faq"><summary>Is there a dress code at Madera?</summary><p>Smart casual. Collared shirts preferred for gentlemen at dinner; no athletic wear. The bar is more relaxed.</p></details>
+      <details class="faq"><summary>How do I reserve a private cabana?</summary><p>Cabanas are available for half‑day or full‑day reservation. Tap "Reserve" on the Picked for You card, or text your concierge — we'll handle the rest, including a chilled welcome bottle.</p></details>
+      <details class="faq"><summary>Can the concierge arrange a wine country day trip?</summary><p>Yes — Napa and Sonoma are about 90 minutes by car. We can arrange a private driver and curated tasting itinerary tailored to your preferences. 48 hours' notice recommended.</p></details>
+      <details class="faq"><summary>Are bikes complimentary?</summary><p>Our Blue Jay loaner bikes are complimentary for all overnight guests. Helmets, locks, and route maps included. Guided rides with our Cycling Concierge are bookable separately.</p></details>
+      <details class="faq"><summary>How do I access the spa and pool?</summary><p>As an overnight guest, both are complimentary throughout your stay. The Asaya Spa lobby is open 7A–9P. Treatments require advance booking — we recommend reserving as soon as possible during peak season.</p></details>
+      <details class="faq"><summary>Is parking included?</summary><p>Yes — complimentary valet parking is included with your stay. Self‑parking is also available around the property.</p></details>
     </div>
   </section>
 
-  <!-- ====== CONCIERGE CTA ====== -->
+  <!-- ====== CONCIERGE ====== -->
   <div class="concierge-cta" id="concierge">
     <h2>Your Concierge, Always On</h2>
     <p>Text us directly — we'll book, plan, or recommend anything you need.</p>
     <a class="btn-gold" href="sms:+16505611500">Message Concierge</a>
   </div>
 
-  <footer>
-    2825 Sand Hill Road · Menlo Park, CA<br/>
-    Welcome, Michael &amp; Mrs. Gahan — Happy Anniversary
-  </footer>
+  <footer>2825 Sand Hill Road · Menlo Park, CA<br/>Welcome, Michael &amp; Mrs. Gahan — Happy Anniversary</footer>
 
 </div>
 
-<!-- ====== FLOATING CHAT BUTTON ====== -->
+<!-- ====== CHAT FAB ====== -->
 <a href="https://ai.rosai.vip/rosewood-sand-hill" target="_blank" rel="noopener" class="chat-fab" aria-label="Chat with AI Concierge">
   <span class="fab-label">AI Concierge</span>
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/>
-    <path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/>
-  </svg>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
 </a>
+
+<!-- ====== AUDIO PLAYER JS ====== -->
+<script>
+(function() {
+  const audio = document.getElementById('audioTrack');
+  const btn = document.getElementById('playBtn');
+  const card = document.getElementById('playerCard');
+  const fill = document.getElementById('progressFill');
+  const knob = document.getElementById('progressKnob');
+  const bar = document.getElementById('progressBar');
+  const tCur = document.getElementById('timeCurrent');
+  const tTot = document.getElementById('timeTotal');
+  const viz = document.getElementById('playerViz');
+
+  // Build visualizer bars
+  for (let i = 0; i < 48; i++) {
+    const b = document.createElement('div');
+    b.className = 'viz-bar';
+    b.style.height = (Math.random() * 55 + 10) + '%';
+    b.style.animationDelay = (Math.random() * 1.6).toFixed(2) + 's';
+    b.style.animationDuration = (0.8 + Math.random() * 0.9).toFixed(2) + 's';
+    viz.appendChild(b);
+  }
+
+  function fmt(s) {
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  btn.addEventListener('click', function() {
+    if (audio.paused) { audio.play(); } else { audio.pause(); }
+  });
+
+  audio.addEventListener('play', function() {
+    btn.classList.add('active');
+    card.classList.add('playing');
+  });
+  audio.addEventListener('pause', function() {
+    btn.classList.remove('active');
+    card.classList.remove('playing');
+  });
+  audio.addEventListener('ended', function() {
+    btn.classList.remove('active');
+    card.classList.remove('playing');
+    fill.style.width = '0%';
+    knob.style.left = '0%';
+  });
+
+  audio.addEventListener('loadedmetadata', function() {
+    tTot.textContent = fmt(audio.duration);
+  });
+
+  audio.addEventListener('timeupdate', function() {
+    if (!audio.duration) return;
+    var pct = (audio.currentTime / audio.duration) * 100;
+    fill.style.width = pct + '%';
+    knob.style.left = pct + '%';
+    tCur.textContent = fmt(audio.currentTime);
+  });
+
+  bar.addEventListener('click', function(e) {
+    var rect = bar.getBoundingClientRect();
+    var pct = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pct * audio.duration;
+  });
+})();
+</script>
 
 </body>
 </html>
