@@ -1,5 +1,6 @@
 /* ============================================
    Rosewood AI Concierge — Guest Welcome Page
+   Personalized for Maya Chen
    ============================================ */
 
 :root {
@@ -12,6 +13,7 @@
   --rose-white: #fdfcfa;
   --rose-muted: #9a9590;
   --rose-border: #e8e2db;
+  --rose-green: #7a9a7e;
   --font-serif: 'Cormorant Garamond', 'Georgia', serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -110,9 +112,22 @@ body {
   font-size: 1rem;
   color: var(--rose-muted);
   font-weight: 300;
-  max-width: 480px;
+  max-width: 520px;
   margin: 0 auto;
   line-height: 1.8;
+}
+
+.loyalty-badge {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rose-gold);
+  border: 1px solid rgba(196, 168, 107, 0.3);
+  padding: 0.5rem 1.25rem;
+  border-radius: 20px;
+  font-weight: 400;
 }
 
 /* ---- Sections ---- */
@@ -346,6 +361,53 @@ body {
   font-style: italic;
 }
 
+/* ---- Birthday ---- */
+.birthday {
+  background: linear-gradient(135deg, #f7f3ee 0%, #f0ebe3 100%);
+  text-align: center;
+}
+
+.birthday-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.birthday-content h2 {
+  margin-bottom: 0.75rem;
+}
+
+.birthday-content > p {
+  font-size: 1rem;
+  color: var(--rose-muted);
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
+.birthday-gestures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.gesture {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.gesture-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.gesture p {
+  font-size: 0.9rem;
+  color: var(--rose-muted);
+  line-height: 1.7;
+}
+
 /* ---- Closing ---- */
 .closing {
   text-align: center;
@@ -489,5 +551,13 @@ body {
     width: 100%;
     max-width: 280px;
     text-align: center;
+  }
+
+  .birthday-gestures {
+    grid-template-columns: 1fr;
+  }
+
+  .gesture {
+    flex-direction: row;
   }
 }
