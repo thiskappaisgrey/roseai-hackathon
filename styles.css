@@ -141,6 +141,66 @@ body {
   border-color: var(--rosewood-gold);
 }
 
+/* ---- PERSONAL NOTE ---- */
+.section-note {
+  background: var(--rosewood-cream);
+  padding: 5rem 0;
+}
+
+.note-card {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.note-card h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 300;
+  margin-bottom: 2rem;
+  color: var(--rosewood-charcoal);
+}
+
+.note-card h2 em {
+  font-style: italic;
+  color: var(--rosewood-gold);
+}
+
+.note-body {
+  text-align: left;
+}
+
+.note-body p {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--rosewood-text);
+  margin-bottom: 1.25rem;
+}
+
+.note-body em {
+  color: var(--rosewood-gold);
+  font-style: italic;
+}
+
+.note-close {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 1.2rem !important;
+  font-weight: 400;
+  line-height: 1.6 !important;
+  color: var(--rosewood-charcoal) !important;
+  margin-top: 2rem !important;
+}
+
+.note-signature {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--rosewood-gold);
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
 /* ---- SECTIONS ---- */
 .section {
   padding: 6rem 0;
@@ -274,7 +334,6 @@ body {
   100% { height: 20%; }
 }
 
-/* Stagger the bars */
 .eq-bar:nth-child(odd)  { animation-duration: 1.0s; }
 .eq-bar:nth-child(even) { animation-duration: 1.4s; }
 .eq-bar:nth-child(3n)   { animation-duration: 0.8s; }
@@ -458,7 +517,6 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Hide native audio element */
 audio {
   display: none;
 }
@@ -637,6 +695,50 @@ audio {
   opacity: 0.8;
 }
 
+/* ---- CONCIERGE ---- */
+.concierge-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.9rem 2.2rem;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.cta-primary {
+  background-color: var(--rosewood-gold);
+  color: white;
+}
+
+.cta-primary:hover {
+  background-color: #b39a5c;
+}
+
+.cta-secondary {
+  background: transparent;
+  color: var(--rosewood-charcoal);
+  border: 1px solid var(--rosewood-charcoal);
+}
+
+.cta-secondary:hover {
+  background: var(--rosewood-charcoal);
+  color: white;
+}
+
 /* ---- FOOTER ---- */
 .footer {
   background: var(--rosewood-black);
@@ -673,6 +775,7 @@ audio {
   color: var(--rosewood-gold);
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+  line-height: 1.7;
 }
 
 .footer-powered {
@@ -709,6 +812,10 @@ audio {
 @media (max-width: 768px) {
   .section {
     padding: 4rem 0;
+  }
+
+  .section-note {
+    padding: 3.5rem 0;
   }
 
   .dining-card {
@@ -751,6 +858,17 @@ audio {
 
   .player-info .track-title {
     font-size: 1.3rem;
+  }
+
+  .concierge-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-btn {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
   }
 }
 
