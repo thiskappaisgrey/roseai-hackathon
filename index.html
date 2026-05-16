@@ -354,8 +354,94 @@
   footer {
     text-align: center;
     padding: 20px;
+    padding-bottom: calc(20px + 80px);
     font-size: 11px;
     color: #8a7e6e;
+  }
+
+  /* ---------- Floating Chat FAB ---------- */
+  .chat-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #3d8b8b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 4px 14px rgba(0,0,0,0.25),
+      0 0 0 0 rgba(61,139,139,0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .chat-fab:hover {
+    transform: scale(1.08);
+    background: #358080;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+  .chat-fab:active {
+    transform: scale(0.95);
+  }
+  .chat-fab svg {
+    width: 26px;
+    height: 26px;
+    fill: currentColor;
+  }
+
+  /* Tooltip label */
+  .chat-fab .fab-label {
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1a1a1a;
+    color: #f6f3ee;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 8px 14px;
+    border-radius: 10px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    transform: translateY(-50%) translateX(6px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .chat-fab .fab-label::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-left-color: #1a1a1a;
+  }
+  .chat-fab:hover .fab-label {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  /* Pulse animation on load */
+  @keyframes fabPulse {
+    0%   { box-shadow: 0 4px 14px rgba(0,0,0,0.25), 0 0 0 0 rgba(61,139,139,0.5); }
+    70%  { box-shadow: 0 4px 14px rgba(0,0,0,0.25), 0 0 0 14px rgba(61,139,139,0); }
+    100% { box-shadow: 0 4px 14px rgba(0,0,0,0.25), 0 0 0 0 rgba(61,139,139,0); }
+  }
+  .chat-fab { animation: fabPulse 2s ease-out 1.5s 3; }
+
+  /* Safe area for mobile bottom */
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .chat-fab { bottom: calc(24px + env(safe-area-inset-bottom)); }
   }
 
   /* ============================================
@@ -379,7 +465,6 @@
 
     .section-title { font-size: 34px; }
 
-    /* Picked for you: narrower cards in scroller */
     .picked-wrap { padding: 48px 0; }
     .picked-wrap .section-eyebrow,
     .picked-wrap .section-title,
@@ -387,32 +472,30 @@
     .picked-scroller { padding: 6px 32px 20px; gap: 18px; }
     .picked-card { flex: 0 0 55%; }
 
-    /* Amenities: 3 columns */
     .amenities {
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
 
-    /* Experiences: 2 columns */
     .exp-list {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 18px;
     }
 
-    /* Explore: keep 2 col but bigger gap */
     .explore-grid { gap: 16px; }
     .explore-tile .overlay h4 { font-size: 20px; }
 
-    /* FAQ: constrain width */
     .faq-list { max-width: 700px; }
 
-    /* Concierge CTA wider */
     .concierge-cta {
       margin: 0 32px 32px;
       padding: 36px 32px;
     }
     .concierge-cta h2 { font-size: 30px; }
+
+    .chat-fab { width: 64px; height: 64px; bottom: 28px; right: 28px; }
+    .chat-fab svg { width: 28px; height: 28px; }
   }
 
   /* ============================================
@@ -438,7 +521,6 @@
     .section-title { font-size: 38px; margin-bottom: 8px; }
     .section-intro { font-size: 15px; margin-bottom: 32px; }
 
-    /* Picked for you: grid on desktop, no horizontal scroll */
     .picked-wrap { padding: 64px 0; }
     .picked-wrap .section-eyebrow,
     .picked-wrap .section-title,
@@ -451,12 +533,9 @@
       overflow-x: visible;
       scroll-snap-type: none;
     }
-    .picked-card {
-      flex: none;
-    }
+    .picked-card { flex: none; }
     .picked-card h3 { font-size: 24px; }
 
-    /* Amenities: 4 columns */
     .amenities {
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
@@ -464,13 +543,11 @@
     .amenity { padding: 22px 18px; }
     .amenity h4 { font-size: 18px; }
 
-    /* Experiences: 2 col with larger cards */
     .exp-list { gap: 24px; }
     .exp-card h4 { font-size: 26px; }
     .exp-card p { font-size: 14px; }
     .exp-card .body { padding: 20px 24px 24px; }
 
-    /* Explore: 3 columns */
     .explore-grid {
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
@@ -478,12 +555,10 @@
     .explore-tile .overlay { padding: 18px; }
     .explore-tile .overlay h4 { font-size: 22px; }
 
-    /* FAQ */
     .faq-list { max-width: 780px; margin: 0 auto; }
     .faq summary { font-size: 15px; padding: 18px 22px; }
     .faq p { font-size: 14px; padding: 0 22px 20px; }
 
-    /* Concierge */
     .concierge-cta {
       max-width: 680px;
       margin: 0 auto 48px;
@@ -493,7 +568,10 @@
     .concierge-cta h2 { font-size: 34px; }
     .concierge-cta p { font-size: 14px; }
 
-    footer { padding: 28px; font-size: 12px; }
+    footer { padding: 28px; padding-bottom: 28px; font-size: 12px; }
+
+    .chat-fab { width: 68px; height: 68px; bottom: 32px; right: 32px; }
+    .chat-fab svg { width: 30px; height: 30px; }
   }
 
   /* ============================================
@@ -526,11 +604,13 @@
     .amenity { padding: 24px 20px; }
 
     .explore-grid { gap: 20px; }
+
+    .chat-fab { bottom: 36px; right: 36px; }
   }
 
   /* ---------- Accessibility ---------- */
   @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; scroll-behavior: auto !important; }
+    * { transition: none !important; scroll-behavior: auto !important; animation: none !important; }
   }
 </style>
 </head>
@@ -843,6 +923,15 @@
   </footer>
 
 </div>
+
+<!-- ====== FLOATING CHAT BUTTON ====== -->
+<a href="https://ai.rosai.vip/rosewood-sand-hill" target="_blank" rel="noopener" class="chat-fab" aria-label="Chat with AI Concierge">
+  <span class="fab-label">AI Concierge</span>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/>
+    <path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/>
+  </svg>
+</a>
 
 </body>
 </html>
