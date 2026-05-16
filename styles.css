@@ -1,0 +1,493 @@
+/* ============================================
+   Rosewood AI Concierge — Guest Welcome Page
+   ============================================ */
+
+:root {
+  --rose-dark: #1a1a1a;
+  --rose-charcoal: #2d2d2d;
+  --rose-warm: #8b6f5e;
+  --rose-gold: #c4a86b;
+  --rose-gold-light: #d4bc85;
+  --rose-cream: #f7f3ee;
+  --rose-white: #fdfcfa;
+  --rose-muted: #9a9590;
+  --rose-border: #e8e2db;
+  --font-serif: 'Cormorant Garamond', 'Georgia', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--rose-dark);
+  background: var(--rose-white);
+  line-height: 1.7;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ---- Hero ---- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2926 40%, #3d3530 70%, #1a1a1a 100%);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(196, 168, 107, 0.08) 0%, transparent 70%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+}
+
+.rosewood-mark {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  color: var(--rose-gold);
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+}
+
+.property-name {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--rose-muted);
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+.divider {
+  width: 40px;
+  height: 1px;
+  background: var(--rose-gold);
+  margin: 0 auto 2.5rem;
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  color: var(--rose-cream);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-sub {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--rose-muted);
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ---- Sections ---- */
+.section {
+  padding: 5rem 0;
+}
+
+.alt-bg {
+  background: var(--rose-cream);
+}
+
+.section-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose-gold);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.section h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 300;
+  color: var(--rose-dark);
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+}
+
+.section > .container > p {
+  font-size: 1rem;
+  color: var(--rose-charcoal);
+  max-width: 640px;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+
+/* ---- Suite Detail Grid ---- */
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.detail-card {
+  background: var(--rose-cream);
+  border: 1px solid var(--rose-border);
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.detail-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+
+.detail-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.detail-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--rose-dark);
+}
+
+.detail-card p {
+  font-size: 0.9rem;
+  color: var(--rose-muted);
+  line-height: 1.7;
+}
+
+/* ---- Dining ---- */
+.dining-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.dining-card {
+  background: var(--rose-white);
+  border: 1px solid var(--rose-border);
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.dining-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.dining-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--rose-dark);
+}
+
+.dining-badge {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rose-gold);
+  border: 1px solid var(--rose-gold);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.dining-time {
+  font-size: 0.8rem;
+  color: var(--rose-warm);
+  margin-bottom: 0.75rem;
+  font-weight: 400;
+}
+
+.dining-card > p:last-child {
+  font-size: 0.9rem;
+  color: var(--rose-muted);
+  line-height: 1.7;
+}
+
+/* ---- Experiences ---- */
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.experience-item {
+  display: flex;
+  gap: 2rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--rose-border);
+  align-items: flex-start;
+}
+
+.experience-item:first-child {
+  padding-top: 1rem;
+}
+
+.experience-item:last-child {
+  border-bottom: none;
+}
+
+.experience-number {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--rose-gold-light);
+  line-height: 1;
+  min-width: 50px;
+}
+
+.experience-content h3 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--rose-dark);
+}
+
+.experience-content p {
+  font-size: 0.95rem;
+  color: var(--rose-muted);
+  line-height: 1.8;
+}
+
+/* ---- Music ---- */
+.music-intro {
+  font-size: 1rem;
+  color: var(--rose-charcoal);
+  max-width: 640px;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.music-block {
+  background: var(--rose-white);
+  border: 1px solid var(--rose-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.music-time {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--rose-gold);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.music-mood {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--rose-dark);
+  margin-bottom: 0.5rem;
+}
+
+.music-artists {
+  font-size: 0.8rem;
+  color: var(--rose-muted);
+  font-weight: 300;
+}
+
+.music-note {
+  font-size: 0.85rem;
+  color: var(--rose-muted);
+  font-style: italic;
+}
+
+/* ---- Closing ---- */
+.closing {
+  text-align: center;
+  padding: 6rem 0;
+}
+
+.closing-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.closing-text {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--rose-dark);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.closing-signature {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--rose-warm);
+  font-style: italic;
+  margin-bottom: 3rem;
+}
+
+.concierge-bar {
+  border-top: 1px solid var(--rose-border);
+  padding-top: 2.5rem;
+}
+
+.concierge-name {
+  font-size: 0.85rem;
+  color: var(--rose-muted);
+  margin-bottom: 1.25rem;
+}
+
+.concierge-buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn {
+  background: var(--rose-dark);
+  color: var(--rose-cream);
+  border: 1px solid var(--rose-dark);
+}
+
+.btn:hover {
+  background: var(--rose-charcoal);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--rose-dark);
+  border: 1px solid var(--rose-border);
+}
+
+.btn-outline:hover {
+  border-color: var(--rose-dark);
+  background: var(--rose-cream);
+}
+
+/* ---- Footer ---- */
+.footer {
+  background: var(--rose-dark);
+  color: var(--rose-muted);
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.footer .rosewood-mark {
+  margin-bottom: 0.75rem;
+}
+
+.footer p {
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.4);
+}
+
+.footer-note {
+  margin-top: 1rem;
+  font-size: 0.7rem !important;
+  opacity: 0.5;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  .hero {
+    min-height: 80vh;
+  }
+
+  .experience-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .experience-number {
+    font-size: 1.5rem;
+  }
+
+  .dining-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .concierge-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+}
